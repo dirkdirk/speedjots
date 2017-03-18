@@ -10,7 +10,6 @@ export default Ember.Component.extend({
       let store = this.get('store');
       let uid = this.get('session.currentUser.uid');
       let timeStamp = Date.now();
-      let devUser = this.get('session.currentUser.displayName') === 'Dirk Bruins' ? true : false;
       store.findRecord('setting', 0)
            .then((result) => {
              console.log(' -- updating lastLogin timestamp');
@@ -26,7 +25,10 @@ export default Ember.Component.extend({
                  id: uid,
                  // Enter new user defaults here:
                  settings: { 0: { "lastLogin": timeStamp, "theme": "light" } },
-                 jots: { 0: { "title": "Jot 1", "text": "Text 1", "tags": "Tag 1" } }
+                 jots: { 0: { "title": "Jot 1",
+                              "text": "Text 1",
+                              "tags": "Tag 1",
+                              "type": "text" } }
                });
                newUser.save().then(() => {
                  console.log(' -- reloading page');
@@ -52,6 +54,7 @@ export default Ember.Component.extend({
     signOut: function() {
       console.log('signOut() firing');
       this.get('session').close();
+      this.transitionToRoute('application');
     },
   }
 });

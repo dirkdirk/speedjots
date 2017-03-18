@@ -6,7 +6,7 @@
               class='title-input input'
               focus-out='save'
               enter='save'
-              key-up='updateStatusIcon'}}<br>
+              key-up='updateStatusIconColor'}}<br>
       <span class='label'>Title</span>
     </div>
     <div class='title-row-item'>
@@ -14,7 +14,7 @@
               class='tags-input input'
               focus-out='save'
               enter='save'
-              key-up='updateStatusIcon'}}<br>
+              key-up='updateStatusIconColor'}}<br>
       <span class='label'>Tags</span>
     </div>
     <div id='data-state'>
@@ -22,8 +22,12 @@
     </div>
   </div>
 
-  <div id='tinymce-container'>
-    {{tinymce-editor options=options value=model.text onValueChanged=(action 'saveSlow')}}
+  {{!-- {{textarea value=model.text classNames='markdown-textarea'}}
+  {{markdown-to-html classNames='markdown-html' markdown=model.text setFlavor='github'}} --}}
+
+  <div id='text-editor-container'>
+    {{medium-content-editable value=model.text options=mediumEditorOptions onFinishedTyping=(action 'saveJotText')}}
+    {{!-- {{medium-content-editable value=model.text options=mediumEditorOptions}} --}}
   </div>
 
   <div id='destroy-jot-icon' title='Delete'>{{fa-icon 'times-circle' click=(action 'destroyJot' model bubbles=false)}}</div>

@@ -15,6 +15,7 @@
   display: flex;
   align-items: flex-end;
   flex: 0 1 auto;
+  min-height: 90px;
 }
 
 #editor-container {
@@ -23,16 +24,8 @@
   height: $editor-container-height;
 }
 
-#tinymce-container {
-  flex: 1;
-}
-
-.mce-tinymce, .mce-stack-layout, iframe {
-  height: $iframe-height;
-}
-
-.mce-edit-area {
-  height: $mce-edit-area-height;
+#text-editor-container {
+  flex: 0 1 auto;
 }
 
 .title-row-item {
