@@ -1,0 +1,31 @@
+<div id='editor-container'>
+
+  <div id='title-row'>
+    <div class='title-row-item'>
+      {{input value=model.title
+              class='title-input input'
+              focus-out='save'
+              enter='save'
+              key-up='updateStatusIcon'}}<br>
+      <span class='label'>Title</span>
+    </div>
+    <div class='title-row-item'>
+      {{input value=model.tags
+              class='tags-input input'
+              focus-out='save'
+              enter='save'
+              key-up='updateStatusIcon'}}<br>
+      <span class='label'>Tags</span>
+    </div>
+    <div id='data-state'>
+      {{fa-icon 'check-circle-o' title='Save' style=statusIconStyle id='status-icon' click=(action 'save' bubbles=false)}}
+    </div>
+  </div>
+
+  <div id='tinymce-container'>
+    {{tinymce-editor options=options value=model.text onValueChanged=(action 'saveSlow')}}
+  </div>
+
+  <div id='destroy-jot-icon' title='Delete'>{{fa-icon 'times-circle' click=(action 'destroyJot' model bubbles=false)}}</div>
+
+</div>

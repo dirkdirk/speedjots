@@ -1,0 +1,30 @@
+@import 'vars.scss';
+@import "mixins.scss";
+@import "menu.scss";
+@import "editor.scss";
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  background-color: $site-bg-color;
+}
+
+body > .ember-view {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+.page-title {
+  text-decoration: none;
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: $menu-title-font-size;
+  color: $menu-title-font-color;
+}

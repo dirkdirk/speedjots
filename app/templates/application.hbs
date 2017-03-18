@@ -1,0 +1,76 @@
+<span class='container'>
+
+  <span class='flex-item' id='menu'>
+
+    {{#link-to 'application' class='page-title'}}<p id='menu-title'>Jots</p>{{/link-to}}
+
+    {{#if session.currentUser}}
+      {{#filter-content content=sortedModel properties='title tags' as |filtered query|}}
+        {{input value=query title='Filter jots by title and tags.' placeholder='search jots...' id='search-input'}}
+          {{#each filtered as |jot|}}
+            <div id='jot-link-{{jot.id}}' class='menu-jot-link' title='{{jot.title}}'>
+              <nobr>{{link-to (string-to-length jot.title 18 '...') 'jot' jot.id}}</nobr>
+            </div>
+          {{/each}}
+      {{/filter-content}}
+      <p id='new-jot-icon' title='Add new jot'>{{fa-icon 'plus-circle' click=(action 'newJot' bubbles=false)}}</p>
+    {{/if}}
+
+
+    <p id='nav-icons'>
+      {{#if session.currentUser}}
+        {{#if session.currentUser.photoURL}}
+          <img id='user-photo-icon' src='{{session.currentUser.photoURL}}'><br>
+        {{else}}
+          {{fa-icon 'user' id='loged-in-user-icon'}}<br>
+        {{/if}}
+        {{fa-icon 'fighter-jet' class='logout-icon nav-icon' title='Logout' click=(action 'logout')}}
+      {{else}}
+        <div class='login-div'>
+          <hr>
+          <p class='login-title'>Social Login</p>
+          <hr>
+          {{fa-icon 'google' class='login-icon nav-icon' title='Login with Google account.' click=(action 'googleLogin')}}
+        </div>
+
+        <div class='login-div'>
+          <hr>
+          <p class='login-title'>Email Login</p>
+          <hr>
+          <p><label class='login-form-label' for='email'>Email</label><br>
+          {{input class='input tags-input' value=email size=20}}</p>
+          <p><label class='login-form-label' for='password'>Password</label><br>
+          {{input class='input tags-input' type='password' value=password size=20}}</p>
+          <button class='login-form-button' {{action 'login' email password}}>Login</button>
+        </div>
+
+        <div class='login-div'>
+          <hr>
+          <p class='login-title'>Register</p>
+          <hr>
+          <p><label class='login-form-label' for='email'>Email</label><br>
+          {{input class='input tags-input' value=email size=20}}</p>
+          <p><label class='login-form-label' for='password'>Password</label><br>
+          {{input class='input tags-input' type='password' value=password size=20}}</p>
+          <p><label class='login-form-label' for='password'>Repeat Password</label><br>
+          {{input class='input tags-input' type='repeat password' value=repeatPassword size=20}}</p>
+          <button class='login-form-button' {{action 'register' email password}}>Register</button>
+        </div>
+
+      {{/if}}
+
+
+      {{#if session.currentUser.devMode}}
+        <div id='devMode-nav-icons'>
+          <a id='firebase-icon' class='nav-icon' title='Firebase' href='https://firebase.google.com/' target='_blank'>{{fa-icon 'fire'}}</a>
+        </div>
+      {{/if}}
+    </p>
+
+  </span>
+
+  <span class='flex-item' id='editor'>
+    {{outlet}}
+  </span>
+
+</span>

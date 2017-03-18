@@ -1,0 +1,90 @@
+@import 'vars.scss';
+
+#editor {
+  flex: 1;
+  margin: 8px 16px 8px 16px;
+}
+
+#welcome-message {
+  text-align: center;
+  margin: 40px 0 0 0;
+  font-size: $welcome-message-font-size;
+}
+
+#title-row {
+  display: flex;
+  align-items: flex-end;
+  flex: 0 1 auto;
+}
+
+#editor-container {
+  display: flex;
+  flex-direction: column;
+  height: $editor-container-height;
+}
+
+#tinymce-container {
+  flex: 1;
+}
+
+.mce-tinymce, .mce-stack-layout, iframe {
+  height: $iframe-height;
+}
+
+.mce-edit-area {
+  height: $mce-edit-area-height;
+}
+
+.title-row-item {
+  flex: 1;
+  margin-bottom: 22px;
+}
+
+#data-state {
+  flex: 0;
+  font-size: $fa-icon-size;
+  padding: $fa-icon-padding;
+  margin: 0 6px 14px 0;
+  cursor: pointer;
+  color: $icon-green;
+}
+
+.input {
+  border: none;
+  outline: none;
+  padding: 2px;
+  width: $input-title-tags-width;
+  background-color: $site-bg-color;
+  color: $input-text-color;
+}
+
+.input:focus {
+  background-color: $input-bg-color;
+}
+
+.title-input {
+  border-bottom: 1px solid $title-input-underline;
+  font-size: $title-input-font-size;
+}
+
+.tags-input {
+  border-bottom: 1px solid $tags-input-underline;
+  font-size: $tags-input-font-size;
+  line-height: 1.6em;
+}
+
+.label {
+  margin-left: 6px;
+  font-size: $input-label-font-size;
+  color: $input-label-color;
+}
+
+#destroy-jot-icon {
+  flex: 0;
+  align-self: flex-end;
+  font-size: $fa-icon-size;
+  color: $icon-red;
+  padding: $fa-icon-padding;
+  margin: 14px 6px 0 0;
+  cursor: pointer;
+}
