@@ -1,0 +1,26 @@
+{{#if session.isAuthenticated}}
+
+  {{#if session.currentUser}}
+    <div class='nav-icons'>
+
+      {{#if session.currentUser.photoURL}}
+        <img id='user-photo-icon' src='{{session.currentUser.photoURL}}'><br>
+      {{else}}
+        {{fa-icon 'user' id='loged-in-user-icon'}}<br>
+      {{/if}}
+      {{fa-icon 'fighter-jet' class='logout-icon nav-icon' title='Logout' click=(action 'signOut')}}
+    </div>
+  {{/if}}
+
+{{else}}
+
+  <div id='nav-icons'>
+    <div class='login-div'>
+      <hr>
+      <p class='login-title'>Social Login</p>
+      <hr>
+      {{fa-icon 'google' class='login-icon nav-icon' title='Login with Google account.' click=(action 'signIn' 'google')}}
+    </div>
+  </div>
+
+{{/if}}

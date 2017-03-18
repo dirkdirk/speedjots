@@ -1,10 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  session: Ember.inject.service(),
-
   sortModelBy: ['title'],
   sortedModel: Ember.computed.sort('model', 'sortModelBy'),
+
+  devUser() {
+    return this.get('session.currentUser.displayName') === 'Dirk Bruins' ? true : false;
+  },
 
   actions: {
     newJot() {
@@ -17,18 +19,6 @@ export default Ember.Controller.extend({
         console.log('created id: ' + result.id);
         this.transitionToRoute('jot', result.id);
       });
-    },
-    googleLogin() {
-      this.get('session').googleLogin();
-    },
-    login(email, password) {
-      this.get('session').login(email, password);
-    },
-    register(email, displayName, password) {
-      this.get('session').register(email, displayName, password);
-    },
-    logout() {
-      this.get('session').logout();
     },
   }
 });
