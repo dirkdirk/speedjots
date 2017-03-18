@@ -27,9 +27,5 @@ export default Ember.Controller.extend({
         this.transitionToRoute('jot', result.id);
       });
     },
-    // reloadModel() {
-    //   console.log('--> controller:application reloadModel() firing');
-    //   // this.sendAction('reloadModel');
-    // }
   }
 });

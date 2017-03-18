@@ -15,7 +15,6 @@ export default Ember.Component.extend({
              console.log(' -- updating lastLogin timestamp');
              result.set('lastLogin', timeStamp);
              result.save();
-            //  result.save().then(() => { this.sendAction('reloadModel'); });
            })
            .catch((error) => {
              console.log(' -- error.message');
@@ -31,10 +30,7 @@ export default Ember.Component.extend({
                               "tags": "Tag 1",
                               "type": "text" } }
                });
-               newUser.save().then(() => {
-                //  console.log(' -- reloading page');
-                //  this.sendAction('reloadModel');
-               });
+               newUser.save();
              }
            });
     }
@@ -55,7 +51,6 @@ export default Ember.Component.extend({
     signOut: function() {
       console.log('--> signOut() firing');
       this.get('session').close();
-      // this.get('session').close().then(() => { this.sendAction('reloadModel'); });
     },
   }
 });

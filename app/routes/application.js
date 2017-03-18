@@ -12,10 +12,6 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    // reloadModel() {
-    //   console.log('--> routes:application reloadModel() firing');
-    //   this.store.findAll('jot').then(() => { this.refresh(); });
-    // },
     sessionChanged() {
       this.refresh();
     }

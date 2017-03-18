@@ -27,7 +27,6 @@
 
   <div id='text-editor-container'>
     {{medium-content-editable value=model.text options=mediumEditorOptions onFinishedTyping=(action 'saveJotText')}}
-    {{!-- {{medium-content-editable value=model.text options=mediumEditorOptions}} --}}
   </div>
 
   <div id='destroy-jot-icon' title='Delete'>{{fa-icon 'times-circle' click=(action 'destroyJot' model bubbles=false)}}</div>
