@@ -1,29 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  mediumEditorOptions: {
-    // https://github.com/yabwe/medium-editor
-    // Changing themes doesn't seem to work.
-    // theme: 'bootstrap',
-    // theme: 'default',
-    // theme: 'flat',
-    // theme: 'mani',
-    // theme: 'roman',
-    toolbar: {
-      buttons: ['bold', 'italic', 'underline', 'strikethrough',
-                'header1', 'header2',
-                'unorderedlist', 'orderedlist',
-                'indent', 'outdent',
-                'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull',
-                'anchor'],
-    },
-    // buttonLables: 'fontawesome',  // May have to edit bower_components/medium-editor/dist/js/medium-editor.js
-    autoLink: true,
-    imageDragging: false,
-    extensions: {
-      imageDragging: {},
-    }
-  },
 
   modelId: Ember.computed.alias('model.id'),
   addSelectedClassToLink: function() {
@@ -46,6 +23,7 @@ export default Ember.Controller.extend({
       });
     }
   },
+
   updateStatusIconColor(m = this.get('model')) {
     console.log('--> updateStatusIconColor() firing');
     let iconColor = m.get('hasDirtyAttributes') ? '#e11' : '#1e1';
@@ -71,6 +49,30 @@ export default Ember.Controller.extend({
       model.destroyRecord();
       this.transitionToRoute('application');
     },
-  }
+  },
+
+  mediumEditorOptions: {
+    // https://github.com/yabwe/medium-editor
+    // Changing themes doesn't seem to work.
+    // theme: 'bootstrap',
+    // theme: 'default',
+    // theme: 'flat',
+    // theme: 'mani',
+    // theme: 'roman',
+    toolbar: {
+      buttons: ['bold', 'italic', 'underline', 'strikethrough',
+                'header1', 'header2',
+                'unorderedlist', 'orderedlist',
+                'indent', 'outdent',
+                'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull',
+                'anchor'],
+    },
+    // buttonLables: 'fontawesome',  // May have to edit bower_components/medium-editor/dist/js/medium-editor.js
+    autoLink: true,
+    imageDragging: false,
+    extensions: {
+      imageDragging: {},
+    }
+  },
 
 });

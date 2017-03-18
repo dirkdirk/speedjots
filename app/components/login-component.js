@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
 
   createUpdateUser() {
-    console.log('createUpdateUser() firing');
+    console.log('--> createUpdateUser() firing');
     if(this.get('session.isAuthenticated')) {
       let store = this.get('store');
       let uid = this.get('session.currentUser.uid');
@@ -15,6 +15,7 @@ export default Ember.Component.extend({
              console.log(' -- updating lastLogin timestamp');
              result.set('lastLogin', timeStamp);
              result.save();
+            //  result.save().then(() => { this.sendAction('reloadModel'); });
            })
            .catch((error) => {
              console.log(' -- error.message');
@@ -31,8 +32,8 @@ export default Ember.Component.extend({
                               "type": "text" } }
                });
                newUser.save().then(() => {
-                 console.log(' -- reloading page');
-                 location.reload();  // Only required if menu is dependent on db values.
+                //  console.log(' -- reloading page');
+                //  this.sendAction('reloadModel');
                });
              }
            });
@@ -41,7 +42,7 @@ export default Ember.Component.extend({
 
   actions: {
     signIn: function(provider) {
-      console.log('signIn() firing');
+      console.log('--> signIn() firing');
       this.get('session').open('firebase', { provider: provider }).then((data) => {
         console.log(' -- data.currentUser returned from Firebase authentication');
         console.log(data.currentUser);
@@ -52,9 +53,9 @@ export default Ember.Component.extend({
       });
     },
     signOut: function() {
-      console.log('signOut() firing');
+      console.log('--> signOut() firing');
       this.get('session').close();
-      this.transitionToRoute('application');
+      // this.get('session').close().then(() => { this.sendAction('reloadModel'); });
     },
   }
 });

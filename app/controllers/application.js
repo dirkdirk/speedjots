@@ -8,17 +8,28 @@ export default Ember.Controller.extend({
     return this.get('session.currentUser.displayName') === 'Dirk Bruins' ? true : false;
   },
 
+  observeSession: function() {
+    console.log('--> observeSession() firing');
+    if(this.session.isAuthenticated) {
+      this.send('sessionChanged');
+    }
+  }.observes('session.isAuthenticated'),
+
   actions: {
     newJot() {
-      console.log('adding new jot ...');
+      console.log('--> newJot() firing ...');
       this.store.createRecord('jot', {
         title: 'New jot ...',
         tags: 'new',
         text: 'Insert wisdom here ...'
       }).save().then((result) => {
-        console.log('created id: ' + result.id);
+        console.log('  ... created id: ' + result.id);
         this.transitionToRoute('jot', result.id);
       });
     },
+    // reloadModel() {
+    //   console.log('--> controller:application reloadModel() firing');
+    //   // this.sendAction('reloadModel');
+    // }
   }
 });

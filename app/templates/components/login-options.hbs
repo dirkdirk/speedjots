@@ -1,7 +1,7 @@
 <div id='nav-icons'>
-  {{#if session.currentUser}}
+  {{#if session.isAuthenticated}}
 
-    {{#if session.currentUser.photoURL}}
+    {{#if session.isAuthenticated.photoURL}}
       <img id='user-photo-icon' src='{{session.currentUser.photoURL}}'><br>
     {{else}}
       {{fa-icon 'user' id='loged-in-user-icon'}}<br>
@@ -45,7 +45,7 @@
   {{/if}}
 
 
-  {{#if session.currentUser.devMode}}
+  {{#if session.isAuthenticated.devMode}}
     <div id='devMode-nav-icons'>
       <a id='firebase-icon' class='nav-icon' title='Firebase' href='https://firebase.google.com/' target='_blank'>{{fa-icon 'fire'}}</a>
     </div>
