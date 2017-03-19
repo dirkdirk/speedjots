@@ -13,7 +13,12 @@ export default Ember.Route.extend({
 
   actions: {
     sessionChanged() {
-      this.refresh();
+      console.log('--> sessionChanged() firing before debounce');
+      let refreshRoute = function() {
+        console.log('--> sessionChanged() firing after debounce');
+        return this.refresh();
+      };
+      Ember.run.debounce(this, refreshRoute, 2000);
     }
   }
 });

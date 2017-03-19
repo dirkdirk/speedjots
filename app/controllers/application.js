@@ -10,7 +10,8 @@ export default Ember.Controller.extend({
 
   observeSession: function() {
     console.log('--> observeSession() firing');
-    if(this.session.isAuthenticated) {
+    if(this.get('session.isAuthenticated')) {
+      console.log('  -- session isAuthenticated');
       this.send('sessionChanged');
     }
   }.observes('session.isAuthenticated'),
