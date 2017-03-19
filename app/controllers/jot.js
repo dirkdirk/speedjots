@@ -8,36 +8,30 @@ export default Ember.Controller.extend({
     Ember.$('#jot-link-' + this.get('modelId')).addClass('jot-link-selected');
   }.observes('modelId'),
 
-  modelText: Ember.computed.alias('model.text'),
   updateStatusIconColorObserver: function() {
     Ember.run.debounce(this, this.updateStatusIconColor, 500);
-  }.observes('modelText', 'modelId'),
+  }.observes('model.text', 'model.title', 'model.tags'),
+
+  updateStatusIconColor() {
+    console.log('--> updateStatusIconColor() firing');
+    let model = this.get('model');
+    let iconColor = model.get('hasDirtyAttributes') ? '#e11' : '#1e1';
+    Ember.$('#status-icon').css('color', iconColor);
+  },
 
   saveDirtyModel() {
     console.log('--> saveDirtyModel() firing ...');
-    let m = this.get('model');
-    if(m.get('hasDirtyAttributes')) {
+    let model = this.get('model');
+    if(model.get('hasDirtyAttributes')) {
       console.log('  ... saved');
-      m.save().then(() => {
-        this.send('updateStatusIconColor', m);
-      });
+      model.save().then(() => { this.updateStatusIconColor(); });
     }
-  },
-
-  updateStatusIconColor(m = this.get('model')) {
-    console.log('--> updateStatusIconColor() firing');
-    let iconColor = m.get('hasDirtyAttributes') ? '#e11' : '#1e1';
-    Ember.$('#status-icon').css('color', iconColor);
   },
 
   actions: {
     save() {
       console.log('--> save() firing');
       Ember.run.debounce(this, this.saveDirtyModel, 200);
-    },
-    updateStatusIconColor() {
-      console.log('--> updateStatusIconColor() firing');
-      Ember.run.debounce(this, this.updateStatusIconColor, 400);
     },
     saveJotText() {
       console.log('--> saveJotText() firing');
