@@ -8,14 +8,6 @@ export default Ember.Controller.extend({
     return this.get('session.currentUser.displayName') === 'Dirk Bruins' ? true : false;
   },
 
-  observeSession: function() {
-    console.log('--> observeSession() firing');
-    if(this.get('session.isAuthenticated')) {
-      console.log('  -- session isAuthenticated');
-      this.send('sessionChanged');
-    }
-  }.observes('session.isAuthenticated'),
-
   actions: {
     newJot() {
       console.log('--> newJot() firing ...');
@@ -25,7 +17,7 @@ export default Ember.Controller.extend({
         text: 'Insert wisdom here ...'
       }).save().then((result) => {
         console.log('  ... created id: ' + result.id);
-        this.transitionToRoute('jot', result.id);
+        this.transitionToRoute('jots.jot', result.id);
       });
     },
   }

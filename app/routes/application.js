@@ -1,24 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  beforeModel: function() {
+  beforeModel() {
     return this.get('session').fetch().catch(function() {});
   },
 
-  model() {
+  observeSession: function() {
+    console.log('--> observeSession() firing');
     if(this.get('session.isAuthenticated')) {
-      return this.store.findAll('jot');
+      console.log('  -- session isAuthenticated in observeSession(), transitioning to route "jots" ...');
+      this.transitionTo('jots');
+    } else {
+      this.transitionTo('application');
     }
-  },
-
-  actions: {
-    sessionChanged() {
-      console.log('--> sessionChanged() firing before debounce');
-      let refreshRoute = function() {
-        console.log('--> sessionChanged() firing after debounce');
-        return this.refresh();
-      };
-      Ember.run.debounce(this, refreshRoute, 2000);
-    }
-  }
+  }.observes('session.isAuthenticated'),
 });

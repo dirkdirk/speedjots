@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
     destroyJot(model) {
       console.log('--> destroyJot() firing ...');
       model.destroyRecord();
-      this.transitionToRoute('application');
+      this.transitionToRoute('jots');
     },
   },
 

@@ -1,14 +1,15 @@
 @import 'vars.scss';
 
 hr {
+  width: 50%;
   border: 0;
   height: 1px;
   // color: $site-blue;
-  background-image: -webkit-linear-gradient(left, $input-label-color, $site-blue, $input-label-color);
-  background-image: -moz-linear-gradient(left, $input-label-color, $site-blue, $input-label-color);
-  background-image: -ms-linear-gradient(left, $input-label-color, $site-blue, $input-label-color);
-  background-image: -o-linear-gradient(left, $input-label-color, $site-blue, $input-label-color);
-  background-image: -o-linear-gradient(left, $input-label-color, $site-blue, $input-label-color);
+  background-image: -webkit-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
+  background-image: -moz-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
+  background-image: -ms-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
+  background-image: -o-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
+  background-image: -o-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
 }
 
 #menu-title {
@@ -44,7 +45,7 @@ hr {
   padding: 4px 4px 4px 0;
 }
 
-#new-jot-icon {
+.new-jot-icon {
   font-size: $fa-icon-size;
   color: $icon-green;
   text-align: center;
@@ -54,12 +55,17 @@ hr {
 }
 
 .nav-icons {
+  margin-top: 50px;
   text-align: center;
 }
 
 .nav-icon {
   padding: 10px;
   cursor: pointer;
+}
+
+.login-icon {
+  font-size: $login-icon-size;
 }
 
 .logout-icon {
@@ -91,9 +97,11 @@ hr {
   margin-bottom: -6px;
 }
 
-.login-div {
-  margin-bottom: 50px;
-}
+// .login-div {
+//   margin-bottom: 50px;
+//   margin-top: 50px;
+//   max-width: 33%;
+// }
 
 .login-form-label {
   font-size: $login-form-label-font-size;

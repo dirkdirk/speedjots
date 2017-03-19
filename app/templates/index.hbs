@@ -1,5 +1,10 @@
 {{#if session.isAuthenticated}}
-  <p id="welcome-message">Select or search for a Jot.</p>
+  <p class='welcome-message'>If you see this message, please notify the management</p>
 {{else}}
-  <p id="welcome-message">Login to Jot</p>
+  <p class="welcome-message-title">Speed Jots</p>
+  <p class="welcome-message">Simple</p>
+  <p class="welcome-message">Fast</p>
+  <p class="welcome-message">Jots</p>
 {{/if}}
+
+{{login-component}}

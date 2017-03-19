@@ -7,8 +7,10 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('jot', {path: ':jot_id'});
-  this.route('user-settings');
+  // this.route('user-settings');
+  this.route('jots', function() {
+    this.route('jot', {path: ':jot_id'});
+  });
 });
 
 export default Router;

@@ -5,10 +5,16 @@
   margin: 8px 16px 8px 16px;
 }
 
-#welcome-message {
+.welcome-message {
   text-align: center;
   margin: 40px 0 0 0;
   font-size: $welcome-message-font-size;
+}
+
+.welcome-message-title {
+  text-align: center;
+  margin: 40px 0 0 0;
+  font-size: $welcome-message-title-font-size;
 }
 
 #title-row {
@@ -72,7 +78,7 @@
   color: $input-label-color;
 }
 
-#destroy-jot-icon {
+.destroy-jot-icon {
   flex: 0;
   align-self: flex-end;
   font-size: $fa-icon-size;

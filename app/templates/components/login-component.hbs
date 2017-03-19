@@ -14,13 +14,13 @@
 
 {{else}}
 
-  <div class='nav-icons'>
-    <div class='login-div'>
+  <p class='nav-icons'>
+    {{!-- <div class='login-div'> --}}
       <hr>
-      <p class='login-title'>Social Login</p>
+      <p class='login-title'>Login</p>
       <hr>
       {{fa-icon 'google' class='login-icon nav-icon' title='Login with Google account.' click=(action 'signIn' 'google')}}
-    </div>
-  </div>
+    {{!-- </div> --}}
+  </p>
 
 {{/if}}
