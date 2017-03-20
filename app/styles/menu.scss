@@ -4,34 +4,44 @@ hr {
   width: 50%;
   border: 0;
   height: 1px;
-  // color: $site-blue;
-  background-image: -webkit-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
-  background-image: -moz-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
-  background-image: -ms-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
-  background-image: -o-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
-  background-image: -o-linear-gradient(left, $input-bg-color, $site-blue, $input-bg-color);
+  background-image: -webkit-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -moz-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -ms-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
 }
 
-#menu-title {
-  margin: 0 47px 8px 47px;
+#menu-title-div {
+  padding: 6px 47px 8px 47px;
+  background-color: $site-blue;
+}
+
+#menu-title-text {
+  text-decoration: none;
+  color: $menu-title-font-color;
+  font-size: $menu-title-font-size;
+  margin: 0;
 }
 
 #menu {
   flex: 0;
   border-right: 1px solid black;
-  padding-right: 8px;
-  margin: 8px 0 8px 8px;
+  margin: 8px;
 }
 
 #search-input {
-  display: block;
-  margin-bottom: 16px;
-  width: 96%;
+  font-size: $input-jot-search-font-size;
+  margin: 4px 0 16px 4px;
+  width: 92%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $tags-input-underline;
 }
 
 .menu-jot-link {
   font-size: $menu-jot-link-font-size;
-  margin-bottom: 6px;
+  padding: 4px;
+  margin: 0 4px 6px 2px;
 }
 
 .menu-jot-link a {
@@ -40,22 +50,24 @@ hr {
 }
 
 .jot-link-selected {
-  background-color: $input-label-color;
+  background-color: $input-bg-color;
   text-decoration: underline;
-  padding: 4px 4px 4px 0;
 }
 
-.new-jot-icon {
+.new-jot-icon-div {
   font-size: $fa-icon-size;
   color: $icon-green;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
   padding: $fa-icon-padding;
+}
+
+.new-jot-icon {
   cursor: pointer;
 }
 
 .nav-icons {
-  margin-top: 50px;
+  margin-top: 90px;
   text-align: center;
 }
 
@@ -87,9 +99,9 @@ hr {
   height: $user-photo-icon-size;
 }
 
-#loged-in-user-icon {
+#logged-in-user-icon {
   color: $icon-green;
-  font-size: $loged-in-user-icon-size;
+  font-size: $logged-in-user-icon-size;
 }
 
 .login-title {

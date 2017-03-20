@@ -4,7 +4,7 @@
     {{#if session.isAuthenticated.photoURL}}
       <img id='user-photo-icon' src='{{session.currentUser.photoURL}}'><br>
     {{else}}
-      {{fa-icon 'user' id='loged-in-user-icon'}}<br>
+      {{fa-icon 'user' id='logged-in-user-icon'}}<br>
     {{/if}}
 
     {{fa-icon 'fighter-jet' class='logout-icon nav-icon' title='Logout' click=(action 'logout')}}

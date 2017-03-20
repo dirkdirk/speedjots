@@ -1,21 +1,26 @@
-<span class='container'>
+<div class='container'>
 
-  <span class='flex-item' id='menu'>
-    {{#link-to 'jots' class='page-title'}}<p id='menu-title'>Jots</p>{{/link-to}}
+  <div class='flex-item' id='menu'>
+
+    <div id='menu-title-div'>
+      {{#link-to 'jots'}}<p id='menu-title-text'>Jots</p>{{/link-to}}
+    </div>
 
     {{!-- Jots Menu --}}
     {{#if session.isAuthenticated}}
       {{#filter-content content=sortedModel properties='title tags' as |filtered query|}}
-        {{input value=query title='Filter jots by title and tags.' placeholder='search jots...' id='search-input'}}
+        {{input value=query title='Filter jots by title and tags.' placeholder=' search jots...' id='search-input'}}
 
         {{#each filtered as |jot|}}
           <div id='jot-link-{{jot.id}}' class='menu-jot-link' title='{{jot.title}}'>
             <nobr>{{link-to (string-to-length jot.title 18 '...') 'jots.jot' jot.id}}</nobr>
           </div>
         {{/each}}
-
       {{/filter-content}}
-      <p class='new-jot-icon' title='Add new jot'>{{fa-icon 'plus-circle' click=(action 'newJot' bubbles=false)}}</p>
+
+      <div class='new-jot-icon-div'>
+        {{fa-icon 'plus-circle' class='new-jot-icon' title='Add new jot' click=(action 'newJot' bubbles=false)}}
+      </div>
     {{/if}}
     {{!-- end Jots Menu --}}
 
@@ -34,11 +39,11 @@
     {{/if}} --}}
     {{!-- end Development icons --}}
 
-  </span>
+  </div>
 
 
-  <span class='flex-item' id='editor'>
+  <div class='flex-item' id='editor'>
     {{outlet}}
-  </span>
+  </div>
 
-</span>
+</div>

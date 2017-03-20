@@ -8,17 +8,22 @@ export default Ember.Controller.extend({
     return this.get('session.currentUser.displayName') === 'Dirk Bruins' ? true : false;
   },
 
+  saveNewJot() {
+    console.log('--> newJot() firing ...');
+    this.store.createRecord('jot', {
+      title: 'New jot ...',
+      tags: 'new',
+      text: 'Insert wisdom here ...',
+      editor: 'simditor'
+    }).save().then((result) => {
+      console.log('  ... created id: ' + result.id);
+      this.transitionToRoute('jots.jot', result.id);
+    });
+  },
+
   actions: {
     newJot() {
-      console.log('--> newJot() firing ...');
-      this.store.createRecord('jot', {
-        title: 'New jot ...',
-        tags: 'new',
-        text: 'Insert wisdom here ...'
-      }).save().then((result) => {
-        console.log('  ... created id: ' + result.id);
-        this.transitionToRoute('jots.jot', result.id);
-      });
-    },
+      Ember.run.debounce(this, this.saveNewJot, 300);
+    }
   }
 });
