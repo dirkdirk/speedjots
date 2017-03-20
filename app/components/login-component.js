@@ -28,7 +28,7 @@ export default Ember.Component.extend({
                  jots: { 0: { "title": "Jot 1",
                               "text": "Text 1",
                               "tags": "Tag 1",
-                              "type": "text" } }
+                              "editor": "simditor" } }
                });
                newUser.save();
              }

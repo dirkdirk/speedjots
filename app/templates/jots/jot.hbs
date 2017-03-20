@@ -1,36 +1,52 @@
 <div id='editor-container'>
 
+  {{!-- Title and Tags --}}
   <div id='title-row'>
     <div class='title-row-item'>
       {{input value=model.title
               class='title-input input'
-              focus-out='save'
-              enter='save'
+              focus-out='saveJotNow'
+              enter='saveJotNow'
             }}<br>
-            {{!-- key-up='updateStatusIconColor' --}}
       <span class='label'>Title</span>
     </div>
     <div class='title-row-item'>
       {{input value=model.tags
               class='tags-input input'
-              focus-out='save'
-              enter='save'
+              focus-out='saveJotNow'
+              enter='saveJotNow'
             }}<br>
-            {{!-- key-up='updateStatusIconColor' --}}
       <span class='label'>Tags</span>
     </div>
     <div id='data-state'>
-      {{fa-icon 'check-circle-o' title='Save' style=statusIconStyle id='status-icon' click=(action 'save' bubbles=false)}}
+      {{fa-icon 'check-circle-o' title='Save' style=statusIconStyle id='status-icon' click=(action 'saveJotNow' bubbles=false)}}
     </div>
   </div>
+  {{!-- end Title and Tags --}}
 
-  {{!-- {{textarea value=model.text classNames='markdown-textarea'}}
-  {{markdown-to-html classNames='markdown-html' markdown=model.text setFlavor='github'}} --}}
 
+  {{!-- Editor --}}
   <div id='text-editor-container'>
-    {{medium-content-editable value=model.text options=mediumEditorOptions onFinishedTyping=(action 'saveJotText')}}
+    {{#if (eq editor 'medium')}}
+      {{medium-content-editable value=model.text options=mediumOptions
+                                onFinishedTyping=(action 'saveJotSlow')}}
+    {{/if}}
+
+    {{#if (eq editor 'simditor')}}
+      {{simditor-editor value=model.text
+                        update=(action (mut model.text))
+                        toolbar=simditorOptions.toolbar
+                        onValuechanged=(action 'saveJotSlow')
+                        onBlur=(action 'saveJotNow') }}
+    {{/if}}
+
+    {{#if (eq editor 'markdown')}}
+      {{textarea value=model.text classNames='markdown-textarea'}}
+      {{markdown-to-html classNames='markdown-html' markdown=model.text setFlavor='github'}}
+    {{/if}}
   </div>
 
   <div class='destroy-jot-icon' title='Delete'>{{fa-icon 'times-circle' click=(action 'destroyJot' model bubbles=false)}}</div>
+  {{!-- end Editor --}}
 
 </div>

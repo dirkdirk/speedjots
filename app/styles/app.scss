@@ -32,3 +32,10 @@ body > .ember-view {
 .center {
   text-align: center;
 }
+
+.login-spinner {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 50px;
+  color: $site-blue;
+}

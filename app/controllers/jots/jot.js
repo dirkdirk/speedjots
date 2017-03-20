@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  editor: Ember.computed.alias('model.editor'),
 
   modelId: Ember.computed.alias('model.id'),
   addSelectedClassToLink: function() {
@@ -29,12 +30,12 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    save() {
+    saveJotNow() {
       console.log('--> save() firing');
       Ember.run.debounce(this, this.saveDirtyModel, 200);
     },
-    saveJotText() {
-      console.log('--> saveJotText() firing');
+    saveJotSlow() {
+      console.log('--> saveJotTextSlow() firing');
       Ember.run.debounce(this, this.saveDirtyModel, 10000);
       // this.saveDirtyModel();
     },
@@ -45,7 +46,7 @@ export default Ember.Controller.extend({
     },
   },
 
-  mediumEditorOptions: {
+  mediumOptions: {
     // https://github.com/yabwe/medium-editor
     // Changing themes doesn't seem to work.
     // theme: 'bootstrap',
@@ -67,6 +68,15 @@ export default Ember.Controller.extend({
     extensions: {
       imageDragging: {},
     }
+  },
+  simditorOptions: {
+    toolbar: [ 'title', 'bold', 'italic', 'underline', 'strikethrough',
+               'fontScale', 'color',
+               'ol', 'ul',
+               'blockquote', 'code',
+               'table', 'link', 'image',
+               'hr', 'indent', 'outdent',
+               'alignment' ],
   },
 
 });

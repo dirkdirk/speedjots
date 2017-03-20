@@ -1,10 +1,9 @@
 {{#if session.isAuthenticated}}
-  <p>If this message persists, please notify the management</p>
+  {{fa-icon 'circle-o-notch' class='fa-spin fa-4x login-spinner'}}
 {{else}}
   <p class="welcome-message-title">Speed Jots</p>
   <p class="welcome-message">Simple</p>
   <p class="welcome-message">Fast</p>
   <p class="welcome-message">Jots</p>
+  {{login-component}}
 {{/if}}
-
-{{login-component}}
