@@ -43,7 +43,7 @@
   flex: 0;
   font-size: $fa-icon-size;
   padding: $fa-icon-padding;
-  margin: 0 6px 14px 0;
+  margin: 0 6px 14px -10px;
   cursor: pointer;
   color: $icon-green;
 }
@@ -84,6 +84,6 @@
   font-size: $fa-icon-size;
   color: $icon-red;
   padding: $fa-icon-padding;
-  margin: 14px 6px 0 0;
+  margin: 14px 8px 0 0;
   cursor: pointer;
 }

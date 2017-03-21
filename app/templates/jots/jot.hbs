@@ -27,23 +27,25 @@
 
   {{!-- Editor --}}
   <div id='text-editor-container'>
-    {{#if (eq editor 'medium')}}
+    {{!-- {{#if (eq modelEditor 'medium')}} --}}
       {{medium-content-editable value=model.text options=mediumOptions
                                 onFinishedTyping=(action 'saveJotSlow')}}
-    {{/if}}
+    {{!-- {{/if}} --}}
 
-    {{#if (eq editor 'simditor')}}
-      {{simditor-editor value=model.text
+    {{!-- {{#if (eq modelEditor 'simditor')}} --}}
+      {{!-- {{simditor-editor value=(mut model.text)
                         update=(action (mut model.text))
                         toolbar=simditorOptions.toolbar
+                        editor=(mut editor)
                         onValuechanged=(action 'saveJotSlow')
-                        onBlur=(action 'saveJotNow') }}
-    {{/if}}
+                        onBlur=(action 'saveJotNow')
+                        onDestroy=(action 'onDest') }} --}}
+    {{!-- {{/if}} --}}
 
-    {{#if (eq editor 'markdown')}}
+    {{!-- {{#if (eq modelEditor 'markdown')}}
       {{textarea value=model.text classNames='markdown-textarea'}}
       {{markdown-to-html classNames='markdown-html' markdown=model.text setFlavor='github'}}
-    {{/if}}
+    {{/if}} --}}
   </div>
 
   <div class='destroy-jot-icon' title='Delete'>{{fa-icon 'times-circle' click=(action 'destroyJot' model bubbles=false)}}</div>
