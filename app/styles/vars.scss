@@ -5,6 +5,7 @@ $site-bg-color:           #fff;
 $primary-text-color:      #333;
 $site-white:              #fff;
 $site-off-white:          #eef;
+$site-very-light-gray:    #e0e0f0;
 $site-blue:               #56e;
 $site-light-blue:         #99b;
 $site-green:              #5a5;
@@ -18,9 +19,10 @@ $icon-red:                   $site-red;
 $icon-orange:                $site-orange;
 $input-text-color:           $primary-text-color;
 $input-bg-color:             $site-off-white;
-$title-input-underline:      $site-light-blue;
-$tags-input-underline:       $site-light-blue;
-$input-label-color:          $site-light-blue;
+$title-input-underline:      $site-very-light-gray;
+$tags-input-underline:       $site-very-light-gray;
+$search-input-underline:     $site-very-light-gray;
+$input-label-color:          $site-very-light-gray;
 $logout-icon-color:          $site-red;
 $firebase-icon-color:        $site-orange;
 $new-jot-icon-color:         $site-green;
@@ -31,7 +33,7 @@ $menu-border-color:          $site-light-blue;
 // $login-icon-color:           $site-blue;
 
 $simditor-toolbar-bg-color:             #f3f3ff;
-$simditor-toolbar-button-active-color:  #e0e0f0;
+$simditor-toolbar-button-active-color:  $site-very-light-gray;
 $simditor-toolbar-border-color:         $site-light-blue;
 $simditor-toolbar-icon-color:           $primary-text-color;
 
@@ -39,7 +41,7 @@ $welcome-message-title-font-size:  2.5em;
 $welcome-message-font-size:        1.5em;
 $menu-title-font-size:             1.8em;
 $menu-jot-link-font-size:          1em;
-$input-jot-search-font-size:       0.9em;
+$search-input-font-size:           0.9em;
 $title-input-font-size:            1.4em;
 $tags-input-font-size:             0.8em;
 $input-label-font-size:            0.7em;
@@ -49,8 +51,6 @@ $logout-icon-size:                 1em;
 $login-icon-size:                  1.4em;
 $user-photo-icon-size:             2.2em;
 $logged-in-user-icon-size:         1.15em;
-
-// $editor-container-height:  50%;
 
 $input-title-tags-width:   90%;
 

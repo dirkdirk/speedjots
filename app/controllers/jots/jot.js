@@ -4,12 +4,6 @@ export default Ember.Controller.extend({
   siteGreen: '#5a5',
   siteRed: '#c55',
 
-  modelId: Ember.computed.alias('model.id'),
-  addSelectedClassToLink: function() {
-    Ember.$('.menu-jot-link').removeClass('jot-link-selected');
-    Ember.$('#jot-link-' + this.get('modelId')).addClass('jot-link-selected');
-  }.observes('modelId'),
-
   updateStatusIconColorObserver: function() {
     Ember.run.debounce(this, this.updateStatusIconColor, 500);
   }.observes('model.text', 'model.title', 'model.tags'),

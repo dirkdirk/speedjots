@@ -21,31 +21,31 @@
 }
 
 #search-input {
-  font-size: $input-jot-search-font-size;
+  font-size: $search-input-font-size;
   margin: 14px 0 16px 4px;
   width: 92%;
   outline: none;
   border: none;
-  border-bottom: 1px solid $tags-input-underline;
+  border-bottom: 1px solid $search-input-underline;
 }
 
-.menu-jot-link {
+.menu-jot-link > div {
   font-size: $menu-jot-link-font-size;
   padding: 4px;
   margin: 0 4px 6px 2px;
 }
 
-.menu-jot-link a {
+.menu-jot-link {
   text-decoration: none;
   color: $primary-text-color;
 }
 
-.jot-link-selected {
+.menu-jot-link.active > div {
   background-color: $input-bg-color;
   text-decoration: underline;
 }
 
-.menu-jot-link:hover {
+.menu-jot-link > div:hover {
   background-color: $input-bg-color;
 }
 

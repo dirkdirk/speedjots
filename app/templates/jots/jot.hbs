@@ -3,20 +3,20 @@
   {{!-- Title and Tags --}}
   <div id='title-row'>
     <div class='title-row-item'>
+      <div class='label'>Title</div>
       {{input value=model.title
               class='title-input input'
               focus-out='saveJotNow'
               enter='saveJotNow'
             }}<br>
-      <span class='label'>Title</span>
     </div>
     <div class='title-row-item'>
+      <div class='label'>Tags</div>
       {{input value=model.tags
               class='tags-input input'
               focus-out='saveJotNow'
               enter='saveJotNow'
             }}<br>
-      <span class='label'>Tags</span>
     </div>
     <div id='data-state'>
       {{fa-icon 'check-circle-o' title='Save' style=statusIconStyle id='status-icon' click=(action 'saveJotNow' bubbles=false)}}

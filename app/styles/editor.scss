@@ -27,7 +27,6 @@
 #editor-container {
   display: flex;
   flex-direction: column;
-  // height: $editor-container-height;
 }
 
 #text-editor-container {
@@ -62,18 +61,17 @@
 }
 
 .title-input {
-  border-bottom: 1px solid $title-input-underline;
+  border-top: 1px solid $title-input-underline;
   font-size: $title-input-font-size;
 }
 
 .tags-input {
-  border-bottom: 1px solid $tags-input-underline;
+  border-top: 1px solid $tags-input-underline;
   font-size: $tags-input-font-size;
-  line-height: 1.6em;
+  line-height: 2.1em;
 }
 
 .label {
-  margin-left: 6px;
   font-size: $input-label-font-size;
   color: $input-label-color;
 }
@@ -82,10 +80,6 @@
   outline: none;
   margin-top: 40px;
 }
-
-// .medium-editor-toolbar {
-//   top: 80px !important;
-// }
 
 .destroy-jot-icon {
   flex: 0;
