@@ -27,19 +27,14 @@
 
   {{!-- Editor --}}
   <div id='text-editor-container'>
-    {{!-- {{#if (eq modelEditor 'medium')}} --}}
-      {{medium-content-editable value=model.text options=mediumOptions id='medium-editable-div'
-                                onFinishedTyping=(action 'saveJotSlow')}}
-    {{!-- {{/if}} --}}
-
     {{!-- {{#if (eq modelEditor 'simditor')}} --}}
-      {{!-- {{simditor-editor value=(mut model.text)
+      {{simditor-editor value=(mut model.text)
                         update=(action (mut model.text))
                         toolbar=simditorOptions.toolbar
                         editor=(mut editor)
                         onValuechanged=(action 'saveJotSlow')
                         onBlur=(action 'saveJotNow')
-                        onDestroy=(action 'onDest') }} --}}
+                        onDestroy=(action 'onDest') }}
     {{!-- {{/if}} --}}
 
     {{!-- {{#if (eq modelEditor 'markdown')}}
