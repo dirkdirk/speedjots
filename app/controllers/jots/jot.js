@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  siteGreen: '#5a5',
+  siteRed: '#c55',
 
   modelId: Ember.computed.alias('model.id'),
   addSelectedClassToLink: function() {
@@ -15,7 +17,7 @@ export default Ember.Controller.extend({
   updateStatusIconColor() {
     console.log('--> updateStatusIconColor() firing');
     let model = this.get('model');
-    let iconColor = model.get('hasDirtyAttributes') ? '#e11' : '#1e1';
+    let iconColor = model.get('hasDirtyAttributes') ? this.get('siteRed') : this.get('siteGreen');
     Ember.$('#status-icon').css('color', iconColor);
   },
 

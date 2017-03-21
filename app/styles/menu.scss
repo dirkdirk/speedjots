@@ -5,8 +5,11 @@
   background-color: $site-blue;
 }
 
-#menu-title-text {
+#menu-title-div a {
   text-decoration: none;
+}
+
+#menu-title-text {
   color: $menu-title-font-color;
   font-size: $menu-title-font-size;
   margin: 0;
@@ -14,7 +17,7 @@
 
 #menu {
   flex: 0;
-  border-right: 1px solid black;
+  border-right: 1px solid $menu-border-color;
 }
 
 #search-input {
@@ -64,8 +67,12 @@
 }
 
 .login-icon {
-  color: $login-icon-color;
+  // color: $login-icon-color;
   font-size: $login-icon-size;
+}
+
+.google-login-icon {
+  color: $google-icon-color;
 }
 
 .logout-icon {
