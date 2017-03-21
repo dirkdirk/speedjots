@@ -28,7 +28,7 @@
   {{!-- Editor --}}
   <div id='text-editor-container'>
     {{!-- {{#if (eq modelEditor 'medium')}} --}}
-      {{medium-content-editable value=model.text options=mediumOptions
+      {{medium-content-editable value=model.text options=mediumOptions id='medium-editable-div'
                                 onFinishedTyping=(action 'saveJotSlow')}}
     {{!-- {{/if}} --}}
 

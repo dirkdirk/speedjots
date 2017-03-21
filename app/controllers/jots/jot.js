@@ -75,16 +75,18 @@ export default Ember.Controller.extend({
     // theme: 'mani',
     // theme: 'roman',
     toolbar: {
-      buttons: ['bold', 'italic', 'underline', 'strikethrough',
-                'header1', 'header2',
+      buttons: ['h2', 'h4', 'bold', 'italic', 'underline', 'strikethrough',
+                'pre', 'quote',
                 'unorderedlist', 'orderedlist',
-                'indent', 'outdent',
+                'outdent', 'indent',
                 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull',
-                'anchor'],
+                'anchor', 'removeFormat'],
       static: true,
       sticky:  true,
+      // stickyTopOffset: -60,
       updateOnEmptySelection: true,
       align: 'center',
+
 
     },
     // buttonLables: 'fontawesome',  // May have to edit bower_components/medium-editor/dist/js/medium-editor.js

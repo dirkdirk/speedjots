@@ -21,7 +21,7 @@
   display: flex;
   align-items: flex-end;
   flex: 0 1 auto;
-  min-height: 90px;
+  min-height: 80px;
 }
 
 #editor-container {
@@ -77,6 +77,15 @@
   font-size: $input-label-font-size;
   color: $input-label-color;
 }
+
+#medium-editable-div {
+  outline: none;
+  margin-top: 40px;
+}
+
+// .medium-editor-toolbar {
+//   top: 80px !important;
+// }
 
 .destroy-jot-icon {
   flex: 0;
