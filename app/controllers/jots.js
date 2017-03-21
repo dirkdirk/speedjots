@@ -4,10 +4,6 @@ export default Ember.Controller.extend({
   sortModelBy: ['title'],
   sortedModel: Ember.computed.sort('model', 'sortModelBy'),
 
-  devUser() {
-    return this.get('session.currentUser.displayName') === 'Dirk Bruins' ? true : false;
-  },
-
   saveNewJot() {
     console.log('--> newJot() firing ...');
     this.store.createRecord('jot', {

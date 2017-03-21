@@ -1,23 +1,35 @@
 
-$font-family:  sans-serif;
-
+$font-family:             sans-serif;
 $site-bg-color:           #fff;
+
 $primary-text-color:      #333;
-$site-blue:               #22c;
 $site-white:              #fff;
+$site-off-white:          #eef;
+$site-blue:               #22c;
+$site-light-blue:         #99b;
+$site-green:              #1e1;
+$site-red:                #e11;
+$site-orange:             orange;
 
-$menu-title-font-color:   $site-white;
-$icon-green:              #1e1;
-$icon-red:                #e11;
-$icon-orange:             orange;
-$input-text-color:        $primary-text-color;
-$input-bg-color:          #eef;
-$title-input-underline:   $site-blue;
-$tags-input-underline:    #5592c1;
-$input-label-color:       #99b;
+$menu-title-font-color:      $site-white;
+$icon-green:                 $site-green;
+$icon-red:                   $site-red;
+$icon-orange:                $site-orange;
+$input-text-color:           $primary-text-color;
+$input-bg-color:             $site-off-white;
+$title-input-underline:      $site-blue;
+$tags-input-underline:       $site-blue;
+// $tags-input-underline:       #5592c1;
+$input-label-color:          $site-light-blue;
+$login-icon-color:           $site-blue;
+$logout-icon-color:          $site-red;
+$firebase-icon-color:        $site-orange;
+$new-jot-icon-color:         $site-green;
+$logged-in-user-icon-color:  $site-green;
+$destroy-jot-icon-color:     $site-red;
 
-$welcome-message-font-size:        1.5em;
 $welcome-message-title-font-size:  2.5em;
+$welcome-message-font-size:        1.5em;
 $menu-title-font-size:             1.8em;
 $menu-jot-link-font-size:          1em;
 $input-jot-search-font-size:       0.9em;
@@ -31,9 +43,7 @@ $login-icon-size:                  1.4em;
 $user-photo-icon-size:             2.2em;
 $logged-in-user-icon-size:         1.15em;
 
-$editor-container-height:  90%;
-$iframe-height:            100% !important;
-$mce-edit-area-height:     90% !important;
+// $editor-container-height:  50%;
 
 $input-title-tags-width:   90%;
 

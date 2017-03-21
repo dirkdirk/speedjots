@@ -7,7 +7,7 @@
 
 .welcome-message {
   text-align: center;
-  margin: 40px 0 0 0;
+  margin: 30px 0 0 0;
   font-size: $welcome-message-font-size;
 }
 
@@ -27,7 +27,7 @@
 #editor-container {
   display: flex;
   flex-direction: column;
-  height: $editor-container-height;
+  // height: $editor-container-height;
 }
 
 #text-editor-container {
@@ -45,7 +45,7 @@
   padding: $fa-icon-padding;
   margin: 0 6px 14px -10px;
   cursor: pointer;
-  color: $icon-green;
+  color: $site-green;
 }
 
 .input {
@@ -91,7 +91,7 @@
   flex: 0;
   align-self: flex-end;
   font-size: $fa-icon-size;
-  color: $icon-red;
+  color: $destroy-jot-icon-color;
   padding: $fa-icon-padding;
   margin: 14px 8px 0 0;
   cursor: pointer;

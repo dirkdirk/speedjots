@@ -20,14 +20,9 @@ body > .ember-view {
   display: flex;
 }
 
-// .page-title {
-//   text-decoration: none;
-//   margin-top: 0;
-//   margin-bottom: 10px;
-//   text-align: center;
-//   font-size: $menu-title-font-size;
-//   color: $menu-title-font-color;
-// }
+.input {
+  border-radius: 0;
+}
 
 .center {
   text-align: center;
@@ -38,4 +33,25 @@ body > .ember-view {
   font-size: 3em;
   margin-top: 50px;
   color: $site-blue;
+}
+
+hr {
+  width: 50%;
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -moz-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -ms-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+}
+
+#index-login-div {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#menu-login-div {
+  text-align: center;
+  margin-top: 90px;
 }

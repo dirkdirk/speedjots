@@ -1,16 +1,5 @@
 @import 'vars.scss';
 
-hr {
-  width: 50%;
-  border: 0;
-  height: 1px;
-  background-image: -webkit-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
-  background-image: -moz-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
-  background-image: -ms-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
-  background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
-  background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
-}
-
 #menu-title-div {
   padding: 6px 47px 8px 47px;
   background-color: $site-blue;
@@ -26,12 +15,11 @@ hr {
 #menu {
   flex: 0;
   border-right: 1px solid black;
-  margin: 8px;
 }
 
 #search-input {
   font-size: $input-jot-search-font-size;
-  margin: 4px 0 16px 4px;
+  margin: 14px 0 16px 4px;
   width: 92%;
   outline: none;
   border: none;
@@ -54,9 +42,13 @@ hr {
   text-decoration: underline;
 }
 
+.menu-jot-link:hover {
+  background-color: $input-bg-color;
+}
+
 .new-jot-icon-div {
   font-size: $fa-icon-size;
-  color: $icon-green;
+  color: $new-jot-icon-color;
   text-align: center;
   margin-top: 30px;
   padding: $fa-icon-padding;
@@ -66,32 +58,24 @@ hr {
   cursor: pointer;
 }
 
-.nav-icons {
-  margin-top: 90px;
-  text-align: center;
-}
-
 .nav-icon {
   padding: 10px;
   cursor: pointer;
 }
 
 .login-icon {
+  color: $login-icon-color;
   font-size: $login-icon-size;
 }
 
 .logout-icon {
-  color: $icon-red;
+  color: $logout-icon-color;
   font-size: $logout-icon-size;
   padding: 0;
 }
 
-#devUser-nav-icons {
-  margin-top: 50px;
-}
-
 #firebase-icon {
-  color: $icon-orange;
+  color: $firebase-icon-color;
 }
 
 #user-photo-icon {
@@ -100,7 +84,7 @@ hr {
 }
 
 #logged-in-user-icon {
-  color: $icon-green;
+  color: $logged-in-user-icon-color;
   font-size: $logged-in-user-icon-size;
 }
 
@@ -117,7 +101,7 @@ hr {
 .login-form-button {
   font-size: $login-form-label-font-size;
   background-color: $icon-orange;
-  color: #fff;
+  color: $site-white;
   border: none;
   border-radius: 4px;
 }
