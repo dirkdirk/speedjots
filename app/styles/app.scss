@@ -2,6 +2,7 @@
 @import "mixins.scss";
 @import "menu.scss";
 @import "editor.scss";
+@import "simditor.scss";
 
 body {
   margin: 0;
@@ -16,13 +17,13 @@ body > .ember-view {
   flex-direction: column;
 }
 
+input {
+  border-radius: 0;
+}
+
 .container {
   flex: 1 0 auto;
   display: flex;
-}
-
-.input {
-  border-radius: 0;
 }
 
 .center {

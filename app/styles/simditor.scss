@@ -1,0 +1,17 @@
+.simditor {
+  border: none;
+}
+
+.simditor-toolbar {
+  border: 1px solid $simditor-toolbar-border-color !important;
+  background-color: $simditor-toolbar-bg-color !important;
+}
+
+.toolbar-item {
+  color: $simditor-toolbar-icon-color !important;
+  opacity: none !important;
+}
+
+.toolbar-item.active {
+  background-color: $simditor-toolbar-button-active-color !important;
+}
