@@ -12,7 +12,7 @@
     {{!-- Jots Menu --}}
     {{#if session.isAuthenticated}}
       {{#filter-content content=sortedModel properties='title tags' as |filtered query|}}
-        {{input value=query title='Filter jots by title and tags.' placeholder=' search jots...' id='search-input'}}
+        {{input value=query title='Filter jots by title and tags.' placeholder=' search...' id='search-input'}}
         {{#each filtered as |jot|}}
           <nobr>
             {{#link-to 'jots.jot' jot.id id=(jot-link-id jot.id) class='menu-jot-link'}}
