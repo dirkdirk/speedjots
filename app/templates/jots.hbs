@@ -3,7 +3,10 @@
   <div class='flex-item' id='menu'>
 
     <div id='menu-title-div'>
-      {{#link-to 'jots'}}<p id='menu-title-text'>Jots</p>{{/link-to}}
+      <nobr>
+        <img src='assets/favicons/favicon-96x96.png' id='menu-logo'>
+        {{link-to 'Jots ''jots' id='menu-title-text'}}
+      </nobr>
     </div>
 
     {{!-- Jots Menu --}}
