@@ -17,7 +17,7 @@ export default Ember.Component.extend({
              result.save();
            })
            .catch((error) => {
-             console.log(' -- error.message');
+             console.log(' -- createUpdateUser error.message');
              console.log(error.message);
              if(error.message.includes('no record was found at')) {
                console.log(' -- creating new user with default values');
@@ -39,18 +39,23 @@ export default Ember.Component.extend({
   actions: {
     signIn: function(provider) {
       console.log('--> signIn() firing');
-      this.get('session').open('firebase', { provider: provider }).then((data) => {
-        console.log(' -- data.currentUser returned from Firebase authentication');
-        console.log(data.currentUser);
+      this.get('session').open('firebase', { provider: provider }).then(() => {
+        // console.log(' -- data.currentUser returned from Firebase authentication');
+        // console.log(data.currentUser);
         this.createUpdateUser();
+        console.log(' -- triggerAction transitTo()');
+        this.triggerAction({ action: 'transitTo', target: this.get('parentView') } );
       }).catch(function(error) {
-        console.log(' -- signIn error:');
-        console.log(error);
+        console.log(' -- signIn error.message:');
+        console.log(error.message);
       });
     },
     signOut: function() {
       console.log('--> signOut() firing');
-      this.get('session').close();
+      this.get('session').close().then(() => {
+        console.log(' -- triggerAction transitTo()');
+        this.triggerAction({ action: 'transitTo', target: this.get('parentView') } );
+      });
     },
   }
 });

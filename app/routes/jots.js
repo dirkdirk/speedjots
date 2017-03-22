@@ -6,6 +6,11 @@ export default Ember.Route.extend({
   },
 
   model() {
-    return this.store.findAll('jot');
+    console.log('--> jots model() firing');
+    if(this.get('session.isAuthenticated')) {
+      return this.store.findAll('jot');
+    } else {
+      this.transitionTo('application');
+    }
   },
 });
