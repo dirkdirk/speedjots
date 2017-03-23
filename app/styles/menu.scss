@@ -18,7 +18,7 @@
 #menu {
   flex: 0;
   border-right: 1px solid $menu-border-color;
-  // min-width: 140px;
+  min-width: 140px;
 }
 
 #menu-logo {
@@ -39,8 +39,7 @@
 
 .menu-jot-link > div {
   font-size: $menu-jot-link-font-size;
-  padding: 4px;
-  margin: 0 4px 6px 2px;
+  padding: 8px 4px 6px 4px;
 }
 
 .menu-jot-link {
@@ -65,8 +64,13 @@
   padding: $fa-icon-padding;
 }
 
-.new-jot-icon {
-  cursor: pointer;
+.edit-groups-icon-div {
+  font-size: $fa-icon-size - 0.4;
+  text-align: center;
+  padding: $fa-icon-padding;
+  a {
+    color: $site-blue;
+  }
 }
 
 .nav-icon {
@@ -75,7 +79,6 @@
 }
 
 .login-icon {
-  // color: $login-icon-color;
   font-size: $login-icon-size;
 }
 

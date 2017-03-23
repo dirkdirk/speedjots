@@ -5,30 +5,52 @@
     <div id='menu-title-div'>
       <nobr>
         <img src='assets/favicons/favicon-96x96.png' id='menu-logo'>
-        {{link-to 'Jots ''jots' id='menu-title-text'}}
+        {{link-to 'Jots' 'jots' id='menu-title-text'}}
       </nobr>
     </div>
 
-    {{!-- Jots Menu --}}
+    {{!-- Jots --}}
     {{#if session.isAuthenticated}}
-      {{#filter-content content=sortedModel properties='title tags' as |filtered query|}}
-        {{input value=query title='Filter jots by title and tags.' placeholder=' search...' id='search-input'}}
-        {{#each filtered as |jot|}}
-          <nobr>
-            {{#link-to 'jots.jot' jot.id id=(jot-link-id jot.id) class='menu-jot-link'}}
-              <div title='{{jot.title}}'>
-                {{string-to-length jot.title 18 '...'}}
-              </div>
-            {{/link-to}}
-          </nobr>
-        {{/each}}
-      {{/filter-content}}
+      {{!-- Search results --}}
+      <div class='menu-search-div'>
+        {{#filter-content content=sortedModel properties='title tags' as |filtered query|}}
+          {{input value=query title='Filter jots by title and tags.' placeholder=' search...' id='search-input'}}
+            {{#if (not-eq query '')}}
+              {{#each filtered as |jot|}}
+                {{jot-menu-link jot=jot}}
+              {{/each}}
+            {{/if}}
+        {{/filter-content}}
+      </div>
+      {{!-- end Search results --}}
+
+      {{!-- By Groups in collapsible panels --}}
+      {{#each sortedJotsByGroup as |group|}}
+        {{#cp-panel open=(if (eq group.value 'Not Grouped') true false) as |p|}}
+          {{#p.toggle}}
+            {{group.value}}
+          {{/p.toggle}}
+          {{#p.body}}
+            {{#each group.items as |jot|}}
+              {{jot-menu-link jot=jot}}
+            {{/each}}
+            <div class='cpanel-after-link-group-spacer'></div>
+          {{/p.body}}
+        {{/cp-panel}}
+      {{/each}}
+      {{!-- end By Groups in collapsible panels --}}
 
       <div class='new-jot-icon-div'>
-        {{fa-icon 'plus-circle' class='new-jot-icon' title='Add new jot' click=(action 'newJot' bubbles=false)}}
+        {{fa-icon 'plus-circle' class='cursor-pointer' title='Add new jot' click=(action 'newJot')}}
+      </div>
+      <div class='edit-groups-icon-div'>
+        {{!-- {{#link-to 'jots.jot' '%kd2!09D-edit-groups' class='edit-groups-icon'}} --}}
+          {{fa-icon 'clone' class='cursor-pointer' title='Edit groups'}}
+          <p class='center' style='font-size:12px'>Groups editing coming!</p>
+        {{!-- {{/link-to}} --}}
       </div>
     {{/if}}
-    {{!-- end Jots Menu --}}
+    {{!-- end Jots --}}
 
     {{!-- Login Component --}}
     {{!-- {{login-options}} --}}

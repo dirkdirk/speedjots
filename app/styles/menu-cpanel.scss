@@ -1,0 +1,21 @@
+@import 'vars.scss';
+
+.cp-Panel-toggle {
+  display: block;
+  padding: 1em 0 1em 0;
+}
+
+.cp-Panel-toggle:link {
+  text-decoration: none;
+  color: $menu-title-font-color;
+  background-color: $site-blue;
+  text-align: center;
+}
+
+.cp-Panel-toggle:hover {
+  color: $site-white;
+}
+
+.cpanel-after-link-group-spacer {
+  margin-bottom: 1em;
+}

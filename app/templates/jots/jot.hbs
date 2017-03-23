@@ -19,7 +19,7 @@
             }}<br>
     </div>
     <div id='data-state'>
-      {{fa-icon 'check-circle-o' title='Save' style=statusIconStyle id='status-icon' click=(action 'saveJotNow' bubbles=false)}}
+      {{fa-icon 'check-circle-o' title='Save' style=statusIconStyle id='status-icon' click=(action 'saveJotNow')}}
     </div>
   </div>
   {{!-- end Title and Tags --}}
@@ -43,7 +43,7 @@
     {{/if}} --}}
   </div>
 
-  <div class='destroy-jot-icon' title='Delete'>{{fa-icon 'times-circle' click=(action 'destroyJot' model bubbles=false)}}</div>
+  <div class='destroy-jot-icon' title='Delete'>{{fa-icon 'times-circle' click=(action 'destroyJot' model)}}</div>
   {{!-- end Editor --}}
 
 </div>

@@ -28,7 +28,19 @@ export default Ember.Component.extend({
                  jots: { 0: { "title": "Jot 1",
                               "text": "Text 1",
                               "tags": "Tag 1",
-                              "editor": "simditor" } }
+                              "group": "Not Grouped" },
+                         1: { "title": "Jot 2",
+                                       "text": "Text 2",
+                                       "tags": "Tag 2",
+                                       "group": "Not Grouped" },
+                         2: { "title": "Jot 3",
+                                       "text": "Text 3",
+                                       "tags": "Tag 3",
+                                       "group": "Best of group" },
+                         3: { "title": "Jot 4",
+                                       "text": "Text 4",
+                                       "tags": "Tag 4",
+                                       "group": "Best of group" } }
                });
                newUser.save();
              }

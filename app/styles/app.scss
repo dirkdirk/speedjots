@@ -1,6 +1,7 @@
 @import 'vars.scss';
 @import "mixins.scss";
 @import "menu.scss";
+@import "menu-cpanel.scss";
 @import "editor.scss";
 @import "simditor.scss";
 
@@ -30,6 +31,10 @@ input {
   text-align: center;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .login-spinner {
   text-align: center;
   font-size: 3em;
@@ -38,7 +43,7 @@ input {
 }
 
 hr {
-  width: 38%;
+  width: 36%;
   border: 0;
   height: 1px;
   background-image: -webkit-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
