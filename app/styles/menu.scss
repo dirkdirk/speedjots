@@ -57,19 +57,22 @@
 }
 
 .new-jot-icon-div {
-  font-size: $fa-icon-size;
-  color: $new-jot-icon-color;
   text-align: center;
   margin-top: 30px;
-  padding: $fa-icon-padding;
+  i {
+    font-size: $fa-icon-size;
+    color: $new-jot-icon-color;
+    padding: $fa-icon-padding;
+  }
 }
 
-.edit-groups-icon-div {
-  font-size: $fa-icon-size - 0.4;
+.new-group-icon-div, .expand-close-groups-icon-div {
   text-align: center;
-  padding: $fa-icon-padding;
-  a {
+  margin-top: 6px;
+  i {
+    font-size: $fa-icon-size - 0.4;
     color: $site-blue;
+    padding: $fa-icon-padding;
   }
 }
 

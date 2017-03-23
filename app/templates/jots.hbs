@@ -2,12 +2,14 @@
 
   <div class='flex-item' id='menu'>
 
+    {{!-- Logo and Title --}}
     <div id='menu-title-div'>
       <nobr>
         <img src='assets/favicons/favicon-96x96.png' id='menu-logo'>
         {{link-to 'Jots' 'jots' id='menu-title-text'}}
       </nobr>
     </div>
+    {{!-- end Logo and Title --}}
 
     {{!-- Jots --}}
     {{#if session.isAuthenticated}}
@@ -26,29 +28,39 @@
 
       {{!-- By Groups in collapsible panels --}}
       {{#each sortedJotsByGroup as |group|}}
-        {{#cp-panel open=(if (eq group.value 'Not Grouped') true false) as |p|}}
-          {{#p.toggle}}
-            {{group.value}}
-          {{/p.toggle}}
-          {{#p.body}}
-            {{#each group.items as |jot|}}
-              {{jot-menu-link jot=jot}}
-            {{/each}}
-            <div class='cpanel-after-link-group-spacer'></div>
-          {{/p.body}}
-        {{/cp-panel}}
+        {{#cp-panels name='allGroups' as |panels|}}
+          {{#panels.panel open=(if (eq group.value 'Not Grouped') true false) as |p|}}
+            {{#draggable-object-target action='addJotToGroup' groupTitle=group.value class='jots-group-title-div'}}
+              {{#p.toggle}}
+                  {{group.value}}
+              {{/p.toggle}}
+            {{/draggable-object-target}}
+            {{#p.body}}
+              {{#each group.items as |jot|}}
+                {{#draggable-object content=jot}}
+                  {{jot-menu-link jot=jot}}
+                {{/draggable-object}}
+              {{/each}}
+              <div class='cpanel-after-link-group-spacer'></div>
+            {{/p.body}}
+          {{/panels.panel}}
+        {{/cp-panels}}
       {{/each}}
       {{!-- end By Groups in collapsible panels --}}
 
+      {{!-- Icons --}}
       <div class='new-jot-icon-div'>
         {{fa-icon 'plus-circle' class='cursor-pointer' title='Add new jot' click=(action 'newJot')}}
       </div>
-      <div class='edit-groups-icon-div'>
-        {{!-- {{#link-to 'jots.jot' '%kd2!09D-edit-groups' class='edit-groups-icon'}} --}}
-          {{fa-icon 'clone' class='cursor-pointer' title='Edit groups'}}
-          <p class='center' style='font-size:12px'>Groups editing coming!</p>
-        {{!-- {{/link-to}} --}}
+      {{#draggable-object-target action='addJotToGroup' class='new-group-icon-div'}}
+        {{fa-icon 'clone' class='cursor-pointer new-group-icon' title='Drop a jot here to create a new group.'}}
+      {{/draggable-object-target}}
+      <div class='expand-close-groups-icon-div'>
+        {{fa-icon 'angle-double-up' class='cursor-pointer' title='Close all groups' click=(action 'closeAllGroups')}}
+        {{fa-icon 'angle-double-down' class='cursor-pointer' title='Open all groups' click=(action 'openAllGroups')}}
       </div>
+      {{!-- end Icons --}}
+
     {{/if}}
     {{!-- end Jots --}}
 

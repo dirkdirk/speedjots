@@ -8,7 +8,6 @@
 .cp-Panel-toggle:link {
   text-decoration: none;
   color: $menu-title-font-color;
-  background-color: $site-blue;
   text-align: center;
 }
 
@@ -18,4 +17,12 @@
 
 .cpanel-after-link-group-spacer {
   margin-bottom: 1em;
+}
+
+.accepts-drag {
+  background-color: $site-light-blue !important;
+}
+
+.jots-group-title-div {
+  background-color: $site-blue;
 }
