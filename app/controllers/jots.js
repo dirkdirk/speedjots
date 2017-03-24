@@ -51,7 +51,7 @@ export default Ember.Controller.extend({
   // Ember.$('.cp-Panel-toggle').blur(function() { console.log('moooot');});
   // Ember.$('.menu-jot-link').blur(function() { console.log('moooot');});
   // Ember.$('.menu-jot-link').first('div').blur(function() { console.log('blurrrr');});
-};
+// };
 
 
 var getNewGroupName = function(model) {
