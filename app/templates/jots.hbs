@@ -29,20 +29,21 @@
       {{!-- By Groups in collapsible panels --}}
       {{#each sortedJotsByGroup as |group|}}
         {{#cp-panels name='allGroups' as |panels|}}
-          {{#panels.panel open=(if (eq group.value 'Not Grouped') true false) as |p|}}
-            {{#draggable-object-target action='addJotToGroup' groupTitle=group.value class='jots-group-title-div'}}
-              {{#p.toggle}}
+
+          {{#panels.panel name=group.value open=(if (eq group.value 'Not Grouped') true false) as |p|}}
+            {{#draggable-object-target action='addJotToGroup' groupTitle=group.value}}
+              {{#p.toggle class='jots-group-title-div'}}
                   {{group.value}}
               {{/p.toggle}}
+              {{#p.body}}
+                {{#each group.items as |jot|}}
+                  {{#draggable-object content=jot}}
+                    {{jot-menu-link jot=jot}}
+                  {{/draggable-object}}
+                {{/each}}
+                <div class='cpanel-after-link-group-spacer'></div>
+              {{/p.body}}
             {{/draggable-object-target}}
-            {{#p.body}}
-              {{#each group.items as |jot|}}
-                {{#draggable-object content=jot}}
-                  {{jot-menu-link jot=jot}}
-                {{/draggable-object}}
-              {{/each}}
-              <div class='cpanel-after-link-group-spacer'></div>
-            {{/p.body}}
           {{/panels.panel}}
         {{/cp-panels}}
       {{/each}}
@@ -54,6 +55,7 @@
       </div>
       {{#draggable-object-target action='addJotToGroup' class='new-group-icon-div'}}
         {{fa-icon 'clone' class='cursor-pointer new-group-icon' title='Drop a jot here to create a new group.'}}
+        {{!-- <p class='center' style='font-size:12px'>Drop here for new group.</p> --}}
       {{/draggable-object-target}}
       <div class='expand-close-groups-icon-div'>
         {{fa-icon 'angle-double-up' class='cursor-pointer' title='Close all groups' click=(action 'closeAllGroups')}}

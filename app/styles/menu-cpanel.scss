@@ -19,7 +19,11 @@
   margin-bottom: 1em;
 }
 
-.accepts-drag {
+.accepts-drag .jots-group-title-div {
+  background-color: $site-light-blue !important;
+}
+
+.accepts-drag .jots-title-div {
   background-color: $site-light-blue !important;
 }
 
