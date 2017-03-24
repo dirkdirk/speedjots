@@ -8,7 +8,7 @@ module.exports = function(defaults) {
   });
 
   // app.import('vendor/ios-drag-drop.js');    // https://github.com/timruffles/ios-html5-drag-drop-shim
-  // Mobile dnd
+  // TODO Mobile dnd
   // The above script is loading, but I'm not sure if it's working on mobile.
   // Need to test:
   //  - Add a dnd object to SJ that doesn't reply on the Ember add-on.

@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
       jot.set('group', toGroup);
       jot.save();
       this.send('openPanel', toGroup);
-      clearAllJotHighlighting();
+      // clearAllJotHighlighting();
     },
     openAllGroups()      { this.get('panelActions').openAll('allGroups'); },
     closeAllGroups()     { this.get('panelActions').closeAll('allGroups'); },
@@ -45,8 +45,10 @@ export default Ember.Controller.extend({
 
 });
 
-var clearAllJotHighlighting = function() {
-  Ember.$('.cp-Panel-toggle').blur(function() { console.log('moooot');});
+// TODO clearAllJotHighlighting() not working
+// Fn called above.
+// var clearAllJotHighlighting = function() {
+  // Ember.$('.cp-Panel-toggle').blur(function() { console.log('moooot');});
   // Ember.$('.menu-jot-link').blur(function() { console.log('moooot');});
   // Ember.$('.menu-jot-link').first('div').blur(function() { console.log('blurrrr');});
 };
