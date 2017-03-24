@@ -11,7 +11,6 @@ Router.map(function() {
   this.route('jots', function() {
     this.route('jot', {path: ':jot_id'});
   });
-  // this.route('edit-groups');
 });
 
 export default Router;

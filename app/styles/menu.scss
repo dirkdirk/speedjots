@@ -99,19 +99,10 @@
   color: $firebase-icon-color;
 }
 
-#user-photo-icon {
-  border-radius: 50%;
-  height: $user-photo-icon-size;
-}
-
-#logged-in-user-icon {
-  color: $logged-in-user-icon-color;
-  font-size: $logged-in-user-icon-size;
-}
-
 .login-title {
-  margin-top: -2px;
-  margin-bottom: -6px;
+  font-size: $login-title-font-size;
+  margin-top: 0;
+  margin-bottom: -2px;
 }
 
 .login-form-label {

@@ -1,5 +1,6 @@
 @import 'vars.scss';
 @import "mixins.scss";
+@import "login.scss";
 @import "menu.scss";
 @import "menu-cpanel.scss";
 @import "editor.scss";
@@ -35,13 +36,6 @@ input {
   cursor: pointer;
 }
 
-.login-spinner {
-  text-align: center;
-  font-size: 3em;
-  margin-top: 50px;
-  color: $site-blue;
-}
-
 hr {
   width: 36%;
   border: 0;
@@ -55,7 +49,7 @@ hr {
 
 #index-login-div {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 35px;
 }
 
 #menu-login-div {

@@ -1,26 +1,27 @@
 {{#if session.isAuthenticated}}
 
-  {{#if session.isAuthenticated}}
-    <div class='nav-icons'>
-
-      {{#if session.currentUser.photoURL}}
-        <img id='user-photo-icon' src='{{session.currentUser.photoURL}}'><br>
-      {{else}}
-        {{fa-icon 'user' id='logged-in-user-icon'}}<br>
-      {{/if}}
-      {{fa-icon 'fighter-jet' class='logout-icon nav-icon' title='Logout' click=(action 'signOut')}}
-    </div>
-  {{/if}}
+  <div class='nav-icons'>
+    {{#if session.currentUser.photoURL}}
+      <img id='user-photo-icon' src='{{session.currentUser.photoURL}}'><br>
+    {{else}}
+      {{fa-icon 'user' id='logged-in-user-icon'}}<br>
+    {{/if}}
+    {{fa-icon 'fighter-jet' class='logout-icon nav-icon' title='Logout' click=(action 'signOut')}}
+  </div>
 
 {{else}}
-
   <p class='nav-icons'>
-    {{!-- <div class='login-div'> --}}
-      <hr>
-      <p class='login-title'>Login</p>
-      <hr>
-      {{fa-icon 'google' class='login-icon nav-icon google-login-icon' title='Login with Google account.' click=(action 'signIn' 'google')}}
-    {{!-- </div> --}}
+    <hr>
+    <p class='login-title'>Login</p>
+    <hr>
+    {{fa-icon 'google' class='login-icon nav-icon google-login-icon' title='Login with Google account.' click=(action 'signIn' 'google')}}
   </p>
+{{/if}}
 
+{{#if session.isWorking}}
+  <div class='modal'>
+    <div id='login-isWorking-div'>
+      {{fa-icon 'circle-o-notch' class='fa-spin'}}
+    </div>
+  </div>
 {{/if}}
