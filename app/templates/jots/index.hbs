@@ -1,20 +1,17 @@
 {{#if session.isAuthenticated}}
 
-    {{!-- <div id='index-card'> --}}
-      {{#paper-card as |card|}}
-        {{#paper-toolbar class='md-whiteframe-4dp'}}
-          <h1 class='index-text'>Speed Jots</h1>
-        {{/paper-toolbar}}
-        {{#card.content}}
-          <p class='index-text'><img src='assets/favicons/apple-touch-icon-72x72.png'></p>
-          <h2 class='index-text'>Simple</h2>
-          <h2 class='index-text'>Fast</h2>
-          <h2 class='index-text'>Jots</h2>
-          {{#link-to 'jots.howTo'}}<h2 class='index-text'>How to ...</h2>{{/link-to}}
-        {{/card.content}}
-      {{/paper-card}}
-    {{!-- </div> --}}
-
+  {{#paper-card as |card|}}
+    {{#paper-toolbar class='md-whiteframe-4dp'}}
+      <h1 class='index-text'>Speed Jots</h1>
+    {{/paper-toolbar}}
+    {{#card.content}}
+      <p class='index-text'><img src='assets/favicons/apple-touch-icon-72x72.png'></p>
+      <h2 class='index-text'>Simple</h2>
+      <h2 class='index-text'>Fast</h2>
+      <h2 class='index-text'>Jots</h2>
+      {{#link-to 'jots.howTo'}}<h2 class='index-text'>How to ...</h2>{{/link-to}}
+    {{/card.content}}
+  {{/paper-card}}
 
 {{else}}
   <h3>If you see this message, please notify the management.</h3>
