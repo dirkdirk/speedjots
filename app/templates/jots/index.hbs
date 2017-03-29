@@ -1,90 +1,20 @@
 {{#if session.isAuthenticated}}
-  {{#paper-card as |card|}}
-    {{#paper-toolbar id='jots-index-instructions-toolbar'}}
-      {{#paper-toolbar-tools class='md-whiteframe-4dp'}}
-        <h1 class='center'>How to ...</h1>
-      {{/paper-toolbar-tools}}
-    {{/paper-toolbar}}
-    {{#card.content}}
-      <table id='how-to-table'>
-        <tr><td class='center'>
-          {{paper-icon 'add-circle-outline' class='new-jot-icon' title='Add new jot'}}
-        </td><td>
-          <p>Click it to create a new jot in the 'Not Grouped' group.</p>
-        </td></tr>
-        <tr><td class='center'>
-          <h3>Jot title</h3>
-        </td><td>
-          <p>Click on a jot title to edit the jot.</p>
-        </td></tr>
-        <tr><td class='center'>
-          <h3>DnD</h3>
-        </td><td>
-          <p>Drag and drop jots to different groups to organize.</p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'content-copy' class='new-group-icon' title='Drop a jot on this icon to create a new group'}}
-        </td><td>
-          <p>Drag and drop a jot onto it to create a new group.</p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'arrow-downward' title='Close all groups'}}
-          {{paper-icon 'arrow-upward' title='Close all groups'}}
-        </td><td>
-          <p>Click it to open or close all groups.</p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'search' title='Search titles and tags'}}
-        </td><td>
-          <p>Type key words in the search box to display jots by title or tag words.</p>
-        </td></tr>
-        <tr><td class='center'>
-          <img src='assets/favicons/favicon-32x32.png'>
-        </td><td>
-          <p>Click the rabbit or 'Speed Jots' to see these instructions.</p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'create' class='' title='Edit group title'}}
-        </td><td>
-          <p>Click to edit the group title.</p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'keyboard-arrow-down' title='Search titles and tags'}}
-          {{paper-icon 'keyboard-arrow-right' title='Search titles and tags'}}
-        </td><td>
-          <p>Click group titles or the arrows to open and close the group.</p>
-        </td></tr>
-        <tr><td class='center'>
-          <h3>Title</h3>
-        </td><td>
-          <p>When editing a note, click on the Title field and type to edit the title.</p>
-        </td></tr>
-        <tr><td class='center'>
-          <h3>Tags</h3>
-        </td><td>
-          <p>When editing a note, click on the Tags field to edit the tags.</p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'check-circle' class='new-jot-icon' title='Search titles and tags'}}
-        </td><td>
-          <p>
-             Green means the jot has been saved, red means it has not been saved.<br>
-             Jots are frequently autosaved. To manually save, click it save a jot.
-          </p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'remove-circle' class='delete-icon' title='Delete'}}
-        </td><td>
-          <p>Click it to delete the jot.</p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'account-circle' class=''}}<br>or your<br>pretty picture
-        </td><td>
-          <p>Click it to log out. Or don't to stay logged in.</p>
-        </td></tr>
-      </table>
-    {{/card.content}}
-  {{/paper-card}}
+
+    {{!-- <div id='index-card'> --}}
+      {{#paper-card as |card|}}
+        {{#paper-toolbar class='md-whiteframe-4dp'}}
+          <h1 class='index-text'>Speed Jots</h1>
+        {{/paper-toolbar}}
+        {{#card.content}}
+          <p class='index-text'><img src='assets/favicons/apple-touch-icon-72x72.png'></p>
+          <h2 class='index-text'>Simple</h2>
+          <h2 class='index-text'>Fast</h2>
+          <h2 class='index-text'>Jots</h2>
+          {{#link-to 'jots.howTo'}}<h2 class='index-text'>How to ...</h2>{{/link-to}}
+        {{/card.content}}
+      {{/paper-card}}
+    {{!-- </div> --}}
+
 
 {{else}}
   <h3>If you see this message, please notify the management.</h3>
