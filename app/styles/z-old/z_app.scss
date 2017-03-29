@@ -1,0 +1,65 @@
+@import 'ember-paper';
+
+@import 'vars.scss';
+@import "mixins.scss";
+@import "login.scss";
+@import "menu.scss";
+@import "menu-cpanel.scss";
+@import "editor.scss";
+@import "simditor.scss";
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  color: $primary-text-color;
+  background-color: $site-bg-color;
+}
+
+body > .ember-view {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+input {
+  border-radius: 0;
+}
+
+.container {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+.center {
+  text-align: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+hr {
+  width: 36%;
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -moz-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -ms-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+}
+
+#index-login-div {
+  text-align: center;
+  margin-top: 35px;
+}
+
+#menu-login-div {
+  text-align: center;
+  margin-top: 65px;
+}
+
+#index-logo {
+  text-align: center;
+  margin-bottom: -5px;
+}

@@ -1,49 +1,75 @@
-<div id='editor-container'>
-
-  {{!-- Title and Tags --}}
-  <div id='title-row'>
-    <div class='title-row-item'>
-      <div class='label'>Title</div>
-      {{input value=model.title
-              class='title-input input'
-              focus-out='saveJotNow'
-              enter='saveJotNow'
-            }}<br>
-    </div>
-    <div class='title-row-item'>
-      <div class='label'>Tags</div>
-      {{input value=model.tags
-              class='tags-input input'
-              focus-out='saveJotNow'
-              enter='saveJotNow'
-            }}<br>
-    </div>
-    <div id='data-state'>
-      {{fa-icon 'check-circle-o' title='Save' style=statusIconStyle id='status-icon' click=(action 'saveJotNow')}}
-    </div>
+{{!-- Title and Tags --}}
+<div class='layout-row layout-fill'>
+  <div class='flex-60'>
+    {{paper-input class='jot-input'
+                  label='Title'
+                  value=model.title
+                  required=true
+                  onChange=(action (mut model.title))
+                  onBlur='saveJotNow' }}
   </div>
-  {{!-- end Title and Tags --}}
-
-
-  {{!-- Editor --}}
-  <div id='text-editor-container'>
-    {{!-- {{#if (eq modelEditor 'simditor')}} --}}
-      {{simditor-editor value=(mut model.text)
-                        update=(action (mut model.text))
-                        toolbar=simditorOptions.toolbar
-                        editor=(mut editor)
-                        onValuechanged=(action 'saveJotSlow')
-                        onBlur=(action 'saveJotNow')
-                        onDestroy=(action 'onDest') }}
-    {{!-- {{/if}} --}}
-
-    {{!-- {{#if (eq modelEditor 'markdown')}}
-      {{textarea value=model.text classNames='markdown-textarea'}}
-      {{markdown-to-html classNames='markdown-html' markdown=model.text setFlavor='github'}}
-    {{/if}} --}}
+  <div class='flex-30'>
+    {{paper-input class='jot-input'
+                  label='Tags'
+                  value=model.tags
+                  onChange=(action (mut model.tags))
+                  onBlur='saveJotNow'}}
   </div>
-
-  <div class='destroy-jot-icon' title='Delete'>{{fa-icon 'times-circle' click=(action 'destroyJot' model)}}</div>
-  {{!-- end Editor --}}
-
+  <div class='flex-10' id='data-state'>
+    {{paper-icon 'check-circle' id='status-icon' title='Save' click=(action 'saveJotNow')}}
+  </div>
 </div>
+{{!-- end Title and Tags --}}
+
+{{!-- Title and Tags --}}
+{{!-- {{#paper-toolbar accent=true}}
+  {{#paper-toolbar-tools class='nav-title-toolbar layout-row layout-align-space-around md-whiteframe-4dp'}}
+    <div class='flex-60'>
+      {{paper-input class='jot-input'
+                    label='Title'
+                    value=model.title
+                    required=true
+                    onChange=(action (mut model.title))
+                    onBlur='saveJotNow' }}
+    </div>
+    <div class='flex-30'>
+      {{paper-input class='jot-input'
+                    label='Tags'
+                    value=model.tags
+                    onChange=(action (mut model.tags))
+                    onBlur='saveJotNow'}}
+    </div>
+    <div class='flex-10' id='data-state'>
+      {{paper-icon 'check-circle' id='status-icon' title='Save' click=(action 'saveJotNow')}}
+    </div>
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}} --}}
+{{!-- end Title and Tags --}}
+
+{{!-- Editor --}}
+{{!-- <div class='layout-row layout-fill'> --}}
+  <div id='simditor-editor-div'>
+    {{simditor-editor value=model
+                      update=(action (mut model.content))
+                      toolbar=simditorOptions.toolbar
+                      editor=(mut editor)
+                      onValuechanged=(action 'saveJotSlow')
+                      onBlur=(action 'saveJotNow') }}
+  </div>
+{{!-- </div> --}}
+
+{{!-- {{#if (eq modelEditor 'markdown')}}
+{{textarea value=model.content classNames='markdown-textarea'}}
+{{markdown-to-html classNames='markdown-html' markdown=model.content setFlavor='github'}}
+{{/if}} --}}
+
+<div class='layout-row layout-fill'>
+  <div class='flex-80'></div>
+  <div class='flex-10'>
+    {{!-- {{paper-icon 'file-download' class='download-icon' title='Download Jot' click=(action 'dlJot' model)}} --}}
+  </div>
+  <div class='flex-10'>
+    {{paper-icon 'remove-circle' class='delete-icon' title='Delete' click=(action 'destroyJot' model)}}
+  </div>
+</div>
+{{!-- end Editor --}}

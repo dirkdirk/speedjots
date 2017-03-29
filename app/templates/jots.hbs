@@ -1,44 +1,92 @@
-<div class='container'>
+{{#paper-sidenav-container class='inner-sidenav'}}
+  {{#paper-sidenav class='md-whiteframe-2dp'
+                   name='left'
+                   open=leftSideBarOpen
+                   onToggle=(action (mut leftSideBarOpen))}}
 
-  <div class='flex-item' id='menu'>
+    {{!-- Logo, title, and login --}}
+    {{#paper-toolbar}}
+      {{#paper-toolbar-tools class='nav-title-toolbar layout-row layout-align-space-around md-whiteframe-2dp'}}
+        {{#link-to 'jots' class='flex-nogrowth'}}<img src='assets/favicons/favicon-96x96.png' id='menu-logo'>{{/link-to}}
+        {{#link-to 'jots' class='flex-nogrowth'}}<nobr>Speed Jots</nobr>{{/link-to}}
+        <div class='flex-nogrowth'>
+          {{login-component}}
+        </div>
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{!-- / Logo, title, and login --}}
 
-    {{!-- Logo and Title --}}
-    <div id='menu-title-div'>
-      <nobr>
-        {{#link-to 'jots'}}<img src='assets/favicons/favicon-96x96.png' id='menu-logo'>{{/link-to}}
-        {{link-to 'Jots' 'jots' id='menu-title-text'}}
-      </nobr>
-    </div>
-    {{!-- end Logo and Title --}}
-
-    {{!-- Jots --}}
-    {{#if session.isAuthenticated}}
-      {{!-- Search results --}}
-      <div class='menu-search-div'>
-        {{#filter-content content=sortedModel properties='title tags' as |filtered query|}}
-          {{input value=query title='Filter jots by title and tags.' placeholder=' search...' id='search-input'}}
-            {{#if (not-eq query '')}}
-              {{#each filtered as |jot|}}
-                {{jot-menu-link jot=jot}}
-              {{/each}}
-            {{/if}}
-        {{/filter-content}}
+    {{!-- Icons --}}
+    <div class='layout-row layout-align-space-around-center nav-icons'>
+      {{!-- <div class='flex-none'>
+        {{paper-icon 'file-download' class='' title='Download all Jots' click=(action 'dlAllJots' model)}}
+      </div> --}}
+      <div class='flex-none'>
+        {{paper-icon 'arrow-downward' title='Open all groups' click=(action 'openAllGroups')}}
       </div>
-      {{!-- end Search results --}}
+      <div class='flex-none'>
+        {{paper-icon 'arrow-upward' title='Close all groups' click=(action 'closeAllGroups')}}
+      </div>
+      {{#draggable-object-target action='addJotToGroup' class='flex-none'}}
+        {{paper-icon 'content-copy' class='new-group-icon' title='Drop a jot on this icon to create a new group'}}
+      {{/draggable-object-target}}
+      <div class='flex-none new-jot-icon-div'>
+        {{paper-icon 'add-circle-outline' class='new-jot-icon' title='Add new jot' click=(action 'newJot')}}
+      </div>
+    </div>
+    {{!-- / Icons --}}
 
-      {{!-- By Groups in collapsible panels --}}
+    {{#paper-content padding=false}}
+      {{!-- Search & Results --}}
+      {{#filter-content content=sortedModel properties='title tags' as |filtered query|}}
+        {{paper-input id='search-input' value=query icon='search' label='Search titles & tags' onChange=(action (mut query))}}
+        {{#if (not-eq query '')}}
+          {{#each filtered as |jot|}}
+            {{jot-menu-link jot=jot}}
+          {{/each}}
+        {{/if}}
+        <div class='cpanel-after-link-group-spacer'></div>
+      {{/filter-content}}
+      {{!-- / Search & Results --}}
+
+      {{!-- Groups in collapsible panels --}}
       {{#each sortedJotsByGroup as |group|}}
         {{#cp-panels name='allGroups' as |panels|}}
-
           {{#panels.panel name=group.value open=(if (eq group.value 'Not Grouped') true false) as |p|}}
             {{#draggable-object-target action='addJotToGroup' groupTitle=group.value}}
-              {{#p.toggle class='jots-group-title-div'}}
-                  {{group.value}}
+              {{#p.toggle}}
+                {{#paper-toolbar accent=true}}
+                  {{#paper-toolbar-tools class='nav-group-toolbar'}}
+                    {{#paper-menu isOpen=false offset='15 20' as |menu|}}
+                      {{#menu.trigger}}
+                        {{paper-icon 'create' class='edit-group-icon' title='Edit group title'}}
+                      {{/menu.trigger}}
+                      {{#menu.content width=6 as |content|}}
+                        {{#content.menu-item onClick=null}}
+                          {{paper-icon 'create' class='md-menu-align-target'}}
+                          {{!-- placeholder sets oldGroupTitle var when editing group title --}}
+                          {{paper-input value=group.value
+                                        placeholder=group.items.[0].group
+                                        onChange=(action (mut group.value))
+                                        onBlur='editGroupTitle'}}
+                          {{paper-icon 'forward' class='cursor-pointer'}}
+                        {{/content.menu-item}}
+                      {{/menu.content}}
+                    {{/paper-menu}}
+                    {{group.value}}
+                    <span class='flex'></span>
+                    {{#paper-button iconButton=true}}
+                      {{paper-icon (if p.isOpen 'keyboard-arrow-down' 'keyboard-arrow-right')}}
+                    {{/paper-button}}
+                  {{/paper-toolbar-tools}}
+                {{/paper-toolbar}}
               {{/p.toggle}}
               {{#p.body}}
                 {{#each group.items as |jot|}}
                   {{#draggable-object content=jot}}
-                    {{jot-menu-link jot=jot}}
+                    {{#paper-content padding=false}}
+                      {{jot-menu-link jot=jot}}
+                    {{/paper-content}}
                   {{/draggable-object}}
                 {{/each}}
                 <div class='cpanel-after-link-group-spacer'></div>
@@ -47,37 +95,19 @@
           {{/panels.panel}}
         {{/cp-panels}}
       {{/each}}
-      {{!-- end By Groups in collapsible panels --}}
+      {{!-- / Groups in collapsible panels --}}
 
-      {{!-- Icons --}}
-      <div class='new-jot-icon-div'>
-        {{fa-icon 'plus-circle' class='cursor-pointer' title='Add new jot' click=(action 'newJot')}}
-      </div>
-      {{#draggable-object-target action='addJotToGroup' class='new-group-icon-div'}}
-        {{fa-icon 'clone' class='cursor-pointer new-group-icon' title='Drop a jot here to create a new group.'}}
-        {{!-- <p class='center' style='font-size:12px'>Drop here for new group.</p> --}}
-      {{/draggable-object-target}}
-      <div class='expand-close-groups-icon-div'>
-        {{fa-icon 'angle-double-up' class='cursor-pointer' title='Close all groups' click=(action 'closeAllGroups')}}
-        {{fa-icon 'angle-double-down' class='cursor-pointer' title='Open all groups' click=(action 'openAllGroups')}}
-      </div>
-      {{!-- end Icons --}}
+    {{/paper-content}}
+  {{/paper-sidenav}}
 
-    {{/if}}
-    {{!-- end Jots --}}
+  <div id='editor-div' class='layout-column layout-align-start-center layout-fill'>
+    {{#paper-content id='simditor-scroll-detect' class='width-100' padding=true}}
+      {{#paper-sidenav-toggle name='left' as |toggleAction|}}
+        {{paper-icon 'menu' class='hide-gt-sm toggle-nav-icon' title='Toggle menu' click=(action toggleAction)}}
+      {{/paper-sidenav-toggle}}
 
-    {{!-- Login Component --}}
-    <div id='menu-login-div'>
-      {{login-component}}
-      {{!-- {{login-options}} --}}
-    </div>
-    {{!-- end Login Component --}}
-
+      {{outlet}}
+    {{/paper-content}}
   </div>
 
-
-  <div class='flex-item' id='editor'>
-    {{outlet}}
-  </div>
-
-</div>
+{{/paper-sidenav-container}}

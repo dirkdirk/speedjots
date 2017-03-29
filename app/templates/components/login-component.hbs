@@ -1,27 +1,35 @@
 {{#if session.isAuthenticated}}
 
-  <div class='nav-icons'>
-    {{#if session.currentUser.photoURL}}
-      <img id='user-photo-icon' src='{{session.currentUser.photoURL}}'><br>
-    {{else}}
-      {{fa-icon 'user' id='logged-in-user-icon'}}<br>
-    {{/if}}
-    {{fa-icon 'fighter-jet' class='logout-icon nav-icon' title='Logout' click=(action 'signOut')}}
-  </div>
+  {{#paper-menu isOpen=false offset='45 -5' as |menu|}}
+    {{#menu.trigger}}
+      {{#paper-button onClick=null iconButton=true}}
+        {{#if session.currentUser.photoURL}}
+          <img class='md-menu-origin user-photo-icon' src='{{session.currentUser.photoURL}}'>
+        {{else}}
+          {{paper-icon 'account-circle' class='md-menu-origin'}}
+        {{/if}}
+      {{/paper-button}}
+    {{/menu.trigger}}
+    {{#menu.content width=4 as |content|}}
+      {{#content.menu-item onClick='signOut'}}
+        {{paper-icon 'clear' class='md-menu-align-target'}}
+        Log out
+      {{/content.menu-item}}
+    {{/menu.content}}
+  {{/paper-menu}}
 
 {{else}}
-  <p class='nav-icons'>
-    <hr>
-    <p class='login-title'>Login</p>
-    <hr>
-    {{fa-icon 'google' class='login-icon nav-icon google-login-icon' title='Login with Google account.' click=(action 'signIn' 'google')}}
-  </p>
+  <p class='index-text-login'>Login</p>
+  {{fa-icon 'google' class='google-login-icon' title='Login with a Google account.' click=(action 'signIn' 'google')}}
 {{/if}}
 
 {{#if session.isWorking}}
-  <div class='modal'>
+  <div>
+    {{paper-icon 'rotate-right' spin=true}}
+  </div>
+  {{!-- <div class='modal'>
     <div id='login-isWorking-div'>
       {{fa-icon 'circle-o-notch' class='fa-spin'}}
     </div>
-  </div>
+  </div> --}}
 {{/if}}

@@ -1,0 +1,74 @@
+md-sidenav {
+  min-width: 260px;
+  height: 100vh;
+}
+
+.nav-title-toolbar {
+  padding: 0;
+}
+
+.nav-group-toolbar {
+  padding: 0 16px 0 24px;
+}
+
+#menu-logo {
+  margin-top: 30px;
+  height: 3.4em;
+  width:  3.4em;
+}
+
+#search-input .paper-icon {
+  color: rgba(0, 0, 0, 0.54);
+  margin-left: 8px;
+}
+
+#search-input {
+  margin-bottom: -20px;
+  margin-top: 16px;
+  width: 78%
+}
+
+.edit-group-icon {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 0.8em;
+  opacity: 0.4;
+}
+
+.group-edit-input {
+  width: 80% !important;
+}
+
+.menu-jot-link-div {
+  padding: 10px 6px 6px 16px;
+}
+
+.menu-jot-link {
+  text-decoration: none;
+}
+
+.cp-Panel-toggle:link {
+  text-decoration: none;
+}
+
+.cpanel-after-link-group-spacer {
+  margin-bottom: 16px;
+}
+
+.nav-icons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  md-icon {
+    padding: 10px;
+    cursor: pointer;
+  }
+}
+
+.new-group-icon {
+  color: color($accent) !important;
+}
+
+.new-jot-icon {
+  color: color($warn) !important;
+}

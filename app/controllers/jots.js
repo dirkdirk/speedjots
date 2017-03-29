@@ -4,6 +4,8 @@ import groupBy from 'ember-group-by';
 export default Ember.Controller.extend({
   panelActions: Ember.inject.service(),
 
+  leftSideBarOpen: false,
+
   sortModelBy: ['title'],
   sortedModel: Ember.computed.sort('model', 'sortModelBy'),
   jotsByGroup: groupBy('sortedModel', 'group'),
@@ -13,12 +15,12 @@ export default Ember.Controller.extend({
   saveNewJot() {
     console.log('--> newJot() firing ...');
     this.store.createRecord('jot', {
-      title: 'New jot ...',
+      title: 'New jot Title',
       tags: 'new',
-      text: 'Insert wisdom here ...',
+      content: 'Insert wisdom here ...',
       group: 'Not Grouped'
     }).save().then((result) => {
-      console.log('  ... created id: ' + result.id);
+      console.log('  ... created a new jot with id: ' + result.id);
       this.transitionToRoute('jots.jot', result.id);
     });
   },
@@ -34,36 +36,40 @@ export default Ember.Controller.extend({
       jot.set('group', toGroup);
       jot.save();
       this.send('openPanel', toGroup);
-      // clearAllJotHighlighting();
+    },
+    editGroupTitle(e) {
+      console.log('--> editGroupTitle() firing ...');
+      let model = this.get('model');
+      let newGroupTitle = e.target.value;
+      let oldGroupTitle = e.target.placeholder;
+      model.forEach(function(jot) {
+        let group = jot.get('group');
+        if( group === oldGroupTitle && newGroupTitle.length >0 ) {
+          console.log(' ... editing group title of jot');
+          jot.set('group', newGroupTitle);
+        }
+      });
+      model.save();
     },
     openAllGroups()      { this.get('panelActions').openAll('allGroups'); },
     closeAllGroups()     { this.get('panelActions').closeAll('allGroups'); },
     openPanel(panelName) { this.get('panelActions').open(panelName); },
     // closePanel(panelName)  { this.get('panelActions').close(panelName); },
     // togglePanel(panelName) { this.get('panelActions').toggle(panelName); },
+    // TODO dlAllJots()
+    // dlAllJots() {
+    //   console.log('--> dlAllJotsJot() firing ...');
+    // },
   }
 
 });
 
-// TODO clearAllJotHighlighting() not working
-// Fn called above.
-// var clearAllJotHighlighting = function() {
-  // Ember.$('.cp-Panel-toggle').blur(function() { console.log('moooot');});
-  // Ember.$('.menu-jot-link').blur(function() { console.log('moooot');});
-  // Ember.$('.menu-jot-link').first('div').blur(function() { console.log('blurrrr');});
-// };
-
-
 var getNewGroupName = function(model) {
   let i = 1;
   let groups = model.mapBy('group').uniq();
-  let toGroup = 'Speed Group';
+  let toGroup = 'New Group';
   do {
-    if(groups.includes(toGroup)) {
-      groups.push(toGroup);
-    } else {
-      return toGroup;
-    }
+    if(!groups.includes(toGroup)) { return toGroup; }
     if(i === 1) {
       toGroup = toGroup + ' ' + i;
     } else {
@@ -71,5 +77,5 @@ var getNewGroupName = function(model) {
       toGroup = toGroup.slice(0, lastSpace + 1) + i;
     }
     i++;
-  } while (!groups.includes(toGroup) && i < 99);
+  } while (i < 99);
 };

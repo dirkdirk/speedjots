@@ -1,100 +1,42 @@
-@import 'vars.scss';
-
-#editor {
-  flex: 1;
-  margin: 8px 16px 8px 16px;
+html, body {
+  height: 100vh;
+  overflow: hidden;
 }
 
-.welcome-message-title {
-  text-align: center;
-  margin: 20px 0 0 0;
-  font-size: 4em;
-  // font-size: $welcome-message-title-font-size;
+#editor-div {
+  height: 100vh;
+  margin-right: -30px;
+  padding: 0 30px 0 0;
 }
 
-.welcome-message {
-  text-align: center;
-  margin: 30px 0 0 0;
-  font-size: 2.5em;
-  // font-size: $welcome-message-font-size;
+#jots-index-instructions-toolbar {
+  background-color: color($primary, '400');
+  margin-top: -20px;
 }
 
-.welcome-message-subscript {
-  text-align: center;
-  margin-top: -0.1em;
-  // font-size: 0.9em;
+.jot-input {
+  width: 98%;
 }
 
-#title-row {
-  display: flex;
-  align-items: flex-end;
-  flex: 0 1 auto;
-  min-height: 80px;
-}
-
-#editor-container {
-  display: flex;
-  flex-direction: column;
-}
-
-#text-editor-container {
-  flex: 0 1 auto;
-}
-
-.title-row-item {
-  flex: 1;
-  margin-bottom: 22px;
-}
-
-#data-state {
-  flex: 0;
-  font-size: $fa-icon-size;
-  padding: $fa-icon-padding;
-  margin: 0 6px 14px -10px;
+#status-icon, .delete-icon, .download-icon {
+  margin: 40%;
   cursor: pointer;
-  color: $site-green;
 }
 
-.input {
-  border: none;
-  outline: none;
-  padding: 2px;
-  width: $input-title-tags-width;
-  background-color: $site-bg-color;
-  color: $input-text-color;
+.delete-icon {
+  color: color($primary) !important;
 }
 
-.input:focus {
-  background-color: $input-bg-color;
+.simditor {
+  border: 1px solid color($accent, '50') !important;
 }
 
-.title-input {
-  border-top: 1px solid $title-input-underline;
-  font-size: $title-input-font-size;
+.simditor-toolbar {
+  border: 1px solid color($accent, '400') !important;
+  background-color: color($accent, '100') !important;
+  box-shadow: 1px 1px 2px color($accent, '300') !important;
 }
 
-.tags-input {
-  border-top: 1px solid $tags-input-underline;
-  font-size: $tags-input-font-size;
-  line-height: 2.1em;
-}
-
-.label {
-  font-size: $input-label-font-size;
-  color: $input-label-color;
-}
-
-#medium-editable-div {
-  outline: none;
-  margin-top: 40px;
-}
-
-.destroy-jot-icon {
-  flex: 0;
-  align-self: flex-end;
-  font-size: $fa-icon-size;
-  color: $destroy-jot-icon-color;
-  padding: $fa-icon-padding;
-  margin: 14px 8px 0 0;
-  cursor: pointer;
+.toolbar-item.active {
+  background-color: color($accent, '50') !important;
 }
