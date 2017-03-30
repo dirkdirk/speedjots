@@ -44,12 +44,13 @@ hr {
 }
 
 .toggle-nav-icon {
-  color: color($primary) !important;
-  font-size: 2em;
-  position: absolute;
-  // position: fixed;
-  // top: 6px;
-  // left: 6px;
+  color: color($accent) !important;
+  font-size: 3em;
+  // position: absolute;
+  position: fixed;
+  top: 0px;
+  left: 6px;
+  z-index: 10;
   cursor: pointer;
 }
 
