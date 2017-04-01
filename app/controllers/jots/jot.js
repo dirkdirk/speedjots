@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  siteGreen: '#5a5',
-  siteRed: '#c55',
+  siteGreen: '#4CAF50',
+  siteRed: '#F44336',
 
   updateStatusIconColorObserver: function() {
     Ember.run.debounce(this, this.updateStatusIconColor, 500);
@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
   //
   // statusIcon() {
   //   let isDirty = this.get('isDirty');
-  //   return isDirty ? 'check-circle' : 'remove-circle';
+  //   return isDirty ? 'check-circle' : 'delete-forever';
   // },
 
   saveDirtyModel() {

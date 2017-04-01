@@ -1,19 +1,22 @@
-$primary: 'deep-orange';
-$accent: 'blue';
-$warn: 'green';
+$primary:     'deep-orange';
+$accent:      'blue';
+$warn:        'green';
+$red:         #F44336;
 
 @import 'ember-paper';
 @import 'editor';
 @import 'nav';
 
-$text-color: #ffe9e2;
-
 h1, h2, h3 {
   font-weight: normal;
 }
 
-.index-rabbit {
+.app-index-rabbit {
   margin: 20px 30px;
+}
+
+.jots-index-rabbit {
+  margin-top: 30px;
 }
 
 .index-text {
@@ -54,21 +57,21 @@ hr {
   cursor: pointer;
 }
 
-#jots-index-instructions-toolbar {
-  background-color: color($primary, '400');
-  margin-top: -20px;
-}
-
+// #jots-index-instructions-toolbar {
+//   background-color: color($primary, '400');
+//   margin-top: -20px;
+// }
+//
 .how-to-link-button {
   border: none;
   background-color: color($primary, '400');
   font-size: 1.4em;
-  color: lighten($text-color, 30%);
+  color: lighten(color($primary), 50%);
   padding: 2px 12px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
 }
 
-#how-to-table {
+.how-to-table {
   border: none;
   .center {
     text-align: center;
@@ -79,10 +82,17 @@ hr {
   cursor: pointer;
 }
 
-.width-100 {
-  width: 100%;
+.center {
+  text-align: center;
 }
 
-.center {
+.bg-primary {
+  background-color: color($accent, '400');
+  // background-color: color($primary, '400');
+}
+
+.how-to-col1 {
+  padding-right: 20px;
+  min-width: 110px;
   text-align: center;
 }

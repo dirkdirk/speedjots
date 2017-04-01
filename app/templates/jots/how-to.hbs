@@ -1,86 +1,120 @@
 {{#if session.isAuthenticated}}
-  {{#paper-card as |card|}}
-    {{#paper-toolbar class='md-whiteframe-4dp'}}
+  {{#paper-toolbar class='md-whiteframe-4dp'}}
     {{!-- {{#paper-toolbar id='jots-index-instructions-toolbar'}} --}}
-        <h1 class='center'>How to ...</h1>
-    {{/paper-toolbar}}
+    <h1 class='center'>How to Speed Jot</h1>
+  {{/paper-toolbar}}
+
+  {{#paper-card as |card|}}
+    {{#card.title class='bg-primary' as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline class='center'}}Menu{{/text.headline}}
+      {{/title.text}}
+    {{/card.title}}
     {{#card.content}}
-      <table id='how-to-table'>
-        <tr><td class='center'>
+      <table class='how-to-table'>
+
+        <tr><td class='how-to-col1'>
           {{paper-icon 'add-circle-outline' class='new-jot-icon' title='Add new jot'}}
         </td><td>
           <p>Click it to create a new jot in the 'Not Grouped' group.</p>
         </td></tr>
-        <tr><td class='center'>
+
+        <tr><td class='how-to-col1'>
           <h3>Jot title</h3>
         </td><td>
           <p>Click on a jot title to edit the jot.</p>
         </td></tr>
-        <tr><td class='center'>
-          <h3>DnD</h3>
-        </td><td>
-          <p>Drag and drop jots to different groups to organize.</p>
-        </td></tr>
-        <tr><td class='center'>
+
+        <tr><td class='how-to-col1'>
           {{paper-icon 'content-copy' class='new-group-icon' title='Drop a jot on this icon to create a new group'}}
         </td><td>
           <p>Drag and drop a jot onto it to create a new group.</p>
         </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'arrow-downward' title='Close all groups'}}
+
+        <tr><td class='how-to-col1'>
+          <h3>D&D</h3>
+        </td><td>
+          <p>Drag and drop jots to different groups to organize.</p>
+        </td></tr>
+
+        <tr><td class='how-to-col1'>
+          {{paper-icon 'arrow-downward' title='Open all groups'}}
           {{paper-icon 'arrow-upward' title='Close all groups'}}
         </td><td>
           <p>Click it to open or close all groups.</p>
         </td></tr>
-        <tr><td class='center'>
+
+        <tr><td class='how-to-col1'>
           {{paper-icon 'search' title='Search titles and tags'}}
         </td><td>
           <p>Type key words in the search box to display jots by title or tag words.</p>
         </td></tr>
-        <tr><td class='center'>
-          <img src='../assets/favicons/favicon-32x32.png'>
-        </td><td>
-          <p>Click the rabbit to see these instructions.</p>
-        </td></tr>
-        <tr><td class='center'>
+
+        <tr><td class='how-to-col1'>
           {{paper-icon 'create' class='' title='Edit group title'}}
         </td><td>
           <p>Click to edit the group title.</p>
         </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'keyboard-arrow-down' title='Search titles and tags'}}
-          {{paper-icon 'keyboard-arrow-right' title='Search titles and tags'}}
+
+        <tr><td class='how-to-col1'>
+          {{paper-icon 'keyboard-arrow-down' title='Group open'}}
+          {{paper-icon 'keyboard-arrow-right' title='Group closed'}}
         </td><td>
           <p>Click group titles or the arrows to open and close the group.</p>
         </td></tr>
-        <tr><td class='center'>
-          <h3>Title</h3>
+
+        <tr><td class='how-to-col1'>
+          <img src='../assets/favicons/favicon-32x32.png'>
         </td><td>
-          <p>When editing a note, click on the Title field and type to edit the title.</p>
+          <p>Click the rabbit to see these instructions.</p>
         </td></tr>
-        <tr><td class='center'>
-          <h3>Tags</h3>
-        </td><td>
-          <p>When editing a note, click on the Tags field to edit the tags.</p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'check-circle' class='new-jot-icon' title='Search titles and tags'}}
-        </td><td>
-          <p>
-             Green means the jot has been saved, red means it has not been saved.<br>
-             Jots are frequently autosaved. To manually save, click it save a jot.
-          </p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'remove-circle' class='delete-icon' title='Delete'}}
-        </td><td>
-          <p>Click it to delete the jot.</p>
-        </td></tr>
-        <tr><td class='center'>
-          {{paper-icon 'account-circle' class=''}}<br>or your<br>pretty picture
+
+        <tr><td class='how-to-col1'>
+          {{paper-icon 'account-circle' class=''}} or your<br>pretty picture
         </td><td>
           <p>Click it to log out. Or don't to stay logged in.</p>
         </td></tr>
+      </table>
+    {{/card.content}}
+  {{/paper-card}}
+
+  {{#paper-card as |card|}}
+    {{#card.title class='bg-primary' as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline class='center'}}Editing{{/text.headline}}
+      {{/title.text}}
+    {{/card.title}}
+    {{#card.content}}
+      <table class='how-to-table'>
+
+        <tr><td class='how-to-col1'>
+          <h3>Title</h3>
+        </td><td>
+          <p>Click on the Title field and type to edit the title.</p>
+        </td></tr>
+
+        <tr><td class='how-to-col1'>
+          <h3>Tags</h3>
+        </td><td>
+          <p>Click on the Tags field to edit the tags.</p>
+        </td></tr>
+
+        <tr><td class='how-to-col1'>
+          {{paper-icon 'check-circle' class='status-icon-green' title='Jot saved'}}
+          {{paper-icon 'check-circle' class='status-icon-red' title='Jot not saved'}}
+        </td><td>
+          <p>
+             Green means the jot has been saved, red means it has not been saved.<br>
+             Jots are frequently autosaved. To manually save, click it to save a jot.
+          </p>
+        </td></tr>
+
+        <tr><td class='how-to-col1'>
+          {{paper-icon 'delete-forever' class='delete-icon-how-to' title='Delete'}}
+        </td><td>
+          <p>Click it to delete the jot.</p>
+        </td></tr>
+
       </table>
     {{/card.content}}
   {{/paper-card}}

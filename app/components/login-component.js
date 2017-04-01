@@ -36,11 +36,11 @@ export default Ember.Component.extend({
                          2: { "title": "Jot 3",
                                        "content": "Text 3",
                                        "tags": "Tag 3",
-                                       "group": "Best of group" },
+                                       "group": "Best of Group" },
                          3: { "title": "Jot 4",
                                        "content": "Text 4",
                                        "tags": "Tag 4",
-                                       "group": "Best of group" } }
+                                       "group": "Best of Group" } }
                });
                newUser.save();
              }

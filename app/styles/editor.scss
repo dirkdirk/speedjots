@@ -9,24 +9,57 @@ html, body {
   padding: 0 30px 0 0;
 }
 
+#simditor-editor-div {
+  margin-top: 12px;
+}
+
+.editor-paper-content {
+  width: 100%;
+  padding: 26px 36px;
+}
+
 .jot-input {
-  margin: 18px 0 6px 0;
-  width: 98%;
+  background-color: color($accent, 'A200');
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .jot-input-title {
-  input {
-    font-size: 1.5em;
-  }
+  margin-top: 10px;
+  font-size: 1.5em;
+  text-align: center;
 }
 
-#status-icon, .delete-icon, .download-icon {
-  margin: 20% 0 0 40%;
+.jot-input-tags {
+  margin-bottom: 10px;
+  font-size: 0.8em;
+  text-align: center;
+  color: lighten(color($accent, 'A200'), 30%);
+}
+
+#status-icon {
+  position: absolute;
+  top:   10px;
+  right: 10px;
   cursor: pointer;
 }
 
+.delete-icon-div {
+  text-align: right;
+}
+
 .delete-icon {
-  color: color($primary) !important;
+  margin: 10px 10px;
+  cursor: pointer;
+}
+
+.delete-icon, .delete-icon-how-to, .status-icon-red {
+  color: $red !important;
+}
+
+.status-icon-green {
+  color: color($warn) !important;
 }
 
 .simditor {
