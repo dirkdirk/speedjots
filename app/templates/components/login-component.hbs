@@ -2,13 +2,11 @@
 
   {{#paper-menu isOpen=false offset='45 -5' as |menu|}}
     {{#menu.trigger}}
-      {{#paper-button onClick=null iconButton=true}}
-        {{#if session.currentUser.photoURL}}
-          <img class='md-menu-origin user-photo-icon' src='{{session.currentUser.photoURL}}'>
-        {{else}}
-          {{paper-icon 'account-circle' class='md-menu-origin'}}
-        {{/if}}
-      {{/paper-button}}
+      {{#if session.currentUser.photoURL}}
+        <img class='md-menu-origin user-photo-icon' src='{{session.currentUser.photoURL}}'>
+      {{else}}
+        {{paper-icon 'account-circle' class='md-menu-origin'}}
+      {{/if}}
     {{/menu.trigger}}
     {{#menu.content width=4 as |content|}}
       {{#content.menu-item onClick='signOut'}}

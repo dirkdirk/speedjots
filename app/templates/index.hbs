@@ -1,20 +1,24 @@
 {{#if session.isAuthenticated}}
   {{!-- Do nothing --}}
 {{else}}
-  {{#paper-card as |card|}}
-    {{#paper-toolbar class='md-whiteframe-2dp'}}
-      <h1 class='index-text'>Speed Jots</h1>
-    {{/paper-toolbar}}
-    {{#card.content}}
-      <p class='index-text'><img src='assets/favicons/apple-touch-icon-72x72.png'></p>
-      <h2 class='index-text'>Simple</h2>
-      <h2 class='index-text'>Fast</h2>
-      <h2 class='index-text'>Jots</h2>
-      <div id='index-login-div' class='center'>
-        {{login-component}}
-      </div>
-      {{!-- TODO fix spacer correctly --}}
-      <p>&nbsp;</p>
-    {{/card.content}}
-  {{/paper-card}}
+  {{#paper-toolbar class='md-whiteframe-2dp'}}
+    <h1 class='index-text'>Speed Jots</h1>
+  {{/paper-toolbar}}
+  <div class='layout-row layout-align-center-center'>
+    <div class='flex-nogrow'><h2>Fast</h2></div>
+    <div class='flex-nogrow index-rabbit'><img src='assets/favicons/apple-touch-icon-72x72.png'></div>
+    <div class='flex-nogrow'><h2>Easy</h2></div>
+  </div>
+  <div class='index-description-div'>
+    <h3 class='index-text'>A web app to take notes</h3>
+    <h3 class='index-text'>Organized into groups</h3>
+    <h3 class='index-text'>Search by title and tags</h3>
+    <h3 class='index-text'>No bloat no mess no cost</h3>
+    <h3 class='index-text'>Everything encrypted always</h3>
+    {{!-- <h3 class='index-text'>Securely available in any browser on any device.</h3> --}}
+  </div>
+  <hr>
+  <div id='index-login-div' class='center'>
+    {{login-component}}
+  </div>
 {{/if}}

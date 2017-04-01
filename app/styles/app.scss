@@ -6,13 +6,24 @@ $warn: 'green';
 @import 'editor';
 @import 'nav';
 
+$text-color: #ffe9e2;
+
 h1, h2, h3 {
   font-weight: normal;
+}
+
+.index-rabbit {
+  margin: 20px 30px;
 }
 
 .index-text {
   text-align: center;
   letter-spacing: 0.15em;
+}
+
+.index-description-div {
+  margin-top: 15px;
+  margin-bottom: 45px;
 }
 
 .index-text-login {
@@ -26,32 +37,35 @@ h1, h2, h3 {
   cursor: pointer;
 }
 
-.user-photo-icon {
-  border-radius: 50%;
-  height: 1.8em;
-}
-
 hr {
   width: 36%;
-  border: 1px solid $primary;
-  // height: 1px;
-  // border: 0;
-  // background-image: -webkit-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
-  // background-image: -moz-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
-  // background-image: -ms-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
-  // background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
-  // background-image: -o-linear-gradient(left, $site-bg-color, $site-blue, $site-bg-color);
+  border: 0 none;
+  background-color: color($primary);
+  height: 1px;
 }
 
 .toggle-nav-icon {
   color: color($accent) !important;
   font-size: 3em;
-  // position: absolute;
   position: fixed;
   top: 0px;
   left: 6px;
   z-index: 10;
   cursor: pointer;
+}
+
+#jots-index-instructions-toolbar {
+  background-color: color($primary, '400');
+  margin-top: -20px;
+}
+
+.how-to-link-button {
+  border: none;
+  background-color: color($primary, '400');
+  font-size: 1.4em;
+  color: lighten($text-color, 30%);
+  padding: 2px 12px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
 }
 
 #how-to-table {

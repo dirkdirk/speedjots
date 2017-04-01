@@ -4,7 +4,7 @@ md-sidenav {
 }
 
 .nav-title-toolbar {
-  padding: 0;
+  padding: 0 0 4px 0;
 }
 
 .nav-group-toolbar {
@@ -12,9 +12,22 @@ md-sidenav {
 }
 
 #menu-logo {
-  margin-top: 30px;
-  height: 3.4em;
-  width:  3.4em;
+  margin-top: 32px;
+  margin-left: 6px;
+  height: 2.8em;
+  width:  2.8em;
+}
+
+.user-photo-icon {
+  border-radius: 50%;
+  height: 1.4em;
+  margin-top: 10px;
+  margin-right: 6px;
+}
+
+.nav-speed-jots-text {
+  font-size: 1.35em;
+  margin-left: -4px;
 }
 
 #search-input .paper-icon {
@@ -24,7 +37,7 @@ md-sidenav {
 
 #search-input {
   margin-bottom: -20px;
-  margin-top: 16px;
+  margin-top: 4px;
   width: 78%
 }
 
