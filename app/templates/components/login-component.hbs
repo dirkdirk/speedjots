@@ -17,9 +17,12 @@
   {{/paper-menu}}
 
 {{else}}
+
   <p class='index-text-login'>Login</p>
   {{fa-icon 'google' class='google-login-icon' title='Login with a Google account.' click=(action 'signIn' 'google')}}
+
 {{/if}}
+
 
 {{#if session.isWorking}}
   <div>

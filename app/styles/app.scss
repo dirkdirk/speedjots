@@ -7,6 +7,42 @@ $red:         #F44336;
 @import 'editor';
 @import 'nav';
 
+// From ember-paper demo app. Necessary to make separate scroll bars work.
+body.ember-application {
+  flex-direction: row;
+  flex: 1;
+  display: flex;
+}
+
+body > div.ember-view {
+  flex-direction: row;
+  flex: 1;
+  display: flex;
+}
+
+.site-nav-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: color($color-grey, '500');
+}
+// / From ember-paper demo app
+
+
 h1, h2, h3 {
   font-weight: normal;
 }
@@ -26,7 +62,7 @@ h1, h2, h3 {
 
 .index-description-div {
   margin-top: 15px;
-  margin-bottom: 45px;
+  margin-bottom: 20px;
 }
 
 .index-text-login {
@@ -57,11 +93,6 @@ hr {
   cursor: pointer;
 }
 
-// #jots-index-instructions-toolbar {
-//   background-color: color($primary, '400');
-//   margin-top: -20px;
-// }
-//
 .how-to-link-button {
   border: none;
   background-color: color($primary, '400');
@@ -88,7 +119,6 @@ hr {
 
 .bg-primary {
   background-color: color($accent, '400');
-  // background-color: color($primary, '400');
 }
 
 .how-to-col1 {

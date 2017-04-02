@@ -1,22 +1,11 @@
-html, body {
-  height: 100vh;
-  overflow: hidden;
-}
-
 #editor-div {
-  height: 100vh;
-  margin-right: -30px;
-  padding: 0 30px 0 0;
+  width: 100%;
 }
 
 #simditor-editor-div {
   margin-top: 12px;
 }
 
-.editor-paper-content {
-  width: 100%;
-  padding: 26px 36px;
-}
 
 .jot-input {
   background-color: color($accent, 'A200');
