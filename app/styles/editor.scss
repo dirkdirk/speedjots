@@ -1,5 +1,5 @@
 #editor-div {
-  max-width: 100%;
+  width: 100%;
 }
 
 #simditor-editor-div {
@@ -44,7 +44,7 @@
 }
 
 .delete-icon, .delete-icon-how-to, .status-icon-red {
-  color: $red !important;
+  color: color($red) !important;
 }
 
 .status-icon-green {

@@ -46,14 +46,21 @@ export default Ember.Controller.extend({
       console.log('--> saveJotSlow() firing');
       Ember.run.debounce(this, this.saveDirtyModel, 5000);
     },
+    trashJot(model) {
+      console.log('--> trashJot() firing');
+      let timeStamp = Date.now();
+      this.set('model.inTrash', true);
+      this.set('model.dateTrashed', timeStamp);
+      model.save();
+    },
     destroyJot(model) {
-      console.log('--> destroyJot() firing ...');
+      console.log('--> destroyJot() firing');
       model.destroyRecord();
       this.transitionToRoute('jots');
     },
     // TODO dlJot()
     // dlJot() {
-    //   console.log('--> dlJot() firing ...');
+    //   console.log('--> dlJot() firing');
     //   this.attrs.download()
     //         .then((content) => this.saveFileAs('jot.txt', content, 'text/plain;charset=utf-8'));
     //         // .then((content) => this.saveFileAs(this.get('filename'), content, this.get('contentType')));

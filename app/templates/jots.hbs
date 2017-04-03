@@ -32,7 +32,7 @@
       <div class='flex-none'>
         {{paper-icon 'arrow-upward' title='Close all groups' click=(action 'closeAllGroups')}}
       </div>
-      {{#draggable-object-target action='addJotToGroup' class='flex-none'}}
+      {{#draggable-object-target action='moveJotToGroup' class='flex-none'}}
         {{paper-icon 'content-copy' class='new-group-icon' title='Drop a jot on this icon to create a new group'}}
       {{/draggable-object-target}}
       <div class='flex-none new-jot-icon-div'>
@@ -42,7 +42,7 @@
     {{!-- / Icons --}}
 
     {{!-- Search & Results --}}
-    {{#filter-content content=sortedModel properties='title tags' as |filtered query|}}
+    {{#filter-content content=sortedNotInTrash properties='title tags' as |filtered query|}}
       {{paper-input id='search-input' value=query icon='search' label='Search titles & tags' onChange=(action (mut query))}}
       {{#if (not-eq query '')}}
         {{#each filtered as |jot|}}
@@ -55,10 +55,10 @@
 
     {{!-- Groups in collapsible panels --}}
     {{#paper-content padding=false}}
-      {{#each sortedJotsByGroup as |group|}}
+      {{#each notInTrashGroupedJots as |group|}}
         {{#cp-panels name='allGroups' as |panels|}}
           {{#panels.panel name=group.value open=(if (eq group.value 'Not Grouped') true false) as |p|}}
-            {{#draggable-object-target action='addJotToGroup' groupTitle=group.value}}
+            {{#draggable-object-target action='moveJotToGroup' groupTitle=group.value}}
               {{#p.toggle}}
                 {{#paper-toolbar accent=true}}
                   {{#paper-toolbar-tools class='nav-group-toolbar'}}
@@ -100,6 +100,40 @@
           {{/panels.panel}}
         {{/cp-panels}}
       {{/each}}
+
+      {{!-- Trashed jots --}}
+      {{#if inTrashJots}}
+        {{#cp-panels name='allGroups' as |panels|}}
+          {{#panels.panel name='trash_speed_jots_sdfml098' open=false as |p|}}
+            {{#draggable-object-target action='moveJotToTrash'}}
+              {{#p.toggle}}
+                {{#paper-toolbar id='trashToolbar'}}
+                  {{#paper-toolbar-tools class='nav-group-toolbar'}}
+                    {{paper-icon 'delete-forever' class='edit-group-icon' title='Empty trash' click=(action 'emptryTrash')}}
+                    Trash
+                    <span class='flex'></span>
+                    {{#paper-button iconButton=true}}
+                      {{paper-icon (if p.isOpen 'keyboard-arrow-down' 'keyboard-arrow-right')}}
+                    {{/paper-button}}
+                  {{/paper-toolbar-tools}}
+                {{/paper-toolbar}}
+              {{/p.toggle}}
+              {{#p.body}}
+                {{#each inTrashJots as |jot|}}
+                  {{#draggable-object content=jot}}
+                    {{#paper-content padding=false}}
+                      {{jot-menu-link jot=jot}}
+                    {{/paper-content}}
+                  {{/draggable-object}}
+                {{/each}}
+                <div class='cpanel-after-link-group-spacer'></div>
+              {{/p.body}}
+            {{/draggable-object-target}}
+          {{/panels.panel}}
+        {{/cp-panels}}
+      {{/if}}
+      {{!-- / Trashed jots --}}
+
     {{/paper-content}}
     {{!-- / Groups in collapsible panels --}}
   {{/paper-sidenav}}

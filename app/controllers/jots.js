@@ -5,20 +5,27 @@ export default Ember.Controller.extend({
   panelActions: Ember.inject.service(),
 
   leftSideBarOpen: false,
-
   sortModelBy: ['title'],
-  sortedModel: Ember.computed.sort('model', 'sortModelBy'),
-  jotsByGroup: groupBy('sortedModel', 'group'),
   sortGroupsBy: ['value'],
-  sortedJotsByGroup: Ember.computed.sort('jotsByGroup', 'sortGroupsBy'),
+
+  inTrash: Ember.computed.filterBy('model', 'inTrash', true),
+  inTrashJots: Ember.computed.sort('inTrash', 'sortModelBy'),
+
+  notInTrash: Ember.computed.filterBy('model', 'inTrash', false),
+  sortedNotInTrash: Ember.computed.sort('notInTrash', 'sortModelBy'),
+  byGroupSortedNotInTrash: groupBy('sortedNotInTrash', 'group'),
+  notInTrashGroupedJots: Ember.computed.sort('byGroupSortedNotInTrash', 'sortGroupsBy'),
 
   saveNewJot() {
-    console.log('--> newJot() firing ...');
+    console.log('--> saveNewJot() firing ...');
+    let timeStamp = Date.now();
     this.store.createRecord('jot', {
-      title: 'New jot Title',
+      title: 'New Jot Title',
       tags: 'new',
-      content: 'Insert wisdom here ...',
-      group: 'Not Grouped'
+      content: '<p>Insert wisdom here ...</p>',
+      group: 'Not Grouped',
+      dateCreated: timeStamp,
+      inTrash: false
     }).save().then((result) => {
       console.log('  ... created a new jot with id: ' + result.id);
       this.transitionToRoute('jots.jot', result.id);
@@ -27,13 +34,17 @@ export default Ember.Controller.extend({
 
   actions: {
     newJot() {
+      console.log('--> newJot() firing');
       Ember.run.debounce(this, this.saveNewJot, 300);
       this.send('openPanel', 'Not Grouped');
     },
-    addJotToGroup(jot, ops) {
+    moveJotToGroup(jot, ops) {
+      console.log('--> moveJotToGroup() firing');
       let tagetTitle = ops.target.groupTitle;
       let toGroup = tagetTitle ? tagetTitle : getNewGroupName(this.get('model'));
       jot.set('group', toGroup);
+      jot.set('inTrash', false);
+      jot.set('dateTrashed', null);
       jot.save();
       this.send('openPanel', toGroup);
     },
@@ -56,6 +67,21 @@ export default Ember.Controller.extend({
     openPanel(panelName) { this.get('panelActions').open(panelName); },
     // closePanel(panelName)  { this.get('panelActions').close(panelName); },
     // togglePanel(panelName) { this.get('panelActions').toggle(panelName); },
+    moveJotToTrash(jot) {
+      console.log('--> moveJotToTrash() firing');
+      let timeStamp = Date.now();
+      jot.set('inTrash', true);
+      jot.set('dateTrashed', timeStamp);
+      jot.save();
+    },
+    emptryTrash() {
+      console.log('--> moveJotToTrash() firing');
+      let model = this.get('model');
+      let trashedJots = this.get('inTrash');
+      trashedJots.forEach((jot) => jot.deleteRecord());
+      model.save();
+      this.transitionToRoute('jots');
+    },
     // TODO dlAllJots()
     // dlAllJots() {
     //   console.log('--> dlAllJotsJot() firing ...');

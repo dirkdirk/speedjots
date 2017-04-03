@@ -47,7 +47,11 @@
 </div>
 
 <div class='delete-icon-div'>
-  {{paper-icon 'delete-forever' class='delete-icon' title='Delete' click=(action 'destroyJot' model)}}
+  {{#if model.inTrash}}
+      {{paper-icon 'delete-forever' class='delete-icon' title='Delete' click=(action 'destroyJot' model)}}
+    {{else}}
+      {{paper-icon 'delete' class='delete-icon' title='Trash' click=(action 'trashJot' model)}}
+  {{/if}}
 </div>
 
 {{!-- {{paper-icon 'file-download' class='download-icon' title='Download Jot' click=(action 'dlJot' model)}} --}}
