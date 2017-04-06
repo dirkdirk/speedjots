@@ -13,6 +13,9 @@ module.exports = function(defaults) {
   // Need to test:
   //  - Add a dnd object to SJ that doesn't reply on the Ember add-on.
   //    This will prove that the script works or not and the problem is with the add-on.
+  //  - I suspect it's not working because I'm trying to move objects that are also links
+  //    and ios adds an options menu when links are held (long press) before this shim
+  //    can initiate it's dnd actions.
 
 
   // app.import('public/assets/js/ios-drag-drop.js');
