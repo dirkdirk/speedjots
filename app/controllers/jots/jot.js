@@ -35,6 +35,7 @@ export default Ember.Controller.extend({
   saveDirtyModel() {
     console.log('--> saveDirtyModel() firing ...');
     let jot = this.get('model.jot');
+    if(jot.get('title') === '') { jot.set('title', 'Required'); }
     if(jot.get('hasDirtyAttributes')) {
       jot.save().then(() => {
         this.updateStatusIconColor();
