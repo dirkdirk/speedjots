@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   newGroupName: Ember.inject.service(),
+  device: Ember.inject.service(),
   siteGreen: '#4CAF50',
   siteRed: '#F44336',
 
