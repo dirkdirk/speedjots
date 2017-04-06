@@ -6,7 +6,6 @@
   margin-top: 12px;
 }
 
-
 .jot-input {
   background-color: color($accent, 'A200');
   border: none;
@@ -25,6 +24,10 @@
   font-size: 0.8em;
   text-align: center;
   color: lighten(color($accent, 'A200'), 30%);
+}
+
+#groupSelect {
+
 }
 
 #status-icon {

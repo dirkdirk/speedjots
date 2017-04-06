@@ -1,45 +1,36 @@
 {{!-- Title and Tags --}}
 {{#paper-toolbar accent=true class='md-whiteframe-4dp'}}
-  {{input class='jot-input jot-input-title'
-          label='Title'
-          value=model.title
-          required=true
+  <div class='center'>
+    {{input class='jot-input jot-input-title'
+            label='Title'
+            value=model.jot.title
+            required=true
           focus-out='saveJotNow' }}
-  {{input class='jot-input jot-input-tags'
-          label='Tags'
-          value=model.tags
-          focus-out='saveJotNow'}}
+  </div>
+  <div class='center'>
+    {{input class='jot-input jot-input-tags'
+            label='Tags'
+            value=model.jot.tags
+            focus-out='saveJotNow'}}
+  </div>
+  <div class='center'>
+    {{#if is-mobile}}
+      {{#x-select id='groupSelect' class='jot-input jot-input-tags' value=model.jot.group action='mobileSelectGroup' as |xs|}}
+        {{#xs.option value='newGroup_exckbvu45'}}Create a new Group{{/xs.option}}
+        {{#each jotsUniq as |jot|}}
+          {{#xs.option value=jot.group}}{{jot.group}}{{/xs.option}}
+        {{/each}}
+      {{/x-select}}
+    {{/if}}
+  </div>
   {{paper-icon 'check-circle' id='status-icon' title='Save' click=(action 'saveJotNow')}}
 {{/paper-toolbar}}
 {{!-- end Title and Tags --}}
 
-{{!-- Title and Tags --}}
-{{!-- <div class='layout-row layout-fill'>
-  <div class='flex-60'>
-    {{paper-input class='jot-input jot-input-title'
-                  label='Title'
-                  value=model.title
-                  required=true
-                  onChange=(action (mut model.title))
-                  onBlur='saveJotNow' }}
-  </div>
-  <div class='flex-30'>
-    {{paper-input class='jot-input'
-                  label='Tags'
-                  value=model.tags
-                  onChange=(action (mut model.tags))
-                  onBlur='saveJotNow'}}
-  </div>
-  <div class='flex-10' id='data-state'>
-    {{paper-icon 'check-circle' id='status-icon' title='Save' click=(action 'saveJotNow')}}
-  </div>
-</div> --}}
-{{!-- end Title and Tags --}}
-
 {{!-- Editor --}}
 <div id='simditor-editor-div'>
-  {{simditor-editor value=model
-                    update=(action (mut model.content))
+  {{simditor-editor value=model.jot
+                    update=(action (mut model.jot.content))
                     toolbar=simditorOptions.toolbar
                     editor=(mut editor)
                     onValuechanged=(action 'saveJotSlow')
@@ -47,21 +38,21 @@
 </div>
 
 <div class='delete-icon-div'>
-  {{#if model.inTrash}}
-      {{paper-icon 'delete-forever' class='delete-icon' title='Delete' click=(action 'destroyJot' model)}}
+  {{#if model.jot.inTrash}}
+      {{paper-icon 'delete-forever' class='delete-icon' title='Delete' click=(action 'destroyJot' model.jot)}}
     {{else}}
-      {{paper-icon 'delete' class='delete-icon' title='Trash' click=(action 'trashJot' model)}}
+      {{paper-icon 'delete' class='delete-icon' title='Trash' click=(action 'trashJot' model.jot)}}
   {{/if}}
 </div>
 
-{{!-- {{paper-icon 'file-download' class='download-icon' title='Download Jot' click=(action 'dlJot' model)}} --}}
+{{!-- {{paper-icon 'file-download' class='download-icon' title='Download Jot' click=(action 'dlJot' model.jot)}} --}}
 
 {{!-- <div class='layout-row layout-fill'>
   <div class='flex-80'></div>
   <div class='flex-10'> --}}
   {{!-- </div>
   <div class='flex-10'>
-    {{paper-icon 'delete-forever' class='delete-icon' title='Delete' click=(action 'destroyJot' model)}}
+    {{paper-icon 'delete-forever' class='delete-icon' title='Delete' click=(action 'destroyJot' model.jot)}}
   </div>
 </div> --}}
 {{!-- end Editor --}}

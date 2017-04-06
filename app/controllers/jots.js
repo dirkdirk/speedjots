@@ -3,6 +3,7 @@ import groupBy from 'ember-group-by';
 
 export default Ember.Controller.extend({
   panelActions: Ember.inject.service(),
+  newGroupName: Ember.inject.service(),
 
   leftSideBarOpen: false,
   sortModelBy: ['title'],
@@ -41,7 +42,9 @@ export default Ember.Controller.extend({
     moveJotToGroup(jot, ops) {
       console.log('--> moveJotToGroup() firing');
       let tagetTitle = ops.target.groupTitle;
-      let toGroup = tagetTitle ? tagetTitle : getNewGroupName(this.get('model'));
+      let model = this.get('model');
+      let newGroupName = this.get('newGroupName');
+      let toGroup = tagetTitle ? tagetTitle : newGroupName.genName(model);
       jot.set('group', toGroup);
       jot.set('inTrash', false);
       jot.set('dateTrashed', null);
@@ -90,18 +93,18 @@ export default Ember.Controller.extend({
 
 });
 
-var getNewGroupName = function(model) {
-  let i = 1;
-  let groups = model.mapBy('group').uniq();
-  let toGroup = 'New Group';
-  do {
-    if(!groups.includes(toGroup)) { return toGroup; }
-    if(i === 1) {
-      toGroup = toGroup + ' ' + i;
-    } else {
-      let lastSpace = toGroup.lastIndexOf(' ');
-      toGroup = toGroup.slice(0, lastSpace + 1) + i;
-    }
-    i++;
-  } while (i < 99);
-};
+// var getNewGroupName = function(model) {
+//   let i = 1;
+//   let groups = model.mapBy('group').uniq();
+//   let toGroup = 'New Group';
+//   do {
+//     if(!groups.includes(toGroup)) { return toGroup; }
+//     if(i === 1) {
+//       toGroup = toGroup + ' ' + i;
+//     } else {
+//       let lastSpace = toGroup.lastIndexOf(' ');
+//       toGroup = toGroup.slice(0, lastSpace + 1) + i;
+//     }
+//     i++;
+//   } while (i < 99);
+// };
