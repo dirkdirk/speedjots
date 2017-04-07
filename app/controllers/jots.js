@@ -68,6 +68,7 @@ export default Ember.Controller.extend({
     openAllGroups()      { this.get('panelActions').openAll('allGroups'); },
     closeAllGroups()     { this.get('panelActions').closeAll('allGroups'); },
     openPanel(panelName) { this.get('panelActions').open(panelName); },
+    // Following options also available:
     // closePanel(panelName)  { this.get('panelActions').close(panelName); },
     // togglePanel(panelName) { this.get('panelActions').toggle(panelName); },
     moveJotToTrash(jot) {
@@ -85,26 +86,10 @@ export default Ember.Controller.extend({
       model.save();
       this.transitionToRoute('jots');
     },
-    // TODO dlAllJots()
+    // TODO Add feature: download all jots action: dlAllJots()
     // dlAllJots() {
     //   console.log('--> dlAllJotsJot() firing ...');
     // },
   }
 
 });
-
-// var getNewGroupName = function(model) {
-//   let i = 1;
-//   let groups = model.mapBy('group').uniq();
-//   let toGroup = 'New Group';
-//   do {
-//     if(!groups.includes(toGroup)) { return toGroup; }
-//     if(i === 1) {
-//       toGroup = toGroup + ' ' + i;
-//     } else {
-//       let lastSpace = toGroup.lastIndexOf(' ');
-//       toGroup = toGroup.slice(0, lastSpace + 1) + i;
-//     }
-//     i++;
-//   } while (i < 99);
-// };

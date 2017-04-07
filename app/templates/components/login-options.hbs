@@ -41,9 +41,7 @@
       {{input class='input tags-input' type='repeat password' value=repeatPassword size=20}}</p>
       <button class='login-form-button' {{action 'register' email password}}>Register</button>
     </div>
-
   {{/if}}
-
 
   {{#if session.isAuthenticated.devMode}}
     <div id='devMode-nav-icons'>

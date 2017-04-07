@@ -66,7 +66,6 @@ export default Ember.Component.extend({
         console.log(' -- triggerAction transitTo()');
         // TODO advised to not use triggerAction() - alexspeller [2:47 PM] - you can either use `sendAction` to send a classic style action to the route, or use ember-route-action-helper addon to use closure actions directly. sendAction and action bubbling is the old way of doing it (edited) [2:54] I’d advise just sticking to closure actions and using ember-route-action addon if you really need to send to routes
         this.triggerAction({ action: 'transitTo', target: this.get('route') });
-        // this.triggerAction({ action: 'transitTo', target: this.get('parentView') });
       }).catch(function(error) {
         console.log(' -- signIn error.message:');
         console.log(error.message);

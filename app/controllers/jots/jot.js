@@ -75,7 +75,7 @@ export default Ember.Controller.extend({
       jot.set('group', value);
       jot.save();
     },
-    // TODO dlJot()
+    // TODO Add feature: download Jot: dlJot()
     // dlJot() {
     //   console.log('--> dlJot() firing');
     //   this.attrs.download()

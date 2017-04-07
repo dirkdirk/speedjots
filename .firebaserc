@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "speed-jots"
+    "default": "speed-jots",
+    "staging": "speed-jots"
   }
 }

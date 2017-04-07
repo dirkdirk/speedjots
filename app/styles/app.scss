@@ -1,7 +1,6 @@
 $primary:     'deep-orange';
 $accent:      'blue';
 $warn:        'green';
-// $red:         #F44336;
 $red:         'red';
 
 @import 'ember-paper';
@@ -20,14 +19,6 @@ body > div.ember-view {
   flex: 1;
   display: flex;
 }
-
-// .site-nav-container {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-// }
 
 *::-webkit-scrollbar {
   width: 5px;
@@ -50,10 +41,6 @@ h1, h2, h3 {
 
 .app-index-rabbit {
   margin: 20px 30px;
-}
-
-.jots-index-rabbit {
-  margin-top: 30px;
 }
 
 .index-text {
@@ -95,6 +82,13 @@ hr {
   cursor: pointer;
 }
 
+.how-to-table {
+  border: none;
+  .center {
+    text-align: center;
+  }
+}
+
 .how-to-link-button {
   border: none;
   background-color: color($primary, '400');
@@ -104,23 +98,12 @@ hr {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
 }
 
-.how-to-table {
-  border: none;
-  .center {
-    text-align: center;
-  }
-}
-
 .cursor-pointer {
   cursor: pointer;
 }
 
 .center {
   text-align: center;
-}
-
-.bg-primary {
-  background-color: color($accent, '400');
 }
 
 .how-to-col1 {
