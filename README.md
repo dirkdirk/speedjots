@@ -97,7 +97,7 @@ Structure:
     "group" : "Not Grouped",
     "tags" : "Tag 1",
     "text" : "Text 1",
-    "title" : "Jot 1"
+    "title" : "Jot 1",
     "dateCreated" : 1491513368830,
     "inTrash" : false,    
   } ],
