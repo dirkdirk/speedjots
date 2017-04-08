@@ -16,4 +16,4 @@
 npm-debug.log*
 testem.log
 .dirk*
-/config/*
+/config/environment_actual.js

@@ -7,11 +7,11 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
     firebase: {
-      apiKey: "AIzaSyBGFRaMp3XIbJxXq_f8WoAxkwYEttedctg",
-      authDomain: "speed-jots.firebaseapp.com",
-      databaseURL: "https://speed-jots.firebaseio.com",
-      storageBucket: "speed-jots.appspot.com",
-      messagingSenderId: "931687315620"
+      apiKey: "",
+      authDomain: "",
+      databaseURL: "",
+      storageBucket: "",
+      messagingSenderId: ""
     },
     torii: {
       sessionServiceName: 'session'
