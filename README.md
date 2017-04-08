@@ -98,6 +98,8 @@ Structure:
     "tags" : "Tag 1",
     "text" : "Text 1",
     "title" : "Jot 1"
+    "dateCreated" : 1491513368830,
+    "inTrash" : false,    
   } ],
   "settings" : [ {
     "lastLogin" : 1490374848189,
