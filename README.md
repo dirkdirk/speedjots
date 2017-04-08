@@ -1,7 +1,26 @@
-# speed-jots
+# [speedjots.com](https://speedjots.com)
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is an open source Ember project for an online cloud based note taker.
+
+It's simple, easy, and modern.  And it's single minded: only takes notes.
+
+Please raise issues and submit feature requests by opening an issue at the link at the top. Just keep in mind that the point is to keep features to the bare necessities.
+
+Pull requests are of course welcomed!
+
+## What's next?
+
+1. Add more login options: FB and Github (and possibly email).
+
+1. Add option to print: open a new webpage with only the Jot's title, tags, and content so user can print from there.  (Or maybe employ: [printjs](http://printjs.crabbly.com/))
+
+1. Add option to download all or a single Jot as a text file. Not sure how to go about this, but [ember-cli-file-saver](https://github.com/cogniteev/ember-cli-file-saver) might help.
+
+1. Enable mobile drag and drop. [ios-html5-drag-drop-shim](https://github.com/timruffles/ios-html5-drag-drop-shim) might be helpful.
+
+1. Add markdown support to the editor? [simditor-markdown](https://github.com/mycolorway/simditor-markdown)
+
+1. Refactor code.
 
 ## Prerequisites
 
