@@ -16,4 +16,4 @@
 npm-debug.log*
 testem.log
 .dirk*
-.data-dirk*
+data-dirk*
