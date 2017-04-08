@@ -1,18 +1,20 @@
-# [speedjots.com](https://speedjots.com)
+# [SpeedJots.com](https://speedjots.com)
 
-This is an open source Ember project for an online cloud based note taker.
+An open source Ember project for an online cloud based notes called SpeedJots.
 
 It's simple, easy, and modern.  And it's single minded: only takes notes.
 
-Please raise issues and submit feature requests by opening an issue at the link at the top. Just keep in mind that the point is to keep features to the bare necessities.
+Please raise issues and submit feature requests by opening an issue at the link at the top. Keep in mind that the point is to keep features to the bare necessities.
 
-Pull requests are of course welcomed!
+Pull requests are of course welcome!
 
 Note: for development `config/environment.js` needs to be updated with your own Firebase config info.
 
-## What's next?
+## What's next for SpeedJots?
 
-1. Add mock data for developers.
+Any help with the following is greatly appreciated:
+
+1. Set up a proper dev environment by adding mock data and a bypass for the login.
 
 1. Add more login options: FB and Github (and possibly email).
 
@@ -26,6 +28,8 @@ Note: for development `config/environment.js` needs to be updated with your own 
 
 1. Add link to this Github repo on the app somewhere.
 
+1. Setup a demo site for users to try before logging in for the first time.
+
 1. Refactor code.
 
 ## Prerequisites
@@ -38,26 +42,75 @@ You will need the following things properly installed on your computer.
 * [Ember CLI](https://ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
 
-## Installation
+## Installation and Setup
 
 * `git clone <repository-url>` this repository
 * `cd speed-jots`
 * `npm install`
 * `bower install`
 
-## Running / Development
+### Firebase Setup
+
+Start a Firebase project to act as a backend database and allow for Google login:
+
+1. Log into your Firebase console.
+1. 'Create New Project' with any name.
+1. Click 'Add Firebase to your web app' and copy the info.
+1. Open app/config/environment.js in a text editor and edit var ENV's firebase property:
+```json
+firebase: {
+   apiKey: "[your pasted info here]",
+   authDomain: "[your pasted info here]",
+   databaseURL: "[your pasted info here]",
+   storageBucket: "[your pasted info here]",
+   messagingSenderId: "[your pasted info here]"
+},
+```
+1. Go back to your Firebase console.
+1. Click 'Authentication' in left menu.
+1. Click 'Sign-In Method' under Authentication title.
+1. Enable Google
+   * Mouse over Google.
+   * Click the pencil.
+   * Toggle the 'Enable' switch.
+   * Click 'Save'
+1. Click 'Rules' under Realtime Database title.
+1. Cut and paste the following and click 'Publish'
+```json
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid"
+      }
+    }
+  }
+}
+```
+#### Database
+
+Structure:
+```json
+    "userid_generated_by_login" : {
+      "jots" : [ {
+        "group" : "Not Grouped",
+        "tags" : "Tag 1",
+        "text" : "Text 1",
+        "title" : "Jot 1"
+      } ],
+      "settings" : [ {
+        "lastLogin" : 1490374848189,
+        "theme" : "light"
+      } ]
+    },
+```
+Note: `theme` is not used yet.
+
+## Running and Development
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
 
 ### Building
 
@@ -66,12 +119,10 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+`$ ember build && firebase deploy`
 
 ## Further Reading / Useful Links
 
-* [ember.js](http://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+* [ember.js](http://emberjs.com)
+* [ember-cli](https://ember-cli.com)
+* [Firebase](https://firebase.google.com)
