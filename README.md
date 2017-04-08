@@ -8,7 +8,11 @@ Please raise issues and submit feature requests by opening an issue at the link 
 
 Pull requests are of course welcomed!
 
+Note: for development `config/environment.js` needs to be updated with your own Firebase config info.
+
 ## What's next?
+
+1. Add mock data for developers.
 
 1. Add more login options: FB and Github (and possibly email).
 
