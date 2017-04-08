@@ -57,7 +57,7 @@ Start a Firebase project to act as a backend database and allow for Google login
 1. 'Create New Project' with any name.
 1. Click 'Add Firebase to your web app' and copy the info.
 1. Open app/config/environment.js in a text editor and edit var ENV's firebase property:
-```json
+```javascript
 firebase: {
    apiKey: "[your pasted info here]",
    authDomain: "[your pasted info here]",
