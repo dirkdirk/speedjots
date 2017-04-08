@@ -2,7 +2,7 @@
 
 An open source Ember project for an online cloud based notes called SpeedJots.
 
-It's simple, easy, and modern.  And it's single minded: only takes notes.
+It's simple, easy, and single minded: notes only.
 
 Please raise issues and submit feature requests by opening an issue at the link at the top. Keep in mind that the point is to keep features to the bare necessities.
 
