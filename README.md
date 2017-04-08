@@ -41,6 +41,7 @@ You will need the following things properly installed on your computer.
 * [Bower](https://bower.io/)
 * [Ember CLI](https://ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
+* [Firebase CLI](https://firebase.google.com/docs/cli/)
 
 ## Installation and Setup
 
