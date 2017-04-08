@@ -56,8 +56,8 @@ export default Ember.Controller.extend({
     trashJot(jot) {
       console.log('--> trashJot() firing');
       let timeStamp = Date.now();
-      this.set('jot.inTrash', true);
-      this.set('jot.dateTrashed', timeStamp);
+      this.set('model.jot.inTrash', true);
+      this.set('model.jot.dateTrashed', timeStamp);
       jot.save();
     },
     destroyJot(jot) {
