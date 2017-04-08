@@ -57,15 +57,15 @@ Start a Firebase project to act as a backend database and allow for Google login
 1. 'Create New Project' with any name.
 1. Click 'Add Firebase to your web app' and copy the info.
 1. Open app/config/environment.js in a text editor and edit var ENV's firebase property:
-```javascript
-firebase: {
-   apiKey: "[your pasted info here]",
-   authDomain: "[your pasted info here]",
-   databaseURL: "[your pasted info here]",
-   storageBucket: "[your pasted info here]",
-   messagingSenderId: "[your pasted info here]"
-},
-```
+   ```javascript
+   firebase: {
+      apiKey: "[your pasted info here]",
+      authDomain: "[your pasted info here]",
+      databaseURL: "[your pasted info here]",
+      storageBucket: "[your pasted info here]",
+      messagingSenderId: "[your pasted info here]"
+   },
+   ```
 1. Go back to your Firebase console.
 1. Click 'Authentication' in left menu.
 1. Click 'Sign-In Method' under Authentication title.
@@ -76,18 +76,18 @@ firebase: {
    * Click 'Save'
 1. Click 'Rules' under Realtime Database title.
 1. Cut and paste the following and click 'Publish'
-```json
-{
-  "rules": {
-    "users": {
-      "$uid": {
-        ".read": "auth != null && auth.uid == $uid",
-        ".write": "auth != null && auth.uid == $uid"
-      }
-    }
-  }
-}
-```
+   ```json
+   {
+     "rules": {
+       "users": {
+         "$uid": {
+           ".read": "auth != null && auth.uid == $uid",
+           ".write": "auth != null && auth.uid == $uid"
+         }
+       }
+     }
+   }
+   ```
 #### Database
 
 Structure:
