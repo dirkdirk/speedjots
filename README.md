@@ -20,6 +20,8 @@ Pull requests are of course welcomed!
 
 1. Add markdown support to the editor? [simditor-markdown](https://github.com/mycolorway/simditor-markdown)
 
+1. Add link to this Github repo on the app somewhere.
+
 1. Refactor code.
 
 ## Prerequisites
