@@ -92,18 +92,18 @@ Start a Firebase project to act as a backend database and allow for Google login
 
 Structure:
 ```json
-    "userid_generated_by_login" : {
-      "jots" : [ {
-        "group" : "Not Grouped",
-        "tags" : "Tag 1",
-        "text" : "Text 1",
-        "title" : "Jot 1"
-      } ],
-      "settings" : [ {
-        "lastLogin" : 1490374848189,
-        "theme" : "light"
-      } ]
-    },
+"userid_generated_by_login" : {
+  "jots" : [ {
+    "group" : "Not Grouped",
+    "tags" : "Tag 1",
+    "text" : "Text 1",
+    "title" : "Jot 1"
+  } ],
+  "settings" : [ {
+    "lastLogin" : 1490374848189,
+    "theme" : "light"
+  } ]
+},
 ```
 Note: `theme` is not used yet.
 
