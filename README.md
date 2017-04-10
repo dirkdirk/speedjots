@@ -14,8 +14,6 @@ Note: for development `config/environment.js` needs to be updated with your own 
 
 Any help with the following is greatly appreciated:
 
-1. Set up a proper dev environment by adding mock data and a bypass for the login.
-
 1. Add more login options: FB and Github (and possibly email).
 
 1. Add option to print: open a new webpage with only the Jot's title, tags, and content so user can print from there.  (Or maybe employ: [printjs](http://printjs.crabbly.com/))
@@ -52,7 +50,9 @@ You will need the following things properly installed on your computer.
 
 ### Firebase Setup
 
-Start a Firebase project to act as a backend database and allow for Google login:
+This repo is already hooked to a development Firebase backend out of the box.  Well, ain't that nice!
+
+However, if you prefer your own Firebase backend:
 
 1. Log into your Firebase console.
 1. 'Create New Project' with any name.
