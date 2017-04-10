@@ -1,12 +1,10 @@
 # [SpeedJots.com](https://speedjots.com)
 
-An open source Ember SAAS project for taking notes called SpeedJots.
+An open source Ember SAAS project for taking notes called SpeedJots: simple, easy, and single minded - jots only.
 
-It's simple, easy, and single minded: jots only.
+Give it a whirl at [SpeedJots.com](https://speedjots.com).
 
-See it in action and give it a whirl at [SpeedJots.com](https://speedjots.com).
-
-Please raise issues and submit feature requests by opening an issue at the link at the top. Keep in mind that the point is to keep features to the bare necessities.
+Ask questions, raise issues, and submit feature requests by opening an issue. Keep in mind that the point is to keep features to the bare necessities.
 
 Pull requests are of course welcome!
 
