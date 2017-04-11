@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('jot', {path: ':jot_id'});
     this.route('howTo');
   });
+  this.route('print', {path: 'print/:jot_id'});
 });
 
 export default Router;

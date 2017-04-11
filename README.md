@@ -16,7 +16,7 @@ Any help with the following is greatly appreciated:
 
 1. Add option for use to delete their account.
 
-1. Add option to print: open a new webpage with only the Jot's title, tags, and content so user can print from there.  (Or maybe employ: [printjs](http://printjs.crabbly.com/))
+1. Change print to employ: [printjs](http://printjs.crabbly.com/) or is it fine the way it is?
 
 1. Add option to download all or a single Jot as a text file. Not sure how to go about this, but [ember-cli-file-saver](https://github.com/cogniteev/ember-cli-file-saver) might help.
 

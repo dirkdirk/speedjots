@@ -25,6 +25,7 @@
     {{/if}}
   </div>
   {{paper-icon 'check-circle' id='status-icon' title='Save' click=(action 'saveJotNow')}}
+  {{#link-to 'print' model.jot.id target='_blank'}}{{paper-icon 'print' id='print-icon' title='Print'}}{{/link-to}}
 {{/paper-toolbar}}
 {{!-- end Title and Tags --}}
 
@@ -45,6 +46,7 @@
       {{paper-icon 'delete' class='delete-icon' title='Trash' click=(action 'trashJot' model.jot)}}
   {{/if}}
 </div>
+{{!-- end Editor --}}
 
 {{!-- TODO Add feature: download Jot in text file. --}}
 {{!-- {{paper-icon 'file-download' class='download-icon' title='Download Jot' click=(action 'dlJot' model.jot)}} --}}
