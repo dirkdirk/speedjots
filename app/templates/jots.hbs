@@ -139,17 +139,14 @@
     {{!-- / Groups in collapsible panels --}}
   {{/paper-sidenav}}
 
-  <div id='editor-div' class='layout-column'>
-    {{#paper-content id='simditor-float' padding=true}}
+  {{!-- Toggle left nav icon  --}}
+  {{#paper-sidenav-toggle name='left' as |toggleAction|}}
+    {{paper-icon 'menu' class='hide-gt-sm toggle-nav-icon' title='Toggle menu' click=(action toggleAction)}}
+  {{/paper-sidenav-toggle}}
+  {{!-- / Toggle left nav icon  --}}
 
-      {{!-- Toggle left nav  --}}
-      {{#paper-sidenav-toggle name='left' as |toggleAction|}}
-        {{paper-icon 'menu' class='hide-gt-sm toggle-nav-icon' title='Toggle menu' click=(action toggleAction)}}
-      {{/paper-sidenav-toggle}}
-      {{!-- / Toggle left nav  --}}
-
-      {{outlet}}
-    {{/paper-content}}
-  </div>
+  {{#paper-content id='simditor-float' class='editor-div' padding=true}}  {{!-- id='simditor-float' is used by simditor script --}}
+    {{outlet}}
+  {{/paper-content}}
 
 {{/paper-sidenav-container}}
