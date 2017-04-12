@@ -41,7 +41,7 @@ md-sidenav {
   width: 78%
 }
 
-.edit-group-icon {
+.group-panel-icon {
   position: absolute;
   top: 4px;
   left: 4px;
@@ -80,6 +80,15 @@ md-sidenav {
     padding: 10px;
     cursor: pointer;
   }
+}
+
+.github-icon {
+  cursor: pointer;
+  font-size: 1.6em;
+}
+
+.md-menu-github-icon {
+  margin: auto 16px auto 2px;
 }
 
 .new-group-icon {

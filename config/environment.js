@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'speed-jots',
     environment: environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     firebase: {
       apiKey: "AIzaSyD6vTFAtiL_3gZN9J5Wzu4phkuak05mCO0",
       authDomain: "speedjotsdev.firebaseapp.com",

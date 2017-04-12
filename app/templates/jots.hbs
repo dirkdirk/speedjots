@@ -9,7 +9,7 @@
     {{#paper-toolbar}}
       {{#paper-toolbar-tools class='nav-title-toolbar layout-row layout-align-space-between md-whiteframe-2dp'}}
         <div class='flex-nogrowth'>
-          {{#link-to 'jots.howTo' class='flex-nogrowth'}}<img src='assets/favicons/favicon-96x96.png' id='menu-logo'>{{/link-to}}
+          {{#link-to 'jots' class='flex-nogrowth'}}<img src='assets/favicons/favicon-96x96.png' id='menu-logo'>{{/link-to}}
         </div>
         <div class='flex-nogrowth'>
           {{#link-to 'jots' class='flex-nogrowth nav-speed-jots-text'}}<nobr>Speed Jots</nobr>{{/link-to}}
@@ -21,7 +21,7 @@
     {{/paper-toolbar}}
     {{!-- / Logo, title, and login --}}
 
-    {{!-- Icons --}}
+    {{!-- Top icons --}}
     <div class='layout-row layout-align-space-around-center nav-icons'>
       {{!-- TODO Add feature: download all apps in single text file as backup. --}}
       {{!-- <div class='flex-none'>
@@ -40,7 +40,7 @@
         {{paper-icon 'add-circle-outline' class='new-jot-icon' title='Add new jot' click=(action 'newJot')}}
       </div>
     </div>
-    {{!-- / Icons --}}
+    {{!-- / Top icons --}}
 
     {{!-- Search & Results --}}
     {{#filter-content content=sortedNotInTrash properties='title tags' as |filtered query|}}
@@ -65,7 +65,7 @@
                   {{#paper-toolbar-tools class='nav-group-toolbar'}}
                     {{#paper-menu isOpen=false offset='15 20' as |menu|}}
                       {{#menu.trigger}}
-                        {{paper-icon 'create' class='edit-group-icon' title='Edit group title'}}
+                        {{paper-icon 'create' class='group-panel-icon' title='Edit group title'}}
                       {{/menu.trigger}}
                       {{#menu.content width=6 as |content|}}
                         {{#content.menu-item onClick=null}}
@@ -110,7 +110,7 @@
               {{#p.toggle}}
                 {{#paper-toolbar id='trashToolbar'}}
                   {{#paper-toolbar-tools class='nav-group-toolbar'}}
-                    {{paper-icon 'delete-forever' class='edit-group-icon' title='Empty trash' click=(action 'emptryTrash')}}
+                    {{paper-icon 'delete-forever' class='group-panel-icon' title='Empty trash' click=(action 'emptryTrash')}}
                     Trash
                     <span class='flex'></span>
                     {{#paper-button iconButton=true}}

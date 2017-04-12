@@ -9,8 +9,23 @@
       {{/if}}
     {{/menu.trigger}}
     {{#menu.content width=4 as |content|}}
+      {{#content.menu-item onClick='toHowTo'}}
+        {{paper-icon 'help-outline' title='How to'}}
+        How To
+      {{/content.menu-item}}
+
+      {{#content.menu-item onClick='toAbout'}}
+        {{paper-icon 'info-outline' title='About'}}
+        About
+      {{/content.menu-item}}
+
+      {{#content.menu-item onClick='toGithub'}}
+        {{fa-icon 'github' class='github-icon md-menu-github-icon' title='Github repo'}}
+        <span style='position:relative;bottom:4px;'>Github</span>
+      {{/content.menu-item}}
+
       {{#content.menu-item onClick='signOut'}}
-        {{paper-icon 'clear' class='md-menu-align-target'}}
+        {{paper-icon 'highlight-off' class='md-menu-align-target' title='Log out'}}
         Log out
       {{/content.menu-item}}
     {{/menu.content}}

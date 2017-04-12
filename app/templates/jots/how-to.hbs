@@ -1,144 +1,134 @@
-{{#if session.isAuthenticated}}
-  {{#paper-toolbar class='md-whiteframe-4dp'}}
-    <h1 class='center'>How to Speed Jot</h1>
-  {{/paper-toolbar}}
+{{#paper-toolbar class='md-whiteframe-4dp'}}
+  <h1 class='center'>How to Jot</h1>
+{{/paper-toolbar}}
 
-  {{#paper-card as |card|}}
-    {{#card.title class='bg-accent' as |title|}}
-      {{#title.text as |text|}}
-        {{#text.headline class='center'}}Menu{{/text.headline}}
-      {{/title.text}}
-    {{/card.title}}
-    {{#card.content}}
-      <table class='how-to-table'>
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline class='center'}}Menu{{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <table class='how-to-table'>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'add-circle-outline' class='new-jot-icon' title='Add new jot'}}
-        </td><td>
-          <p>Click it to create a new jot in the 'Not Grouped' group.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'add-circle-outline' class='new-jot-icon' title='Add new jot'}}
+      </td><td>
+        <p>Click it to create a new jot in the 'Not Grouped' group.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          <h3>Jot title</h3>
-        </td><td>
-          <p>Click on a jot title to edit the jot.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        <h3>Jot title</h3>
+      </td><td>
+        <p>Click on a jot title to edit the jot.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'content-copy' class='new-group-icon' title='Drop a jot on this icon to create a new group'}}
-        </td><td>
-          <p>Drag and drop a jot onto it to create a new group.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'content-copy' class='new-group-icon' title='Drop a jot on this icon to create a new group'}}
+      </td><td>
+        <p>Drag and drop a jot onto it to create a new group.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          <h3>D&D</h3>
-        </td><td>
-          <p>Drag and drop jots on different groups to organize. On mobile devices,<br>
-             a drop down select box appears when editing a Jot to manage groups.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        <h3>D&D</h3>
+      </td><td>
+        <p>Drag and drop jots on different groups to organize. On mobile devices,<br>
+           a drop down select box appears when editing a Jot to manage groups.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'arrow-downward' title='Open all groups'}}
-          {{paper-icon 'arrow-upward' title='Close all groups'}}
-        </td><td>
-          <p>Click it to open or close all groups.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'arrow-downward' title='Open all groups'}}
+        {{paper-icon 'arrow-upward' title='Close all groups'}}
+      </td><td>
+        <p>Click it to open or close all groups.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'search' title='Search titles and tags'}}
-        </td><td>
-          <p>Type key words in the search box to display jots by title or tags.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'search' title='Search titles and tags'}}
+      </td><td>
+        <p>Type key words in the search box to display jots by title or tags.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'create' class='' title='Edit group title'}}
-        </td><td>
-          <p>Click to edit the group title.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'create' class='' title='Edit group title'}}
+      </td><td>
+        <p>Click to edit the group title.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'keyboard-arrow-down' title='Group open'}}
-          {{paper-icon 'keyboard-arrow-right' title='Group closed'}}
-        </td><td>
-          <p>Click group titles or the arrows to open and close the group.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'keyboard-arrow-down' title='Group open'}}
+        {{paper-icon 'keyboard-arrow-right' title='Group closed'}}
+      </td><td>
+        <p>Click group titles or the arrows to open and close the group.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          <img src='../assets/favicons/favicon-32x32.png'>
-        </td><td>
-          <p>Click the rabbit to see these instructions.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'delete-forever' class='delete-icon-how-to' title='Empty Trash'}}
+      </td><td>
+        <p>Click it to permanently delete all jots in the Trash.<br>
+           This icon only appears if there are trashed Jots.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'delete-forever' class='delete-icon-how-to' title='Empty Trash'}}
-        </td><td>
-          <p>Click it to permanently delete all jots in the Trash.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'account-circle' class=''}} or your<br>pretty picture
+      </td><td>
+        <p>Click it for a menu of links to: How To, About, Github, and Log out.</p>
+      </td></tr>
+    </table>
+  {{/card.content}}
+{{/paper-card}}
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'account-circle' class=''}} or your<br>pretty picture
-        </td><td>
-          <p>Click it to log out. Or don't to stay logged in.</p>
-        </td></tr>
-      </table>
-    {{/card.content}}
-  {{/paper-card}}
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline class='center'}}Editing{{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <table class='how-to-table'>
 
-  {{#paper-card as |card|}}
-    {{#card.title class='bg-accent' as |title|}}
-      {{#title.text as |text|}}
-        {{#text.headline class='center'}}Editing{{/text.headline}}
-      {{/title.text}}
-    {{/card.title}}
-    {{#card.content}}
-      <table class='how-to-table'>
+      <tr><td class='how-to-col1'>
+        <h3>Title</h3>
+      </td><td>
+        <p>Click on the Title and type to edit the title.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          <h3>Title</h3>
-        </td><td>
-          <p>Click on the Title and type to edit the title.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        <h3>Tags</h3>
+      </td><td>
+        <p>Click on the Tags to edit the tags.<br>
+           Leave a space between tags.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          <h3>Tags</h3>
-        </td><td>
-          <p>Click on the Tags to edit the tags.<br>
-             Leave a space between tags.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'check-circle' class='status-icon-green' title='Jot saved'}}
+        {{paper-icon 'check-circle' class='status-icon-red' title='Jot not saved'}}
+      </td><td>
+        <p>
+           Green = saved, red = not saved<br>
+           Jots are frequently autosaved. Click it to manually save.
+        </p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'check-circle' class='status-icon-green' title='Jot saved'}}
-          {{paper-icon 'check-circle' class='status-icon-red' title='Jot not saved'}}
-        </td><td>
-          <p>
-             Green = saved, red = not saved<br>
-             Jots are frequently autosaved. Click it to manually save.
-          </p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'print' title='Print'}}
+      </td><td>
+        <p>Click it to open a new browser tab with only the Jot's content and print from there.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'print' title='Print'}}
-        </td><td>
-          <p>Click it to open a new browser tab with only the Jot's content and print from there.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'delete' class='delete-icon-how-to' title='Trash'}}
+      </td><td>
+        <p>Click it to move the jot into the Trash.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'delete' class='delete-icon-how-to' title='Trash'}}
-        </td><td>
-          <p>Click it to move the jot into the Trash.</p>
-        </td></tr>
+      <tr><td class='how-to-col1'>
+        {{paper-icon 'delete-forever' class='delete-icon-how-to' title='Delete'}}
+      </td><td>
+        <p>Click it to permanently delete the jot.<br>
+          This icon only appears if there are trashed Jots.</p>
+      </td></tr>
 
-        <tr><td class='how-to-col1'>
-          {{paper-icon 'delete-forever' class='delete-icon-how-to' title='Delete'}}
-        </td><td>
-          <p>Click it to permanently delete the jot.<br>
-            This icon appears only if the jot is already in the Trash.</p>
-        </td></tr>
-
-      </table>
-    {{/card.content}}
-  {{/paper-card}}
-
-{{else}}
-  <h3>If you see this message, please notify the management.</h3>
-{{/if}}
+    </table>
+  {{/card.content}}
+{{/paper-card}}

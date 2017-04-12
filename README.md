@@ -24,11 +24,9 @@ Any help with the following is greatly appreciated:
 
 1. Add markdown support to the editor? [simditor-markdown](https://github.com/mycolorway/simditor-markdown)
 
-1. Add link to this Github repo on the app somewhere.
-
 1. Setup a demo site for users to try before logging in for the first time.
 
-1. Refactor code.
+1. Refactor code: move login component to it's own route.
 
 ## Prerequisites
 

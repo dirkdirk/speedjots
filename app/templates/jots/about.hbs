@@ -1,0 +1,50 @@
+{{#paper-toolbar class='md-whiteframe-4dp'}}
+  <h1 class='center'>About Speed Jots</h1>
+{{/paper-toolbar}}
+
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline class='center'}}Introduction{{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <p>No note taking app does exactly what I want, so I built Speed Jots for <s>myself</s> everyone.</p>
+    <p>Speed Jots does one thing and does it well:</p>
+    <ul>
+      <li>Rich text editor with the basics only.</li>
+      <li>Groups to organize Jots.</li>
+      <li>Search Jots by title and tags.</li>
+      <li>Browser accessible from any internet connected device.</li>
+      <li>Open source.</li>
+    </ul>
+  {{/card.content}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline class='center'}}Free? Ya, right.{{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <p>Currently the costs are so low, I don't mind covering them. So use Speed Jots to your heart's conent for free.</p>
+    <p>If the costs ever grow, the plan is:</p>
+    <ol>
+      <li>Ask for donations.</li>
+    </ol>
+    <p>If that doesn't work:</p>
+    <ol>
+      <li>Place some Google ads and</li>
+      <li>Offer an ad free subscription for a nominal fee.</li>
+    </ol>
+    <p>At the end of the day, even if it begins to cost me too much, you can either donate or put with a couple of ads (and continue to use it for "free").</p>
+  {{/card.content}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline class='center'}}Contact and Development{{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <p>To contact me, raise issues, report bugs, request features, click on "New Issue" here: <a href='https://github.com/dirkdirk/speedjots/issues' target='_blank'>Github Issues</a></p>
+    <p>To help with development: <a href='https://github.com/dirkdirk/speedjots' target='_blank'>Github</a></p>
+    <p>&nbsp;</p>
+  {{/card.content}}
+{{/paper-card}}

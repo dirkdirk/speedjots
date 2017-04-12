@@ -1,15 +1,9 @@
-{{#if session.isAuthenticated}}
+{{#paper-toolbar class='md-whiteframe-4dp'}}
+  <h1 class='index-text'>Speed Jots</h1>
+{{/paper-toolbar}}
 
-  {{#paper-toolbar class='md-whiteframe-4dp'}}
-    <h1 class='index-text'>Speed Jots</h1>
-  {{/paper-toolbar}}
-
-  <p class='index-text app-index-rabbit'><img src='assets/favicons/apple-touch-icon-72x72.png'></p>
-  <p class='index-text'>Know what you're doing?<br>Jot away!</p>
-  <p class='index-text'>Self-learner?<br>Click around and see what the buttons do.<br>It's actually pretty easy.</p>
-  <p class='index-text'>Wanna be a know it all?</p>
-  <div class='center'>{{#link-to 'jots.howTo'}}<button class='how-to-link-button'>How to ...</button>{{/link-to}}</div>
-
-{{else}}
-  <h3>If you see this message, please notify the management.</h3>
-{{/if}}
+<p class='index-text app-index-rabbit'><img src='assets/favicons/apple-touch-icon-72x72.png'></p>
+<p class='index-text'>Know what you're doing?<br>Jot away!</p>
+<p class='index-text'>Self-learner?<br>Click around and see what the buttons do.<br>It's actually pretty easy.</p>
+<p class='index-text'>Wanna be a know it all?</p>
+<div class='center'>{{#link-to 'jots.howTo'}}<button class='how-to-link-button'>How to ...</button>{{/link-to}}</div>

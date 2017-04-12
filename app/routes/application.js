@@ -12,5 +12,11 @@ export default Ember.Route.extend({
         this.transitionTo('application');
       }
     },
+    transitToAbout() {
+      this.transitionTo('jots.about');
+    },
+    transitToHowTo() {
+      this.transitionTo('jots.howTo');
+    },
   }
 });

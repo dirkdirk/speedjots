@@ -79,5 +79,17 @@ export default Ember.Component.extend({
         this.triggerAction({ action: 'transitTo', target: this.get('route') });
       });
     },
+    toAbout: function() {
+      console.log('--> toAbout() firing');
+      this.triggerAction({ action: 'transitToAbout', target: this.get('route') });
+    },
+    toHowTo: function() {
+      console.log('--> toHowTo() firing');
+      this.triggerAction({ action: 'transitToHowTo', target: this.get('route') });
+    },
+    toGithub: function() {
+      console.log('--> toGithub() firing');
+      window.open('https://github.com/dirkdirk/speedjots');
+    },
   }
 });
