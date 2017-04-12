@@ -25,7 +25,9 @@
     {{/if}}
   </div>
   {{paper-icon 'check-circle' id='status-icon' title='Save' click=(action 'saveJotNow')}}
-  {{#link-to 'print' model.jot.id target='_blank'}}{{paper-icon 'print' id='print-icon' title='Print'}}{{/link-to}}
+  {{#if (not device.isMobile)}}
+    {{#link-to 'print' model.jot.id target='_blank'}}{{paper-icon 'print' id='print-icon' title='Print'}}{{/link-to}}
+  {{/if}}
 {{/paper-toolbar}}
 {{!-- end Title and Tags --}}
 
