@@ -59,10 +59,26 @@ h1, h2, h3 {
   letter-spacing: 0.07em;
 }
 
+.login-icon {
+  padding: 12px;
+  cursor: pointer;
+  font-size: 1.6em;
+}
+
 .google-login-icon {
   color: #4081f8;
-  font-size: 1.4em;
-  cursor: pointer;
+}
+
+.fb-login-icon {
+  color: #435bae;
+}
+
+.github-login-icon {
+  color: #171515;
+}
+
+.twitter-login-icon {
+  color: #039ff6;
 }
 
 hr {

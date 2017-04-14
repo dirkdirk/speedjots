@@ -34,7 +34,11 @@
 {{else}}
 
   <p class='index-text-login'>Login</p>
-  {{fa-icon 'google' class='google-login-icon' title='Login with a Google account.' click=(action 'signIn' 'google')}}
+  {{fa-icon 'google'   class='login-icon google-login-icon'  title='Login with a Google account.'   click=(action 'signIn' 'google')}}
+  {{fa-icon 'facebook' class='login-icon fb-login-icon'      title='Login with a Facebook account.' click=(action 'signIn' 'facebook')}}
+  {{fa-icon 'github'   class='login-icon github-login-icon'  title='Login with a Github account.'   click=(action 'signIn' 'github')}}
+  {{fa-icon 'twitter'  class='login-icon twitter-login-icon' title='Login with a Twitter account.'  click=(action 'signIn' 'twitter')}}
+  {{fa-icon 'user-o'   class='login-icon anon-login-icon'    title='Login anonmymously.'            click=(action 'signIn' 'anonymous')}}
 
 {{/if}}
 
