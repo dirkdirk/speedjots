@@ -5,7 +5,7 @@
             label='Title'
             value=model.jot.title
             required=true
-          focus-out='saveJotNow' }}
+            focus-out='saveJotNow' }}
   </div>
   <div class='center'>
     {{input class='jot-input jot-input-tags'
@@ -16,7 +16,7 @@
   </div>
   <div class='center'>
     {{#if device.isMobile}}
-      {{#x-select class='jot-input jot-input-tags' value=model.jot.group action='mobileSelectGroup' as |xs|}}
+      {{#x-select class='jot-input jot-input-mobile-group-select' value=model.jot.group action='mobileSelectGroup' as |xs|}}
         {{#xs.option value='newGroup_exckbvu45'}}Create a new Group{{/xs.option}}
         {{#each jotsUniq as |jot|}}
           {{#xs.option value=jot.group}}{{jot.group}}{{/xs.option}}

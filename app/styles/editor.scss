@@ -29,6 +29,13 @@
   color: lighten(color($accent, 'A200'), 30%);
 }
 
+.jot-input-mobile-group-select {
+  margin-bottom: 10px;
+  font-size: 0.8em;
+  text-align: center;
+  color: lighten(color($accent, 'A200'), 30%);
+}
+
 #status-icon {
   position: absolute;
   top:      10px;
