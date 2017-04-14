@@ -5,7 +5,7 @@
       {{#if session.currentUser.photoURL}}
         <img class='md-menu-origin user-photo-icon' src='{{session.currentUser.photoURL}}'>
       {{else}}
-        {{paper-icon 'account-circle' class='md-menu-origin'}}
+        {{fa-icon 'user-o' class='md-menu-origin user-anonymous-icon'}}
       {{/if}}
     {{/menu.trigger}}
     {{#menu.content width=4 as |content|}}
@@ -38,7 +38,8 @@
   {{fa-icon 'facebook' class='login-icon fb-login-icon'      title='Login with a Facebook account.' click=(action 'signIn' 'facebook')}}
   {{fa-icon 'github'   class='login-icon github-login-icon'  title='Login with a Github account.'   click=(action 'signIn' 'github')}}
   {{fa-icon 'twitter'  class='login-icon twitter-login-icon' title='Login with a Twitter account.'  click=(action 'signIn' 'twitter')}}
-  {{fa-icon 'user-o'   class='login-icon anon-login-icon'    title='Login anonmymously.'            click=(action 'signIn' 'anonymous')}}
+  {{!-- TODO Use an anonymous login for a demo? --}}
+  {{!-- {{fa-icon 'user-o'   class='login-icon anon-login-icon'    title='Login anonmymously.'            click=(action 'signIn' 'anonymous')}} --}}
 
 {{/if}}
 

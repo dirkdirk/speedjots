@@ -12,8 +12,6 @@ Pull requests are of course welcome!
 
 Any help with the following is greatly appreciated:
 
-1. Add more login options: FB and Github (and possibly email).
-
 1. Add option for use to delete their account.
 
 1. Change print to employ: [printjs](http://printjs.crabbly.com/) or is it fine the way it is?
@@ -24,7 +22,7 @@ Any help with the following is greatly appreciated:
 
 1. Add markdown support to the editor? [simditor-markdown](https://github.com/mycolorway/simditor-markdown)
 
-1. Setup a demo site for users to try before logging in for the first time.
+1. Setup a demo site for users to try before logging in for the first time.  Possibly use the anonymous login option in Firebase?
 
 1. Refactor code: move login component to it's own route.
 
@@ -50,7 +48,9 @@ You will need the following properly installed on your computer.
 
 This repo is already hooked to a development Firebase backend out of the box.  Well, ain't that nice!
 
-However, if you prefer your own Firebase backend:
+Note that only the Google login works out of the box. You can activate the others in your own Firebase backend if you want.
+
+To set up your own Firebase backend:
 
 1. Log into your Firebase console.
 1. 'Create New Project' with any name.

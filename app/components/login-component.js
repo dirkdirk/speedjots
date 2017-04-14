@@ -60,6 +60,7 @@ export default Ember.Component.extend({
     signIn: function(provider) {
       console.log('--> signIn() firing');
       this.get('session').open('firebase', { provider: provider }).then(() => {
+      // this.get('session').open('firebase', { provider: provider }).then((data) => {
         // console.log(' -- data.currentUser returned from Firebase authentication');
         // console.log(data.currentUser);
         this.updateCreateUser();
