@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.inner-sidenav {
+  width: 100px;  // Fixes width bug in Gecko (Firefox) browsers.
+}
+
 #simditor-editor-div {
   width: 99%;
   margin: 12px auto;
