@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
     let timeStamp = Date.now();
     this.store.createRecord('jot', {
       title: 'Title',
-      tags: 'tags',
+      tags: '',
       content: '',
       group: 'Not Grouped',
       dateCreated: timeStamp,
