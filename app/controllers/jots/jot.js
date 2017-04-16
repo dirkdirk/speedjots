@@ -39,7 +39,18 @@ export default Ember.Controller.extend({
     if(jot.get('hasDirtyAttributes')) {
       jot.save().then(() => {
         this.updateStatusIconColor();
-        console.log('  ... dirty model successfully saved');
+        console.log('  ... dirty jot successfully saved');
+      });
+    }
+    // Persist entire model if dirty. If Jot1's content is edited and a user selects
+    //   Jot2 (from the navbar), Jot1's content is not persisted to firebase, but
+    //   the model remains dirty.
+    let jots = this.get('model.jots');
+    if(jots.isAny('hasDirtyAttributes')) {
+      console.log('  ... found dirty attrs');
+      jots.save().then(() => {
+        this.updateStatusIconColor();
+        console.log('  ... all dirty jots successfully saved');
       });
     }
   },
@@ -85,6 +96,7 @@ export default Ember.Controller.extend({
   },
 
   simditorOptions: {
+    // placeholder: 'Wisdom goes here ...',
     //  toolbar: [ 'title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', 'ol', 'ul', 'blockquote', 'code', 'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment' ],
     toolbar: [ 'title', 'fontScale', 'bold', 'italic', 'underline', 'strikethrough',
                'color', 'ol', 'ul', 'code', 'table',

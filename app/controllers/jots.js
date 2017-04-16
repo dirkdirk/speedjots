@@ -21,9 +21,9 @@ export default Ember.Controller.extend({
     console.log('--> saveNewJot() firing ...');
     let timeStamp = Date.now();
     this.store.createRecord('jot', {
-      title: 'New Jot Title',
-      tags: 'new',
-      content: '<p>Insert wisdom here ...</p>',
+      title: 'Title',
+      tags: 'tags',
+      content: '',
       group: 'Not Grouped',
       dateCreated: timeStamp,
       inTrash: false

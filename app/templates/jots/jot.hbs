@@ -37,6 +37,7 @@
                     update=(action (mut model.jot.content))
                     toolbar=simditorOptions.toolbar
                     editor=(mut editor)
+                    placeholder='Wisdom goes here ...'
                     onValuechanged=(action 'saveJotSlow')
                     onBlur=(action 'saveJotNow') }}
 </div>
