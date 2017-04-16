@@ -100,7 +100,7 @@ export default Ember.Controller.extend({
     //  toolbar: [ 'title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', 'ol', 'ul', 'blockquote', 'code', 'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment' ],
     toolbar: [ 'title', 'fontScale', 'bold', 'italic', 'underline', 'strikethrough',
                'color', 'ol', 'ul', 'code', 'table',
-               'indent', 'outdent', 'alignment' ],
+               'outdent', 'indent', 'alignment' ],
   },
 
 });
