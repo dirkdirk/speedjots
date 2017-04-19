@@ -15,5 +15,4 @@
 /libpeerconnection.log
 npm-debug.log*
 testem.log
-.dirk*
-/config/dirk/*
+/dirk
