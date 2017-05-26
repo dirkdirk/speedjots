@@ -27,10 +27,12 @@ export default Ember.Controller.extend({
       group: 'Not Grouped',
       dateCreated: timeStamp,
       inTrash: false
-    }).save().then((result) => {
-      console.log('  ... created a new jot with id: ' + result.id);
-      this.transitionToRoute('jots.jot', result.id);
-    });
+    }).save()
+      .then((result) => {
+        console.log('  ... created a new jot with id: ' + result.id);
+        this.transitionToRoute('jots.jot', result.id);
+      })
+      .catch(e => { console.log(e.errors); });
   },
 
   actions: {
@@ -48,7 +50,7 @@ export default Ember.Controller.extend({
       jot.set('group', toGroup);
       jot.set('inTrash', false);
       jot.set('dateTrashed', null);
-      jot.save();
+      jot.save().catch(e => { console.log(e.errors); });
       this.send('openPanel', toGroup);
     },
     editGroupTitle(e) {
@@ -58,12 +60,12 @@ export default Ember.Controller.extend({
       let oldGroupTitle = e.target.placeholder;
       model.forEach(function(jot) {
         let group = jot.get('group');
-        if( group === oldGroupTitle && newGroupTitle.length >0 ) {
+        if( group === oldGroupTitle && newGroupTitle.length > 0 ) {
           console.log(' ... editing group title of jot');
           jot.set('group', newGroupTitle);
         }
       });
-      model.save();
+      model.save().catch(e => { console.log(e.errors); });
     },
     openAllGroups()      { this.get('panelActions').openAll('allGroups'); },
     closeAllGroups()     { this.get('panelActions').closeAll('allGroups'); },
@@ -76,14 +78,14 @@ export default Ember.Controller.extend({
       let timeStamp = Date.now();
       jot.set('inTrash', true);
       jot.set('dateTrashed', timeStamp);
-      jot.save();
+      jot.save().catch(e => { console.log(e.errors); });
     },
     emptryTrash() {
-      console.log('--> moveJotToTrash() firing');
+      console.log('--> emptryTrash() firing');
       let model = this.get('model');
       let trashedJots = this.get('inTrash');
       trashedJots.forEach((jot) => jot.deleteRecord());
-      model.save();
+      model.save().catch(e => { console.log(e.errors); });
       this.transitionToRoute('jots');
     },
     // TODO Add feature: download all jots action: dlAllJots()

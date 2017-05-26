@@ -14,7 +14,7 @@ export default Ember.Component.extend({
            .then((result) => {
              console.log(' -- updating lastLogin timestamp');
              result.set('lastLogin', timeStamp);
-             result.save();
+             result.save().catch(e => { console.log(e.errors); });
            })
            .catch((error) => {
              console.log(' -- updateCreateUser error.message');
@@ -32,7 +32,7 @@ export default Ember.Component.extend({
                               "inTrash": false,
                               "dateCreated" : timeStamp } }
                });
-               newUser.save();
+               newUser.save().catch(e => { console.log(e.errors); });
              }
            });
     }

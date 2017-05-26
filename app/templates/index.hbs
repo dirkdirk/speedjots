@@ -1,6 +1,4 @@
-{{#if session.isAuthenticated}}
-  {{!-- Do nothing --}}
-{{else}}
+{{#unless session.isAuthenticated}}
   <div class='layout-column layout-fill'>
     {{#paper-toolbar class='flex-none md-whiteframe-2dp'}}
       <h1 class='index-text'>Speed Jots</h1>
@@ -20,4 +18,4 @@
       {{login-component}}
     </div>
   </div>
-{{/if}}
+{{/unless}}

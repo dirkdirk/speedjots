@@ -23,7 +23,7 @@
 
     {{!-- Top icons --}}
     <div class='layout-row layout-align-space-around-center nav-icons'>
-      {{!-- TODO Add feature: download all apps in single text file as backup. --}}
+      {{!-- TODO Add feature: download all Jots in single text file as backup. --}}
       {{!-- <div class='flex-none'>
         {{paper-icon 'file-download' class='' title='Download all Jots' click=(action 'dlAllJots' model)}}
       </div> --}}
@@ -36,7 +36,7 @@
       {{#draggable-object-target action='moveJotToGroup' class='flex-none'}}
         {{paper-icon 'content-copy' class='new-group-icon' title='Drop a jot on this icon to create a new group'}}
       {{/draggable-object-target}}
-      <div class='flex-none new-jot-icon-div'>
+      <div class='flex-none'>
         {{paper-icon 'add-circle-outline' class='new-jot-icon' title='Add new jot' click=(action 'newJot')}}
       </div>
     </div>
@@ -50,54 +50,56 @@
           {{jot-menu-link jot=jot}}
         {{/each}}
       {{/if}}
-      <div class='cpanel-after-link-group-spacer'></div>
+      <div class='margin-bottom-28'></div>
     {{/filter-content}}
     {{!-- / Search & Results --}}
 
     {{!-- Groups in collapsible panels --}}
-    {{#paper-content padding=false}}
+    {{#paper-content id='nav-group-panels' padding=false}}
       {{#each notInTrashGroupedJots as |group|}}
         {{#cp-panels name='allGroups' as |panels|}}
           {{#panels.panel name=group.value open=(if (eq group.value 'Not Grouped') true false) as |p|}}
-            {{#draggable-object-target action='moveJotToGroup' groupTitle=group.value}}
-              {{#p.toggle}}
-                {{#paper-toolbar accent=true}}
-                  {{#paper-toolbar-tools class='nav-group-toolbar'}}
-                    {{#paper-menu isOpen=false offset='15 20' as |menu|}}
-                      {{#menu.trigger}}
-                        {{paper-icon 'create' class='group-panel-icon' title='Edit group title'}}
-                      {{/menu.trigger}}
-                      {{#menu.content width=6 as |content|}}
-                        {{#content.menu-item onClick=null}}
-                          {{paper-icon 'create' class='md-menu-align-target'}}
-                          {{!-- placeholder sets oldGroupTitle var when editing group title --}}
-                          {{paper-input value=group.value
-                                        placeholder=group.items.[0].group
-                                        onChange=(action (mut group.value))
-                                        onBlur='editGroupTitle'}}
-                          {{paper-icon 'forward' class='cursor-pointer'}}
-                        {{/content.menu-item}}
-                      {{/menu.content}}
-                    {{/paper-menu}}
-                    {{group.value}}
-                    <span class='flex'></span>
-                    {{#paper-button iconButton=true}}
-                      {{paper-icon (if p.isOpen 'keyboard-arrow-down' 'keyboard-arrow-right')}}
-                    {{/paper-button}}
-                  {{/paper-toolbar-tools}}
-                {{/paper-toolbar}}
-              {{/p.toggle}}
-              {{#p.body}}
-                {{#each group.items as |jot|}}
-                  {{#draggable-object content=jot}}
-                    {{#paper-content padding=false}}
-                      {{jot-menu-link jot=jot}}
-                    {{/paper-content}}
-                  {{/draggable-object}}
-                {{/each}}
-                <div class='cpanel-after-link-group-spacer'></div>
-              {{/p.body}}
-            {{/draggable-object-target}}
+            {{#if group.value}}
+              {{#draggable-object-target action='moveJotToGroup' groupTitle=group.value}}
+                {{#p.toggle}}
+                  {{#paper-toolbar accent=true}}
+                    {{#paper-toolbar-tools class='nav-group-toolbar'}}
+                      {{#paper-menu isOpen=false offset='15 20' as |menu|}}
+                        {{#menu.trigger}}
+                          {{paper-icon 'create' class='group-panel-icon' title='Edit group title'}}
+                        {{/menu.trigger}}
+                        {{#menu.content width=6 as |content|}}
+                          {{#content.menu-item onClick=null}}
+                            {{paper-icon 'create' class='md-menu-align-target'}}
+                            {{!-- placeholder sets oldGroupTitle var when editing group title --}}
+                            {{paper-input value=group.value
+                                          placeholder=group.items.[0].group
+                                          onChange=(action (mut group.value))
+                                          onBlur='editGroupTitle'}}
+                            {{paper-icon 'forward' class='cursor-pointer'}}
+                          {{/content.menu-item}}
+                        {{/menu.content}}
+                      {{/paper-menu}}
+                      {{group.value}}
+                      <span class='flex'></span>
+                      {{#paper-button iconButton=true}}
+                        {{paper-icon (if p.isOpen 'keyboard-arrow-down' 'keyboard-arrow-right')}}
+                      {{/paper-button}}
+                    {{/paper-toolbar-tools}}
+                  {{/paper-toolbar}}
+                {{/p.toggle}}
+                {{#p.body}}
+                  {{#each group.items as |jot|}}
+                    {{#draggable-object content=jot}}
+                      {{#paper-content padding=false}}
+                        {{jot-menu-link jot=jot}}
+                      {{/paper-content}}
+                    {{/draggable-object}}
+                  {{/each}}
+                  <div class='margin-bottom-28'></div>
+                {{/p.body}}
+              {{/draggable-object-target}}
+            {{/if}}
           {{/panels.panel}}
         {{/cp-panels}}
       {{/each}}
@@ -127,7 +129,7 @@
                     {{/paper-content}}
                   {{/draggable-object}}
                 {{/each}}
-                <div class='cpanel-after-link-group-spacer'></div>
+                <div class='margin-bottom-28'></div>
               {{/p.body}}
             {{/draggable-object-target}}
           {{/panels.panel}}
@@ -135,6 +137,7 @@
       {{/if}}
       {{!-- / Trashed jots --}}
 
+      <div class='margin-bottom-28'></div>
     {{/paper-content}}
     {{!-- / Groups in collapsible panels --}}
   {{/paper-sidenav}}

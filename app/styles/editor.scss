@@ -84,3 +84,10 @@
 .toolbar-item.active {
   background-color: color($accent, '50') !important;
 }
+
+.in-trash-div {
+  color: rgba(255, 255, 255, 0.92);
+  background-color: color($red, '800');
+  padding: 10px;
+  text-align: center;
+}

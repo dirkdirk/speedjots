@@ -10,6 +10,14 @@ md-sidenav {
   padding: 0 16px 0 24px;
 }
 
+#nav-group-panels {
+  md-toolbar, .md-toolbar-tools {
+    max-height: 40px !important;
+    min-height: 40px !important;
+    border-bottom: 1px solid color($primary, '300');
+  }
+}
+
 #menu-logo {
   margin-top: 32px;
   margin-left: 6px;
@@ -56,26 +64,15 @@ md-sidenav {
 
 .menu-jot-link-div {
   padding: 10px 6px 6px 16px;
-  a:link, a:visited {
-    color: inherit;
-  }
 }
+
+// .menu-jot-link {
+//   text-decoration: none !important;
+// }
 
 .menu-jot-link.active > div {
   background-color: color($accent, '50');
-}
-
-
-.menu-jot-link {
-  text-decoration: none;
-}
-
-.cp-Panel-toggle:link {
-  text-decoration: none;
-}
-
-.cpanel-after-link-group-spacer {
-  margin-bottom: 16px;
+  font-weight: bold;
 }
 
 .nav-icons {

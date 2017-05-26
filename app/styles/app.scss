@@ -40,6 +40,14 @@ h1, h2, h3 {
   font-weight: normal;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:link, a:visited {
+  color: inherit;
+}
+
 .app-index-rabbit {
   margin: 20px 30px;
 }
@@ -89,7 +97,6 @@ hr {
 }
 
 .toggle-nav-icon {
-  // color: color($accent) !important;
   color: white !important;
   font-size: 3em;
   position: fixed;
@@ -131,4 +138,8 @@ hr {
 
 .ember-basic-dropdown-trigger {
   outline: none;
+}
+
+.margin-bottom-28 {
+  margin-bottom: 28px;
 }

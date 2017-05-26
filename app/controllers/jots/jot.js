@@ -33,43 +33,58 @@ export default Ember.Controller.extend({
   // },
 
   saveDirtyModel() {
-    console.log('--> saveDirtyModel() firing ...');
-    let jot = this.get('model.jot');
-    if(jot.get('title') === '') { jot.set('title', 'Required'); }
-    if(jot.get('hasDirtyAttributes')) {
-      jot.save().then(() => {
-        this.updateStatusIconColor();
-        console.log('  ... dirty jot successfully saved');
-      });
-    }
     // Persist entire model if dirty. If Jot1's content is edited and a user selects
     //   Jot2 (from the navbar), Jot1's content is not persisted to firebase, but
     //   the model remains dirty.
+    console.log('--> saveDirtyModel() firing ...');
     let jots = this.get('model.jots');
     if(jots.isAny('hasDirtyAttributes')) {
       console.log('  ... found dirty attrs');
-      jots.save().then(() => {
-        this.updateStatusIconColor();
-        console.log('  ... all dirty jots successfully saved');
-      });
+      jots.save()
+          .then(() => {
+            this.updateStatusIconColor();
+            console.log('  ... all dirty jots successfully saved');
+          })
+          .catch(e => {
+            console.log(e.errors);
+          });
+    }
+  },
+
+  saveDirtyJot() {
+    console.log('--> saveDirtyJot() firing ...');
+    let jot = this.get('model.jot');
+    if(jot.get('title') === '') { jot.set('title', 'Required'); }
+    if(jot.get('hasDirtyAttributes')) {
+      console.log('  ... jot is dirty');
+      jot.save()
+         .then(() => {
+           this.updateStatusIconColor();
+           console.log('  ... dirty jot successfully saved');
+           this.saveDirtyModel();
+         })
+         .catch(e => {
+           console.log('errors:');
+           console.log(e.errors);
+         });
     }
   },
 
   actions: {
     saveJotNow() {
       console.log('--> save() firing');
-      Ember.run.debounce(this, this.saveDirtyModel, 200);
+      Ember.run.debounce(this, this.saveDirtyJot, 200);
     },
     saveJotSlow() {
       console.log('--> saveJotSlow() firing');
-      Ember.run.debounce(this, this.saveDirtyModel, 5000);
+      Ember.run.debounce(this, this.saveDirtyJot, 5000);
     },
     trashJot(jot) {
       console.log('--> trashJot() firing');
       let timeStamp = Date.now();
       this.set('model.jot.inTrash', true);
       this.set('model.jot.dateTrashed', timeStamp);
-      jot.save();
+      jot.save().catch(e => { console.log(e.errors); });
     },
     destroyJot(jot) {
       console.log('--> destroyJot() firing');
@@ -84,7 +99,7 @@ export default Ember.Controller.extend({
         value = this.get('newGroupName').genName(jots);
       }
       jot.set('group', value);
-      jot.save();
+      jot.save().catch(e => { console.log(e.errors); });
     },
     // TODO Add feature: download Jot: dlJot()
     // dlJot() {
@@ -96,8 +111,9 @@ export default Ember.Controller.extend({
   },
 
   simditorOptions: {
-    // placeholder: 'Wisdom goes here ...',
-    //  toolbar: [ 'title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', 'ol', 'ul', 'blockquote', 'code', 'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment' ],
+    //  toolbar: [ 'title', 'bold', 'italic', 'underline', 'strikethrough',
+    //                'fontScale', 'color', 'ol', 'ul', 'blockquote', 'code',
+    //                'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment' ],
     toolbar: [ 'title', 'fontScale', 'bold', 'italic', 'underline', 'strikethrough',
                'color', 'ol', 'ul', 'code', 'table',
                'outdent', 'indent', 'alignment' ],

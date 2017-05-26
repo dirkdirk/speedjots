@@ -31,6 +31,14 @@
 {{/paper-toolbar}}
 {{!-- / Title and Tags --}}
 
+{{!-- In trash notice --}}
+{{#if model.jot.inTrash}}
+  <div class='in-trash-div'>
+    This jot is in the Trash.
+  </div>
+{{/if}}
+{{!-- / In trash notice --}}
+
 {{!-- Editor --}}
 <div id='simditor-editor-div'>
   {{simditor-editor value=model.jot

@@ -13,7 +13,8 @@ Router.map(function() {
     this.route('howTo');
     this.route('about');
   });
-  this.route('print', {path: 'print/:jot_id'});
+  this.route('print',          {path: 'print/:jot_id'});
+  this.route('transit-to-app', { path: '/*badurl' });  // catch-all for bad urls
 });
 
 export default Router;
