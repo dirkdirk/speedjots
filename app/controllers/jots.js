@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
   panelActions: Ember.inject.service(),
   newGroupName: Ember.inject.service(),
 
+  showSearchInput: false,
   leftSideBarOpen: false,
   sortModelBy: ['title'],
   sortGroupsBy: ['value'],
@@ -67,9 +68,9 @@ export default Ember.Controller.extend({
       });
       model.save().catch(e => { console.log(e.errors); });
     },
-    openAllGroups()      { this.get('panelActions').openAll('allGroups'); },
+    openAllGroups()      { this.get('panelActions').openAll('allGroups');  },
     closeAllGroups()     { this.get('panelActions').closeAll('allGroups'); },
-    openPanel(panelName) { this.get('panelActions').open(panelName); },
+    openPanel(panelName) { this.get('panelActions').open(panelName);       },
     // Following options also available:
     // closePanel(panelName)  { this.get('panelActions').close(panelName); },
     // togglePanel(panelName) { this.get('panelActions').toggle(panelName); },
@@ -87,6 +88,9 @@ export default Ember.Controller.extend({
       trashedJots.forEach((jot) => jot.deleteRecord());
       model.save().catch(e => { console.log(e.errors); });
       this.transitionToRoute('jots');
+    },
+    toggleShowSearchInput() {
+      this.toggleProperty('showSearchInput');
     },
     // TODO Add feature: download all jots action: dlAllJots()
     // dlAllJots() {

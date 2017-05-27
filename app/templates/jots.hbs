@@ -28,6 +28,9 @@
         {{paper-icon 'file-download' class='' title='Download all Jots' click=(action 'dlAllJots' model)}}
       </div> --}}
       <div class='flex-none'>
+        {{paper-icon 'search' title='Search titles and tags' click=(action 'toggleShowSearchInput')}}
+      </div>
+      <div class='flex-none'>
         {{paper-icon 'arrow-downward' title='Open all groups' click=(action 'openAllGroups')}}
       </div>
       <div class='flex-none'>
@@ -43,15 +46,17 @@
     {{!-- / Top icons --}}
 
     {{!-- Search & Results --}}
-    {{#filter-content content=sortedNotInTrash properties='title tags' as |filtered query|}}
-      {{paper-input id='search-input' value=query icon='search' label='Search titles & tags' onChange=(action (mut query))}}
-      {{#if (not-eq query '')}}
-        {{#each filtered as |jot|}}
-          {{jot-menu-link jot=jot}}
-        {{/each}}
-      {{/if}}
-      <div class='margin-bottom-16'></div>
-    {{/filter-content}}
+    {{#if showSearchInput}}
+      {{#filter-content content=sortedNotInTrash properties='title tags' as |filtered query|}}
+        {{paper-input id='search-input' value=query icon='search' label='Search titles & tags' onChange=(action (mut query))}}
+        {{#if (not-eq query '')}}
+          {{#each filtered as |jot|}}
+            {{jot-menu-link jot=jot}}
+          {{/each}}
+        {{/if}}
+        <div class='margin-bottom-16'></div>
+      {{/filter-content}}
+    {{/if}}
     {{!-- / Search & Results --}}
 
     {{!-- Groups in collapsible panels --}}
