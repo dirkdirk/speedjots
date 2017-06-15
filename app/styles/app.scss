@@ -6,6 +6,7 @@ $red:         'red';
 @import 'ember-paper';
 @import 'editor';
 @import 'nav';
+@import 'simditor';
 
 // From ember-paper demo app. Necessary to make separate scroll bars work.
 body.ember-application {

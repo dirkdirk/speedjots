@@ -52,9 +52,9 @@
 
 <div class='delete-icon-div'>
   {{#if model.jot.inTrash}}
-      {{paper-icon 'delete-forever' class='delete-icon' title='Delete' click=(action 'destroyJot' model.jot)}}
-    {{else}}
-      {{paper-icon 'delete' class='delete-icon' title='Trash' click=(action 'trashJot' model.jot)}}
+    {{paper-icon 'delete-forever' class='delete-icon' title='Delete' click=(action 'destroyJot' model.jot)}}
+  {{else}}
+    {{paper-icon 'delete' class='delete-icon' title='Trash' click=(action 'trashJot' model.jot)}}
   {{/if}}
 </div>
 {{!-- / Editor --}}
