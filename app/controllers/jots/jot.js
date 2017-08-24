@@ -2,13 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   newGroupName: Ember.inject.service(),
-  device: Ember.inject.service(),
-  siteGreen: '#4CAF50',
-  siteRed: '#F44336',
+  device:       Ember.inject.service(),
 
+  inactiveSaveTime:   4000,
+  inactiveToJotsTime: 600000,
+  siteGreen:   '#4CAF50',
+  siteRed:     '#F44336',
   sortModelBy: ['group'],
-  jotsSorted: Ember.computed.sort('model.jots', 'sortModelBy'),
-  jotsUniq: Ember.computed.uniqBy('jotsSorted', 'group'),
+  jotsSorted:  Ember.computed.sort('model.jots', 'sortModelBy'),
+  jotsUniq:    Ember.computed.uniqBy('jotsSorted', 'group'),
 
   updateStatusIconColorObserver: function() {
     Ember.run.debounce(this, this.updateStatusIconColor, 500);
@@ -16,7 +18,7 @@ export default Ember.Controller.extend({
 
   updateStatusIconColor() {
     console.log('--> updateStatusIconColor() firing');
-    let jot = this.get('model.jot');
+    let jot       = this.get('model.jot');
     let iconColor = jot.get('hasDirtyAttributes') ? this.get('siteRed') : this.get('siteGreen');
     Ember.$('#status-icon').css('color', iconColor);
   },
@@ -70,14 +72,22 @@ export default Ember.Controller.extend({
     }
   },
 
+  sendToJots() {
+    console.log('--> sendToJots() firing');
+    this.transitionToRoute('jots');
+  },
+
   actions: {
     saveJotNow() {
       console.log('--> save() firing');
       Ember.run.debounce(this, this.saveDirtyJot, 200);
     },
-    saveJotSlow() {
-      console.log('--> saveJotSlow() firing');
-      Ember.run.debounce(this, this.saveDirtyJot, 5000);
+    startInactiveSaveAndToJotTimers() {
+      console.log('--> startInactiveSaveAndToJotTimers() firing');
+      let inactiveSaveTime   = this.get('inactiveSaveTime');
+      let inactiveToJotsTime = this.get('inactiveToJotsTime');
+      Ember.run.debounce(this, this.saveDirtyJot, inactiveSaveTime);
+      Ember.run.debounce(this, this.sendToJots,   inactiveToJotsTime);
     },
     trashJot(jot) {
       console.log('--> trashJot() firing');

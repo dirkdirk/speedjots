@@ -7,27 +7,26 @@ export default Ember.Controller.extend({
 
   showSearchInput: false,
   leftSideBarOpen: false,
-  sortModelBy: ['title'],
-  sortGroupsBy: ['value'],
+  sortModelBy:     ['title'],
+  sortGroupsBy:    ['value'],
 
-  inTrash: Ember.computed.filterBy('model', 'inTrash', true),
+  inTrash:     Ember.computed.filterBy('model', 'inTrash', true),
   inTrashJots: Ember.computed.sort('inTrash', 'sortModelBy'),
 
-  notInTrash: Ember.computed.filterBy('model', 'inTrash', false),
-  sortedNotInTrash: Ember.computed.sort('notInTrash', 'sortModelBy'),
+  notInTrash:              Ember.computed.filterBy('model', 'inTrash', false),
+  sortedNotInTrash:        Ember.computed.sort('notInTrash', 'sortModelBy'),
   byGroupSortedNotInTrash: groupBy('sortedNotInTrash', 'group'),
-  notInTrashGroupedJots: Ember.computed.sort('byGroupSortedNotInTrash', 'sortGroupsBy'),
+  notInTrashGroupedJots:   Ember.computed.sort('byGroupSortedNotInTrash', 'sortGroupsBy'),
 
   saveNewJot() {
     console.log('--> saveNewJot() firing ...');
-    let timeStamp = Date.now();
     this.store.createRecord('jot', {
-      title: 'Title',
-      tags: '',
-      content: '',
-      group: 'Not Grouped',
-      dateCreated: timeStamp,
-      inTrash: false
+      title:       'Title',
+      tags:        '',
+      content:     '',
+      group:       'Not Grouped',
+      dateCreated: Date.now(),
+      inTrash:     false
     }).save()
       .then((result) => {
         console.log('  ... created a new jot with id: ' + result.id);
@@ -44,10 +43,10 @@ export default Ember.Controller.extend({
     },
     moveJotToGroup(jot, ops) {
       console.log('--> moveJotToGroup() firing');
-      let tagetTitle = ops.target.groupTitle;
-      let model = this.get('model');
+      let tagetTitle   = ops.target.groupTitle;
+      let model        = this.get('model');
       let newGroupName = this.get('newGroupName');
-      let toGroup = tagetTitle ? tagetTitle : newGroupName.genName(model);
+      let toGroup      = tagetTitle ? tagetTitle : newGroupName.genName(model);
       jot.set('group', toGroup);
       jot.set('inTrash', false);
       jot.set('dateTrashed', null);
@@ -56,7 +55,7 @@ export default Ember.Controller.extend({
     },
     editGroupTitle(e) {
       console.log('--> editGroupTitle() firing ...');
-      let model = this.get('model');
+      let model         = this.get('model');
       let newGroupTitle = e.target.value;
       let oldGroupTitle = e.target.placeholder;
       model.forEach(function(jot) {
@@ -83,7 +82,7 @@ export default Ember.Controller.extend({
     },
     emptryTrash() {
       console.log('--> emptryTrash() firing');
-      let model = this.get('model');
+      let model       = this.get('model');
       let trashedJots = this.get('inTrash');
       trashedJots.forEach((jot) => jot.deleteRecord());
       model.save().catch(e => { console.log(e.errors); });
