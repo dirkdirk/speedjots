@@ -82,6 +82,7 @@ export default Ember.Controller.extend({
       console.log('--> save() firing');
       Ember.run.debounce(this, this.saveDirtyJot, 200);
     },
+
     startInactiveSaveAndToJotTimers() {
       console.log('--> startInactiveSaveAndToJotTimers() firing');
       let inactiveSaveTime   = this.get('inactiveSaveTime');
@@ -89,6 +90,7 @@ export default Ember.Controller.extend({
       Ember.run.debounce(this, this.saveDirtyJot, inactiveSaveTime);
       Ember.run.debounce(this, this.sendToJots,   inactiveToJotsTime);
     },
+
     trashJot(jot) {
       console.log('--> trashJot() firing');
       let timeStamp = Date.now();
@@ -96,11 +98,13 @@ export default Ember.Controller.extend({
       this.set('model.jot.dateTrashed', timeStamp);
       jot.save().catch(e => { console.log(e.errors); });
     },
+
     destroyJot(jot) {
       console.log('--> destroyJot() firing');
       jot.destroyRecord();
       this.transitionToRoute('jots');
     },
+
     mobileSelectGroup(value) {
       console.log('--> mobileSelectGroup() firing');
       let jot  = this.get('model.jot');
@@ -111,6 +115,7 @@ export default Ember.Controller.extend({
       jot.set('group', value);
       jot.save().catch(e => { console.log(e.errors); });
     },
+
     // TODO Add feature: download Jot: dlJot()
     // dlJot() {
     //   console.log('--> dlJot() firing');
@@ -121,12 +126,13 @@ export default Ember.Controller.extend({
   },
 
   simditorOptions: {
-    //  toolbar: [ 'title', 'bold', 'italic', 'underline', 'strikethrough',
-    //                'fontScale', 'color', 'ol', 'ul', 'blockquote', 'code',
-    //                'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment' ],
     toolbar: [ 'title', 'fontScale', 'bold', 'italic', 'underline', 'strikethrough',
                'color', 'ol', 'ul', 'code', 'table',
                'outdent', 'indent', 'alignment' ],
+    // http://simditor.tower.im/docs/doc-config.html
+    // toolbar: [ 'title', 'bold', 'italic', 'underline', 'strikethrough',
+    //            'fontScale', 'color', 'ol', 'ul', 'blockquote', 'code',
+    //            'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment' ],
   },
 
 });

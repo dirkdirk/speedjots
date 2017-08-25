@@ -41,6 +41,7 @@ export default Ember.Controller.extend({
       Ember.run.debounce(this, this.saveNewJot, 300);
       this.send('openPanel', 'Not Grouped');
     },
+
     moveJotToGroup(jot, ops) {
       console.log('--> moveJotToGroup() firing');
       let tagetTitle   = ops.target.groupTitle;
@@ -53,6 +54,7 @@ export default Ember.Controller.extend({
       jot.save().catch(e => { console.log(e.errors); });
       this.send('openPanel', toGroup);
     },
+
     editGroupTitle(e) {
       console.log('--> editGroupTitle() firing ...');
       let model         = this.get('model');
@@ -67,12 +69,14 @@ export default Ember.Controller.extend({
       });
       model.save().catch(e => { console.log(e.errors); });
     },
+
     openAllGroups()      { this.get('panelActions').openAll('allGroups');  },
     closeAllGroups()     { this.get('panelActions').closeAll('allGroups'); },
     openPanel(panelName) { this.get('panelActions').open(panelName);       },
     // Following options also available:
     // closePanel(panelName)  { this.get('panelActions').close(panelName); },
     // togglePanel(panelName) { this.get('panelActions').toggle(panelName); },
+
     moveJotToTrash(jot) {
       console.log('--> moveJotToTrash() firing');
       let timeStamp = Date.now();
@@ -80,6 +84,7 @@ export default Ember.Controller.extend({
       jot.set('dateTrashed', timeStamp);
       jot.save().catch(e => { console.log(e.errors); });
     },
+
     emptryTrash() {
       console.log('--> emptryTrash() firing');
       let model       = this.get('model');
@@ -88,9 +93,11 @@ export default Ember.Controller.extend({
       model.save().catch(e => { console.log(e.errors); });
       this.transitionToRoute('jots');
     },
+
     toggleShowSearchInput() {
       this.toggleProperty('showSearchInput');
     },
+
     // TODO Add feature: download all jots action: dlAllJots()
     // dlAllJots() {
     //   console.log('--> dlAllJotsJot() firing ...');

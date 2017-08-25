@@ -21,7 +21,7 @@ export default Ember.Service.extend({
                               'Mobile', 'i');
       console.log('--> testIsMobile() firing');
       let x = testExp.test(navigator.userAgent) ? true : false;
-      console.log(' ... isMobile: ' + x);
+      // console.log(' ... isMobile: ' + x);
       this.set('isMobile', x);
   }
 });
