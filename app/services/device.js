@@ -6,7 +6,7 @@ export default Ember.Service.extend({
     this.testIsMobile();
   },
 
-  isMobile: null,
+  isMobile: false,
   testIsMobile(){
     // Resources: http://www.opentechguides.com/how-to/article/javascript/98/detect-mobile-device.html
     //            https://www.mattcromwell.com/detecting-mobile-devices-javascript/
