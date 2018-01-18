@@ -2,8 +2,9 @@ import Ember from 'ember';
 import groupBy from 'ember-group-by';
 
 export default Ember.Controller.extend({
-  panelActions: Ember.inject.service(),
-  newGroupName: Ember.inject.service(),
+  panelActions:  Ember.inject.service(),
+  newGroupName:  Ember.inject.service(),
+  userUtilities: Ember.inject.service(),
 
   showSearchInput: false,
   leftSideBarOpen: false,

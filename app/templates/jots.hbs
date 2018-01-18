@@ -15,7 +15,7 @@
           {{#link-to 'jots' class='flex-nogrowth nav-speed-jots-text'}}<nobr>Speed Jots</nobr>{{/link-to}}
         </div>
         <div class='flex-nogrowth'>
-          {{login-component}}
+          {{user-menu}}
         </div>
       {{/paper-toolbar-tools}}
     {{/paper-toolbar}}
@@ -44,6 +44,15 @@
       </div>
     </div>
     {{!-- / Top icons --}}
+
+    {{#if flashMessages.queue}}
+      <div class='flash-messages-div'>
+        <p class='center'>Messages</p>
+        {{#each flashMessages.queue as |flash|}}
+          {{flash-message flash=flash}}
+        {{/each}}
+      </div>
+    {{/if}}
 
     {{!-- Search & Results --}}
     {{#if showSearchInput}}
@@ -154,7 +163,11 @@
   {{!-- / Toggle left nav icon  --}}
 
   {{#paper-content id='simditor-float' class='editor-div'}}  {{!-- id='simditor-float' is used by simditor script --}}
-    {{outlet}}
+      {{!-- {{#if userUtilities.resetPwEmailSentFromMenu}}
+        Check your email inbox for a password reset email.
+      {{else}} --}}
+        {{outlet}}
+      {{!-- {{/if}} --}}
   {{/paper-content}}
 
 {{/paper-sidenav-container}}

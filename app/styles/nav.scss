@@ -26,6 +26,29 @@ md-sidenav {
   width:       2.8em;
 }
 
+.flash-messages-div {
+  background-color: color($primary, '400');
+  margin-bottom: 20px;
+  padding: 0 12px 12px 12px;
+}
+
+.alert {
+  margin-bottom: 12px;
+  padding: 12px;
+}
+
+.alert-success {
+  background-color: color($warn, '300');
+}
+
+.alert-warning {
+  background-color: color($red, '300');
+}
+
+.alert-danger {
+  background-color: color($red, '300');
+}
+
 .user-photo-icon {
   cursor: pointer;
   border-radius: 50%;

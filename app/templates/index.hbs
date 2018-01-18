@@ -1,6 +1,7 @@
 {{#unless session.isAuthenticated}}
   <div class='layout-column layout-fill'>
-    {{#paper-toolbar class='flex-none md-whiteframe-2dp'}}
+
+    {{#paper-toolbar class='flex-none md-whiteframe-2dp landing-page-top-toolbar'}}
       <h1 class='index-text'>Speed Jots</h1>
     {{/paper-toolbar}}
     <div class='flex-none index-description-div'>
@@ -11,11 +12,51 @@
       <h3 class='index-text'>No bloat no mess no cost</h3>
       <h3 class='index-text'>Secure and encrypted always.</h3>
     </div>
-    <div class='flex-none'>
-      <hr>
-    </div>
-    <div id='index-login-div' class='flex-none center'>
-      {{login-component}}
+
+    {{#paper-toolbar class='flex-none md-whiteframe-2dp' accent=true}}
+      <h3 class='center'>Login & Sign Up</h3>
+    {{/paper-toolbar}}
+    <div class='flex-none center'>
+      {{#if displayLoginDiv}}
+        {{#each flashMessages.queue as |flash|}}
+          {{flash-message flash=flash}}
+        {{/each}}
+        {{#if (and session.isAuthenticated (not isEmailVerified))}}
+          <div class='alert-warning'>
+            <p>Email not verified.<br>
+            Check your email inbox for a verification email.<br>Click the link therein.<br>Then come login.</p>
+            <p class='cursor-pointer' {{action 'resendEmailVerification'}}>Click here to resend verification email.</p>
+          </div>
+        {{/if}}
+        {{#if (or session.isWorking userUtilities.isLogingIn)}}
+          <p>{{fa-icon 'refresh' class='login-spinner' spin=true}}</p>
+        {{/if}}
+        <p class='index-text-login'>Social<br>
+          <div class='flex-none'><hr></div>
+          {{fa-icon 'google'   class='login-icon google-login-icon'  title='Login with a Google account.'   click=(action 'signIn' 'google')}}
+          {{fa-icon 'facebook' class='login-icon fb-login-icon'      title='Login with a Facebook account.' click=(action 'signIn' 'facebook')}}
+          {{fa-icon 'github'   class='login-icon github-login-icon'  title='Login with a Github account.'   click=(action 'signIn' 'github')}}
+          {{fa-icon 'twitter'  class='login-icon twitter-login-icon' title='Login with a Twitter account.'  click=(action 'signIn' 'twitter')}}
+        </p>
+        <p class='index-text-login'>Or</p>
+        <p class='index-text-login'>Email & Password<br>
+          <div class='flex-none'><hr></div>
+          <div class='form-div'>
+            {{#paper-form onSubmit=(action 'signIn' 'password') as |form|}}
+              {{form.input type='email' label='E-mail' value=loginEmail onChange=(action (mut loginEmail)) customValidations=emailValidation required=true}}
+              {{form.input type='password' label='Password' value=loginPw onChange=(action (mut loginPw)) required=true}}
+              <br>
+              {{#form.submit-button raised=true}}
+                Login - Sign up
+              {{/form.submit-button}}
+              <p class='xxs-font'>
+                Forget password?<br>
+                Enter your email above then<span class='cursor-pointer' {{action 'changePw'}}> click here.</span>
+              </p>
+            {{/paper-form}}
+          </div>
+        </p>
+      {{/if}}
     </div>
     <div class='margin-bottom-28'>&nbsp;</div>
   </div>

@@ -6,11 +6,20 @@ export default Ember.Route.extend({
   },
 
   model() {
-    console.log('--> index model() firing');
+    console.log('--> routes/index model() firing');
     if(this.get('session.isAuthenticated')) {
       console.log('  -- session isAuthenticated, transitioning to "jots"');
       this.transitionTo('jots');
     }
-  }
+  },
+
+  setupController(controller) {
+    this._super(...arguments);
+    console.log('--> routes/index setupController() firing');
+    controller.set('loginEmail',      null);
+    controller.set('loginPw',         null);
+    controller.set('displayLoginDiv', false);
+    controller.displayLoginDivObs();
+  },
 
 });

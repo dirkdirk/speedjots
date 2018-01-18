@@ -49,6 +49,10 @@ a:link, a:visited {
   color: inherit;
 }
 
+.landing-page-top-toolbar {
+  margin-top: 12px;
+}
+
 .app-index-rabbit {
   margin: 20px 30px;
 }
@@ -75,7 +79,7 @@ a:link, a:visited {
 .login-icon {
   padding: 12px;
   cursor: pointer;
-  font-size: 1.6em;
+  font-size: 2em;
 }
 
 .google-login-icon {
@@ -161,4 +165,14 @@ hr {
 .height-94 {
   height: 94px;
   max-height: 94px;
+}
+
+.login-spinner {
+  color: color($primary);
+  font-size: 1.8em;
+  font-weight: 100;
+}
+
+.xxs-font {
+  font-size: 0.6em;
 }
