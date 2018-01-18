@@ -256,13 +256,12 @@ export default Ember.Service.extend({
     });
   },
 
-  updateCreateSocialUser(provider) {
+  updateCreateSocialUser() {
     console.log('--> services/user-utilities.js updateCreateSocialUser() firing');
     if(this.get('session.isAuthenticated')) {
       let logger    = this.get('logger');
       let store     = this.get('store');
       let userId    = this.get('userId');
-      let userEmail = this.get('userEmail');
       let timeStamp = Date.now();
       return store.findRecord('user', userId)
       .then(user => {
@@ -322,7 +321,7 @@ export default Ember.Service.extend({
   },
   createEmailUser(loginEmail, loginPw) {
     console.log('--> services/user-utilities.js createEmailUser() firing');
-    let logger    = this.get('logger');
+    // let logger    = this.get('logger');
     let store     = this.get('store');
     let timeStamp = Date.now();
     return this.get('firebaseApp').auth()
@@ -449,7 +448,7 @@ export default Ember.Service.extend({
   },
   updateEmailAddressTo(newEmail) {
     console.log('--> services/user-utilities.js updateEmailAddressTo() firing');
-    let logger       = this.get('logger');
+    // let logger       = this.get('logger');
     let currentEmail = this.get('userEmail');
     return this.get('firebaseApp')
     .auth().currentUser
@@ -461,11 +460,11 @@ export default Ember.Service.extend({
     .catch(error => {
       let details = `services/user-utilities.js updateEmailAddressTo() get.firebaseApp error:<br>${error.message}`;
       console.log(details);
-      logger.submit({
-        type:    logger.types.error,
-        title:   logger.titles.emailAddressUpdate,
-        details: details
-      });
+      // logger.submit({
+      //   type:    logger.types.error,
+      //   title:   logger.titles.emailAddressUpdate,
+      //   details: details
+      // });
       let emailAlreadyUsed = 'The email address is already in use by another account.';
       let errorMessage = '';
       if(error.message.includes(emailAlreadyUsed)) {
@@ -484,7 +483,7 @@ export default Ember.Service.extend({
   },
   sendEmailVerificationFn() {
     console.log('--> services/user-utilities.js sendEmailVerificationFn() firing');
-    let logger = this.get('logger');
+    // let logger = this.get('logger');
     return this.get('firebaseApp').auth().currentUser
     .sendEmailVerification()
     .then(() => {
@@ -494,16 +493,16 @@ export default Ember.Service.extend({
     .catch(error => {
       let details = `services/user-utilities.js sendEmailVerificationFn() error:<br>${error.message}`;
       console.log(details);
-      logger.submit({
-        type:    logger.types.error,
-        title:   logger.titles.sendEmailVerification,
-        details: details
-      });
+      // logger.submit({
+      //   type:    logger.types.error,
+      //   title:   logger.titles.sendEmailVerification,
+      //   details: details
+      // });
     });
   },
   sendPwResetEmail(email) {
     console.log('--> services/user-utilities.js sendPwResetEmail() firing');
-    let logger = this.get('logger');
+    // let logger = this.get('logger');
     let setResetPwEmailSentFromUserCp = true;
     let setResetPwEmailSentFromMenu   = true;
     if(email) {
