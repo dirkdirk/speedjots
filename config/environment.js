@@ -6,14 +6,6 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'hash',
-    firebase: {
-      apiKey: "AIzaSyD6vTFAtiL_3gZN9J5Wzu4phkuak05mCO0",
-      authDomain: "speedjotsdev.firebaseapp.com",
-      databaseURL: "https://speedjotsdev.firebaseio.com",
-      projectId: "speedjotsdev",
-      storageBucket: "speedjotsdev.appspot.com",
-      messagingSenderId: "806645394657"
-    },
     torii: {
       sessionServiceName: 'session'
     },
@@ -35,6 +27,14 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV['firebase'] = {
+      apiKey: "AIzaSyD6vTFAtiL_3gZN9J5Wzu4phkuak05mCO0",
+      authDomain: "speedjotsdev.firebaseapp.com",
+      databaseURL: "https://speedjotsdev.firebaseio.com",
+      projectId: "speedjotsdev",
+      storageBucket: "speedjotsdev.appspot.com",
+      messagingSenderId: "806645394657"
+    };
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -54,7 +54,14 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV['firebase'] = {
+      apiKey: "AIzaSyBGFRaMp3XIbJxXq_f8WoAxkwYEttedctg",
+      authDomain: "speed-jots.firebaseapp.com",
+      databaseURL: "https://speed-jots.firebaseio.com",
+      projectId: "speed-jots",
+      storageBucket: "speed-jots.appspot.com",
+      messagingSenderId: "931687315620"
+    };
   }
 
   return ENV;
