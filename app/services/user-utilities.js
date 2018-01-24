@@ -12,7 +12,7 @@ export default Ember.Service.extend({
     this.set('router', Ember.getOwner(this).lookup('router:main'));
   },
 
-  defaultLogInRoute:       'jots',
+  defaultloginRoute:       'jots',
   defaultLogOutRoute:      'application',
   deleteButtonTimeLimitSec: 60000,
   // deleteButtonTimeLimitSec:   60,
@@ -26,11 +26,18 @@ export default Ember.Service.extend({
   userId:          Ember.computed.alias('session.currentUser.uid'),
   userEmail:       Ember.computed.alias('session.currentUser.email'),
 
-  genUserName(email) { return email.match(/^([^@]*)@/)[1]; },
+  genUserName(email) {
+    console.log('--> services/user-utilities.js genUserName() firing');
+    if(email) {
+      return email.match(/^([^@]*)@/)[1];
+    } else {
+      return '';
+    }
+  },
   goTo(route) {
     let gotoRoute = '';
-    if(route === 'logInRoute') {
-      gotoRoute = this.get('defaultLogInRoute');
+    if(route === 'loginRoute') {
+      gotoRoute = this.get('defaultloginRoute');
     } else
     if(route === 'logOutRoute') {
       gotoRoute = this.get('defaultLogOutRoute');
@@ -74,7 +81,7 @@ export default Ember.Service.extend({
             if(isEmailVerified) {
               that.updateEmailUser({'setTimeStamp': true, 'currentEmail': loginEmail})
               .then(() => {
-                that.goTo('logInRoute');
+                that.goTo('loginRoute');
               })
               .catch(error => {
                 console.log('signIn() updateEmailUser() error: ' + error.message);
@@ -89,7 +96,14 @@ export default Ember.Service.extend({
                 });
               });
             } else {
-              console.log('no login cuz isEmailVerified is: ' + isEmailVerified);
+              console.log('No login cuz isEmailVerified is: ' + isEmailVerified);
+              this.get('flashMessages').add({
+                message: 'Email not verified. Check your email inbox for a verification email. Click the link therein. Then come login.',
+                type: 'danger',
+                sticky: true,
+                destroyOnClick: true,
+              });
+              that.signOut();
             }
           })
           // User exists but no data found - create user
@@ -111,11 +125,13 @@ export default Ember.Service.extend({
                 sticky: true,
                 destroyOnClick: true,
               });
+              that.signOut();
             }
           });
         })
         // User not found - create user
         .catch(error => {
+          console.log('For password signIn() open(firebase) error: ' + error.message);
           if(error.message.includes('The password is invalid')) {
             console.log('User password invalid - email signIn() open(firebase) error: ' + error.message);
             let errorMessage = 'The password is incorrect. Try again.';
@@ -144,7 +160,7 @@ export default Ember.Service.extend({
         // Update or create user and send to user route
         .then(() => {
           this.updateCreateSocialUser(provider)
-          .then(() => { this.goTo('logInRoute'); })
+          .then(() => { this.goTo('loginRoute'); })
           .catch(error => {
             console.log('social signIn() updateCreateSocialUser() error: ' + error.message);
             let errorMessage = 'Please let us know you got a signIn() updateCreateSocialUser() error: "' +
@@ -174,37 +190,61 @@ export default Ember.Service.extend({
       }
     }
   },
+  // signOut with logger service
+  // signOut() {
+  //   console.log('--> services/user-utilities.js signOut() firing');
+  //   let isAuthenticated = this.get('session.isAuthenticated');
+  //   if(isAuthenticated) {
+  //     console.log('--> attempting to close session ...');
+  //     let session = this.get('session');
+  //     let logger  = this.get('logger');
+  //     logger.submit({
+  //       type:    logger.types.user,
+  //       title:   logger.titles.logout,
+  //       saveNow: true
+  //     })
+  //     .then(() => {
+  //       session.close()
+  //       .then(() => {
+  //         console.log('Session closed, unloading store, and going to application route.');
+  //         this.set('safeForSecureActions',       false);
+  //         this.set('verificationEmailSent',      false);
+  //         this.set('resetPwEmailSentFromUserCp', false);
+  //         this.set('resetPwEmailSentFromMenu',   false);
+  //         this.get('store').unloadAll();
+  //         this.goTo('logOutRoute');
+  //       });
+  //     })
+  //     .catch(error => {
+  //       let details = `services/user-utilities.js signOut() error:<br>${error.message}`;
+  //       console.log(details);
+  //       logger.submit({
+  //         type:    logger.types.error,
+  //         title:   logger.titles.logout,
+  //         details: details
+  //       });
+  //     });
+  //   } else {
+  //     this.goTo('logOutRoute');
+  //   }
+  // },
+
+  // signOut without logger service
   signOut() {
     console.log('--> services/user-utilities.js signOut() firing');
     let isAuthenticated = this.get('session.isAuthenticated');
     if(isAuthenticated) {
+      console.log('--> attempting to close session ...');
       let session = this.get('session');
-      let logger  = this.get('logger');
-      logger.submit({
-        type:    logger.types.user,
-        title:   logger.titles.logout,
-        saveNow: true
-      })
+      session.close()
       .then(() => {
-        session.close()
-        .then(() => {
-          console.log('Session closed, unloading store, and going to application route.');
-          this.set('safeForSecureActions',       false);
-          this.set('verificationEmailSent',      false);
-          this.set('resetPwEmailSentFromUserCp', false);
-          this.set('resetPwEmailSentFromMenu',  false);
-          this.get('store').unloadAll();
-          this.goTo('logOutRoute');
-        });
-      })
-      .catch(error => {
-        let details = `services/user-utilities.js signOut() error:<br>${error.message}`;
-        console.log(details);
-        logger.submit({
-          type:    logger.types.error,
-          title:   logger.titles.logout,
-          details: details
-        });
+        console.log('Session closed, unloading store, and going to application route.');
+        this.set('safeForSecureActions',       false);
+        this.set('verificationEmailSent',      false);
+        this.set('resetPwEmailSentFromUserCp', false);
+        this.set('resetPwEmailSentFromMenu',   false);
+        this.get('store').unloadAll();
+        this.goTo('logOutRoute');
       });
     } else {
       this.goTo('logOutRoute');
@@ -385,7 +425,7 @@ export default Ember.Service.extend({
           //   title:   logger.titles.emailLogin,
           //   details: 'Email account created because: "error.message.includes(`The email address is already in use`)".'
           // });
-          this.goTo('logInRoute');
+          this.goTo('loginRoute');
         });
       }
     });

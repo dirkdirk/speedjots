@@ -20,9 +20,11 @@
       <span style='position:relative;bottom:4px;'>Github</span>
     {{/content.menu-item}}
 
-    {{#content.menu-item onClick='changePw'}}
-      {{paper-icon 'security' class='md-menu-align-target' title='Change password'}}Change Password
-    {{/content.menu-item}}
+    {{#if (eq session.provider 'password')}}
+      {{#content.menu-item onClick='changePw'}}
+        {{paper-icon 'security' class='md-menu-align-target' title='Change password'}}Change Password
+      {{/content.menu-item}}
+    {{/if}}
 
     {{#content.menu-item onClick='signOut'}}
       {{paper-icon 'highlight-off' class='md-menu-align-target' title='Log out'}}Log out
