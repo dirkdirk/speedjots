@@ -14,7 +14,6 @@
 .jot-input {
   background-color: color($accent, 'A200');
   border:  none;
-  cursor:  pointer;
   outline: none;
 }
 
@@ -76,9 +75,9 @@
 }
 
 .simditor-toolbar {
-  border: 1px solid color($accent, '400') !important;
+  border:           1px solid color($accent, '400') !important;
   background-color: color($accent, '100') !important;
-  box-shadow: 1px 1px 2px color($accent, '300') !important;
+  box-shadow:       1px 1px 2px color($accent, '300') !important;
 }
 
 .toolbar-item.active {
@@ -86,8 +85,8 @@
 }
 
 .in-trash-div {
-  color: rgba(255, 255, 255, 0.92);
+  color:            rgba(255, 255, 255, 0.92);
   background-color: color($red, '800');
-  padding: 10px;
-  text-align: center;
+  padding:          10px;
+  text-align:       center;
 }

@@ -3,6 +3,14 @@ $accent:      'blue';
 $warn:        'green';
 $red:         'red';
 
+// Dark theme variables
+$dark-theme-background-color:     #404040;
+$dark-theme-simdator-body-bg:     rgba(0,0,0, 0.6);
+$dark-theme-font-color:           rgba(255,255,255, 0.3);
+$dark-theme-simditor-font-color:  rgba(255,255,255, 0.93);
+$dark-theme-simditor-text-shadow: 0px 0px 10px rgba(0,0,0, 0.1);
+$dark-theme-simditor-link-color:  skyblue;
+
 @import 'ember-paper';
 @import 'editor';
 @import 'nav';
@@ -11,19 +19,19 @@ $red:         'red';
 // From ember-paper demo app. Necessary to make separate scroll bars work.
 body.ember-application {
   flex-direction: row;
-  flex: 1;
-  display: flex;
+  flex:           1;
+  display:        flex;
 }
 
 body > div.ember-view {
-  width: 100%;
+  width:          100%;
   flex-direction: row;
-  flex: 1;
-  display: flex;
+  flex:           1;
+  display:        flex;
 }
 
 *::-webkit-scrollbar {
-  width: 5px;
+  width:  5px;
   height: 5px;
 }
 
@@ -49,12 +57,11 @@ a:link, a:visited {
   color: inherit;
 }
 
-.landing-page-top-toolbar {
-  margin-top: 12px;
-}
-
 .app-index-rabbit {
   margin: 20px 30px;
+  img {
+    opacity: 0.5;
+  }
 }
 
 .index-text {
@@ -176,3 +183,128 @@ hr {
 .xxs-font {
   font-size: 0.6em;
 }
+
+// Dark theme over rides ////////////////////////////////////////////////
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+  // background-color: #c74010;
+  background-color: #c41;
+}
+
+.dark-theme {
+  background-color: $dark-theme-background-color !important;
+}
+
+.cp-Panel-body,
+.cp-Panel-body-inner div {
+  background-color: $dark-theme-background-color !important;
+  color:            $dark-theme-simditor-link-color;
+}
+
+.nav-icons .dark-theme, .dark-theme-text {
+  color: $dark-theme-font-color;
+}
+
+.menu-jot-link.active > div {
+  color: $dark-theme-simditor-font-color !important;
+}
+
+#nav-group-panels {
+  background-color: $dark-theme-background-color !important;
+  md-toolbar, .md-toolbar-tools {
+    border-bottom: 1px solid $dark-theme-background-color !important;
+  }
+}
+
+.simditor {
+  border: none !important;
+}
+
+.simditor-body {
+  background-color: $dark-theme-simdator-body-bg !important;
+  thead
+  {
+    background-color: $dark-theme-background-color !important;
+  }
+  th.active,
+  td.active,
+  code
+  {
+    background-color: $dark-theme-simdator-body-bg !important;
+  }
+  table th,
+  table td
+  {
+    border-color: $dark-theme-background-color !important;
+  }
+}
+
+.simditor .simditor-body h1,
+.simditor .simditor-body h2,
+.simditor .simditor-body h3,
+.simditor .simditor-body h4,
+.simditor .simditor-body h5,
+.simditor .simditor-body h6,
+.simditor .simditor-body p,
+.simditor .simditor-body li,
+.simditor .simditor-body span,
+.editor-style h1,
+.editor-style h2,
+.editor-style h3,
+.editor-style h4,
+.editor-style h5,
+.editor-style h6,
+.editor-style p,
+.editor-style li,
+.editor-style span,
+th, td
+{
+  color:       $dark-theme-simditor-font-color;
+  text-shadow: $dark-theme-simditor-text-shadow !important;
+}
+
+.simditor .simditor-body a,
+.editor-style a {
+  color:  $dark-theme-simditor-link-color !important;
+}
+
+.simditor-toolbar {
+  border:           none !important;
+  background-color: color($accent, '300') !important;
+  box-shadow:       none !important;
+}
+
+.toolbar-item.active {
+  background-color: color($accent, '400') !important;
+}
+
+.simditor .simditor-toolbar > ul > li.menu-on .toolbar-item {
+  background: inherit;
+}
+
+.simditor .simditor-toolbar .toolbar-menu {
+  background: #999;
+}
+
+.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-1 {
+  background: #E30707;
+}
+.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-2 {
+  background: #ffac00;
+}
+.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-3 {
+  background: #f8f808;
+}
+.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-4 {
+  background: #22bb22;
+}
+.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-5 {
+  background: #00bfff;
+}
+.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-6 {
+  background: #cd853f;
+}
+.simditor .simditor-toolbar .toolbar-menu.toolbar-menu-color .color-list li .font-color-7 {
+  background: #aaa;
+}
+

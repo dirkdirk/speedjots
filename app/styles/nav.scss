@@ -13,13 +13,14 @@ md-sidenav {
 
 #nav-group-panels {
   md-toolbar, .md-toolbar-tools {
-    max-height: 40px !important;
-    min-height: 40px !important;
+    max-height:    40px !important;
+    min-height:    40px !important;
     border-bottom: 1px solid color($primary, '100');
   }
 }
 
 #menu-logo {
+  opacity:     0.6;
   margin-top:  10px;
   margin-left: 6px;
   height:      2.8em;
@@ -28,13 +29,13 @@ md-sidenav {
 
 .flash-messages-div {
   background-color: color($primary, '400');
-  margin-bottom: 20px;
-  padding: 0 12px 12px 12px;
+  margin-bottom:    20px;
+  padding:          0 12px 12px 12px;
 }
 
 .alert {
   margin-bottom: 12px;
-  padding: 12px;
+  padding:       12px;
 }
 
 .alert-success {

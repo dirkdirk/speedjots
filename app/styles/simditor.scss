@@ -2,34 +2,68 @@
   font-family: inherit;
 }
 
-.simditor .simditor-body h1, .simditor .simditor-body h2, .simditor .simditor-body h3, .simditor .simditor-body h4, .simditor .simditor-body h5, .simditor .simditor-body h6, .editor-style h1, .editor-style h2, .editor-style h3, .editor-style h4, .editor-style h5, .editor-style h6 {
+.simditor .simditor-body h1,
+.simditor .simditor-body h2,
+.simditor .simditor-body h3,
+.simditor .simditor-body h4,
+.simditor .simditor-body h5,
+.simditor .simditor-body h6,
+.editor-style h1,
+.editor-style h2,
+.editor-style h3,
+.editor-style h4,
+.editor-style h5,
+.editor-style h6 {
+  margin: 20px 0 4px;
+}
+
+.simditor .simditor-body p,
+.simditor .simditor-body div,
+.editor-style p,
+.editor-style div
+{
+  margin:      0;
+  line-height: 1.5;
+}
+
+.simditor .simditor-body ul,
+.simditor .simditor-body ol,
+.editor-style ul,
+.editor-style ol
+{
+  margin-top: 4px;
+  // margin-bottom: 4px;
+}
+
+.simditor .simditor-body li,
+.editor-style li
+{
+  line-height: 1.5;
+}
+
+.simditor .simditor-body pre,
+.editor-style pre
+{
   margin: 0;
 }
 
-.simditor .simditor-body p, .simditor .simditor-body div, .editor-style p, .editor-style div {
+.simditor .simditor-body hr,
+.editor-style hr
+{
   margin: 0;
 }
 
-.simditor .simditor-body ul, .simditor .simditor-body ol, .editor-style ul, .editor-style ol {
-  margin: 0;
+.simditor .simditor-body table,
+.editor-style table
+{
+  margin:    8px 0 4px;
+  th,
+  td {
+    padding: 4px 12px;
+  }
 }
 
-.simditor .simditor-body pre, .editor-style pre {
-  margin: 0;
-}
-
-.simditor .simditor-body hr, .editor-style hr {
-  margin: 0;
-}
-
-.simditor .simditor-body table, .editor-style table {
-  margin: 0;
-}
-
-.simditor .simditor-body li, .editor-style li {
-  line-height: 1.16;
-}
-
-.simditor .simditor-body code {
+.simditor .simditor-body code
+{
   margin: 0;
 }

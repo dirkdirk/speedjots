@@ -1,5 +1,5 @@
 {{#paper-sidenav-container class='inner-sidenav'}}
-  {{#paper-sidenav class='md-whiteframe-2dp'
+  {{#paper-sidenav class='md-whiteframe-2dp dark-theme'
                    name='left'
                    closeOnClick=false
                    open=leftSideBarOpen
@@ -28,13 +28,13 @@
         {{paper-icon 'file-download' class='' title='Download all Jots' click=(action 'dlAllJots' model)}}
       </div> --}}
       <div class='flex-none'>
-        {{paper-icon 'search' title='Search titles and tags' click=(action 'toggleShowSearchInput')}}
+        {{paper-icon 'search' class='dark-theme' title='Search titles and tags' click=(action 'toggleShowSearchInput')}}
       </div>
       <div class='flex-none'>
-        {{paper-icon 'arrow-downward' title='Open all groups' click=(action 'openAllGroups')}}
+        {{paper-icon 'arrow-downward' class='dark-theme' title='Open all groups' click=(action 'openAllGroups')}}
       </div>
       <div class='flex-none'>
-        {{paper-icon 'arrow-upward' title='Close all groups' click=(action 'closeAllGroups')}}
+        {{paper-icon 'arrow-upward' class='dark-theme' title='Close all groups' click=(action 'closeAllGroups')}}
       </div>
       {{#draggable-object-target action='moveJotToGroup' class='flex-none'}}
         {{paper-icon 'content-copy' class='new-group-icon' title='Drop a jot on this icon to create a new group'}}
@@ -162,7 +162,7 @@
   {{/paper-sidenav-toggle}}
   {{!-- / Toggle left nav icon  --}}
 
-  {{#paper-content id='simditor-float' class='editor-div'}}  {{!-- id='simditor-float' is used by simditor script --}}
+  {{#paper-content id='simditor-float' class='editor-div dark-theme'}}  {{!-- id='simditor-float' is used by simditor script --}}
       {{!-- {{#if userUtilities.resetPwEmailSentFromMenu}}
         Check your email inbox for a password reset email.
       {{else}} --}}
