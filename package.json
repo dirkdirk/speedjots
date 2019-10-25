@@ -29,7 +29,7 @@
     "ember-cli-jshint": "^2.0.1",
     "ember-cli-qunit": "^3.0.1",
     "ember-cli-release": "^0.2.9",
-    "ember-cli-sass": "6.1.2",
+    "ember-cli-sass": "^10.0.1",
     "ember-cli-simditor": "0.0.7",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-test-loader": "^1.1.0",
@@ -49,6 +49,7 @@
     "emberx-select": "3.0.1",
     "liquid-fire": "0.27.2",
     "loader.js": "^4.0.10",
+    "sass": "^1.23.0",
     "torii": "0.8.1"
   },
   "engines": {
