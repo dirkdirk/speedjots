@@ -1,5 +1,6 @@
 $primary:     'deep-orange';
-$accent:      'blue';
+$accent:      'indigo';
+// $accent:      'blue';
 $warn:        'green';
 $red:         'red';
 
@@ -44,6 +45,11 @@ body > div.ember-view {
 }
 // / From ember-paper demo app
 
+
+md-toolbar {
+  height:     90px !important;
+  min-height: 90px !important;
+}
 
 h1, h2, h3 {
   font-weight: normal;
@@ -206,7 +212,8 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 }
 
 .menu-jot-link.active > div {
-  color: $dark-theme-simditor-font-color !important;
+  color:            $dark-theme-simditor-font-color !important;
+  background-color: inherit !important;
 }
 
 #nav-group-panels {
@@ -270,7 +277,7 @@ th, td
 
 .simditor-toolbar {
   border:           none !important;
-  background-color: color($accent, '300') !important;
+  background-color: color($accent, 'A100') !important;
   box-shadow:       none !important;
 }
 

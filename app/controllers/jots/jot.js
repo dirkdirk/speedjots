@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   device:       Ember.inject.service(),
 
   inactiveSaveTime:   4000,
-  inactiveToJotsTime: 600000,
+  inactiveToJotsTime: 900000, // 15 min
   siteGreen:   '#4CAF50',
   siteRed:     '#F44336',
   sortModelBy: ['group'],
