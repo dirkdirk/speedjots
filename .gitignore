@@ -19,3 +19,4 @@ testem.log
 /tests
 /dirk
 /config
+package-lock.json
