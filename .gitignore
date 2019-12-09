@@ -16,5 +16,6 @@
 npm-debug.log*
 testem.log
 /.firebase
+/tests
 /dirk
 /config
